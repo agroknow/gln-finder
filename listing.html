@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+	<head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>AK-Finder</title>
+
+		
+		<link rel="stylesheet" href="style/reset.css" />
+        <link href="http://fonts.googleapis.com/css?family=Signika" rel='stylesheet' type='text/css'>
+		
+		<!-- more css -->
+		<link rel="stylesheet" href="style/select2.css" />
+		<link rel="stylesheet" href="style/style.css" />
+
+
+        
+        
+        <script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.1/build/yahoo-dom-event/yahoo-dom-event.js&2.8.1/build/container/container_core-min.js&2.8.1/build/datasource/datasource-min.js&2.8.1/build/element/element-min.js&2.8.1/build/paginator/paginator-min.js&2.8.1/build/datatable/datatable-min.js&2.8.1/build/json/json-min.js&2.8.1/build/selector/selector-min.js&2.8.1/build/layout/layout-min.js"></script>
+        
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <SCRIPT type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/finder-js/prototype.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/finder-js/jsonp.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/finder-js/sha1.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/finder-js/jaml-all.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/finder-js/finder.js"></SCRIPT>
+	
+	</head>
+	
+	<body class="">
+		<section id="wrap">
+
+			<header id="mainheader">
+                <aside id="panel" class="clearfix">
+                    <section class="clearfix">
+                        <article class="clearfix">
+                            <h3>Text Size</h3>
+                            <div id="resizefonts"></div>
+                            <span id="resizefonts_amount" class="amount"></span>
+                        </article>
+                        <article class="clearfix">
+                            <h3>Line Spacing</h3>
+                            <div id="linespacing"></div>
+                            <span id="linespacing_amount" class="amount"></span>
+                        </article>
+                        <label>
+                            <span>Font Type</span>
+                            <select id="font-selector">
+                                <option value="arial">Arial</option>
+                                <option value="tahoma">Tahoma</option>
+                                <option value="helvetica">Helvtica</option>
+                            </select>
+                        </label>
+                    </section>
+                    <div class="brownline"></div>
+                    <a href="#" id="paneltrigger" class="floatright">panel</a>
+                </aside>
+                
+                
+				<!--TOP VERTICAL LOGO-
+                 <div class="clearfix">
+					<a href="#" class="logo">AK-Finder</a>
+				</div>-->
+                
+            </header>
+            
+
+            
+            
+			<section id="main">
+                <section id="search">
+                    
+                    <div class="leftsidelogo">
+                    </div>
+                    
+                    <div class="moduletable_mainsearch">
+                        <div>
+                            <form name="searchForm" id="searchForm" action="" method="post" onsubmit="doSearch(); return false;">
+                                <div>
+                                    <input type="text" name="query" id="query" class="withplaceholder" placeholder="Search..." />
+                                </div>
+                                <!--<input type="submit" value="submit" />-->
+                            </form>
+                        </div>
+                    </div>
+                </section>
+                
+                
+				<div class="inner">
+					<div class="sorting">
+                        
+					</div>
+					<div class="twocols clearfix">
+                      <aside class="filter">
+                      <div id="insert_summary" ></div><!-- Results : (1 - 12 of 216) from Ajax.JSONRequest() -->
+                       <div id="search_status" ></div>
+                
+                          <!--<div><input type="text" name="search_filter" class="search_filter" placeholder="Search results"/></div>-->
+                       <div id="insert_facets" ></div>
+                       <div class="remove_filters" style="padding: 3px 0 3px 0;">
+                           <a href="" style="font-size:12px;" onclick="initialSearch();pagination_hide();">remove filters</a>
+                       </div>
+                         <div class="links_left">
+                             <div class="links_left_title">Powered by:</div>
+                             <div class="links_left_content">Green Learning Network</div>
+                             <div class="links_left_title">A data pool curated and maintained by:</div>
+                             <div class="links_left_content">Agroknow Technologies</div>
+                             <div class="links_left_title">Designed by:</div>
+                             <div class="links_left_content">Red Panda</div>
+                             </div>
+                       </aside>
+
+						<section class="listing">
+                             <div id="insert_pagination_top" class="aligncenter"></div>
+                            
+                            <div id="insert_results"></div> <!--results from AJAX call-->
+							
+                            <div id="insert_pagination_bottom" class="aligncenter"></div>
+						</section>
+					</div>
+				</div>
+                
+			</section>
+		</section>
+        
+        <!--<footer id="mainfooter">
+			<div class="inner">
+				<nav class="clearfix credits">
+					<a href="http://www.nhmc.uoc.gr" target="_blank" class="curated">A data pool curated and maintained by</a>
+					<a href="http://www.redpanda.gr" target="_blank" class="redpanda">Designed by</a>
+                    <a href="http://www.natural-europe.eu" target="_blank" class="naturalEurope">with partial EU funding support from</a>
+				</nav>
+				<p class="aligncenter">Natural History Museum of Crete, University of Crete, Knossou Ave., P.O. Box 2208, 71409 Heraklion Crete, Greece, Tel./Fax: +30 2810-324366
+                Exhibition Halls of Natural History Museum of Crete, Sofokli Venizelou Avenue Heraklion Crete, Greece, Tel: +30 2810 282740 - Fax: +30 2810-393636</p>
+			</div>
+		</footer>-->
+        
+        
+  
+		
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+		<!-- include Select2 plugin -->
+		<script src="js/select2.min.js"></script>
+        <script src="js/select2.js"></script>
+
+		
+    	<script type="text/javascript">
+            
+			$(document).ready(function (){
+                              function format(state) {
+                              if (!state.id) return state.text; // optgroup
+                              return "<img class='flag' alt='flag' src='style/images/flag_" + state.id.toLowerCase() + ".jpg'/>" + state.text;
+                              }
+//                              jQuery("#lang-selector").select2({
+//                                                          minimumResultsForSearch:100,
+//                                                          formatResult: format,
+//                                                          formatSelection: format
+//                                                          })
+//                              jQuery(".withplaceholder").placeholder();
+//
+//                              
+//                              jQuery("#jMenu").jMenu();
+//                              
+//       
+//                              
+//                              jQuery(".search_filter input[type=text]").placeholder();
+//                              
+//                              jQuery(".sorting select").select2({
+//                                                           minimumResultsForSearch:100,
+//                                                           dropdownCssClass:"simple"
+//                                                           })
+//                              
+//
+//                              function setface(state) {
+//                              var t = "human";
+//                              if (!state.id) return state.text; // optgroup
+//                              if (typeof state.element.attr === "function") { t = state.element.attr("class"); }
+//                              else t = state.css;
+//                              if (typeof t === "undefined") t = "human";
+//                              
+//                              return "<img class='face' alt='face' src='style/images/" + t + ".png'/>" + state.text;
+//                              }
+//                              jQuery(".item-intro select").select2({
+//                                                              minimumResultsForSearch:3,
+//                                                              dropdownCssClass:"simple font12",
+//                                                              formatResult: setface,
+//                                                              formatSelection: setface
+//                                                              })
+//                              
+//                              jQuery(".hasscroll").jScrollPane();
+//                              
+                              
+                              
+                              /*panel*/
+                              jQuery("#font-selector").select2({
+                                                          minimumResultsForSearch:100
+                                                          })
+                              jQuery("#lang-selector").select2({
+                                                          minimumResultsForSearch:100,
+                                                          dropdownCssClass:"flag",
+                                                          formatResult: format,
+                                                          formatSelection: format
+                                                          })
+                              
+                              jQuery("#paneltrigger").click(function(event){
+                                                       event.preventDefault();
+                                                       jQuery(this).prev().prev().slideToggle("slow");
+                                                       });
+                              
+                              jQuery("#resizefonts").slider({
+                                                       orientation: "horizontal",
+                                                       range: "min",
+                                                       max:29,
+                                                       min:9,
+                                                       value:14,
+                                                       slide:refreshFontSize,
+                                                       change:refreshFontSize
+                                                       });
+                              jQuery( "#resizefonts_amount" ).text( jQuery( "#resizefonts" ).slider( "value" )+"px" );
+                              
+                              jQuery("#linespacing").slider({
+                                                       orientation: "horizontal",
+                                                       range: "min",
+                                                       max:3.1,
+                                                       min:0.9,
+                                                       value:1,
+                                                       step:0.1,
+                                                       slide:refreshLinespacing,
+                                                       change:refreshLinespacing
+                                                       });
+                              jQuery( "#linespacing_amount" ).text( jQuery( "#linespacing" ).slider( "value" )+"px" );
+                              
+                              });
+           
+            
+            function refreshFontSize() {
+				var resizefonts = jQuery( "#resizefonts" ).slider( "value" );
+				jQuery("#resizefonts_amount").text(resizefonts+"px");
+				jQuery(".results article > *").css("font-size",resizefonts+"px");
+				//console.log(resizefonts);
+			}
+            
+            
+			function refreshLinespacing() {
+				var linespacing = jQuery( "#linespacing" ).slider( "value" );
+				jQuery( "#linespacing_amount" ).text(linespacing+"px");
+				//console.log(resizefonts);
+			}
+            
+            
+            
+            /*
+             * function customizeFinder() is called at initialisation time
+             * you need to change values repositoryName and serviceUrl
+             * and also the same values inside the -finder.js- !
+             */
+            $.noConflict();
+            function customizeFinder() {
+                return {
+                    /* limit collections|providers
+                    "selectedProviders":["aglrfaocdx"],
+                    */
+                    
+                    "externalSources": ["wp","scr","ss","gb"],
+                    "pageContainers": ['bottom','top'],
+                    "facets": ["provider","language","lrt", "context", "iur", "tagr"], 
+                    "limitFacetDisplay": {"language":["en","eng;","eng","eng; eng","el","fr","nl","de","et","hu","ro","tr"]},
+                    "maxLengthDescription":  300,
+                    "pageSize": 6,
+                    "repositoryName": "Organic.Edunet",//find this in the ariadne.properties file inside your Ariadne folder  ex."repositoryName":"AriadneNext Repository"
+                    "serviceUrl":"http://83.212.96.169:8080/OE_repos/api/ariadne/restp"
+                    
+                }
+            }
+            
+            </script>
+        
+       
+		
+        
+        
+	</body>
+
+</html>

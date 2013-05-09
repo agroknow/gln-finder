@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>AK-Finder</title>
+        <!--[if (gte IE 6)&(lte IE 8)]>
+                <script type="text/javascript" src="js/selectivizr-min.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" href="style/reset.css" />
+        <link href="http://fonts.googleapis.com/css?family=Signika" rel='stylesheet' type='text/css'>
+
+        <!-- more css -->
+        <link rel="stylesheet" href="style/select2.css" />
+        <link rel="stylesheet" href="style/jMenu.jquery.css" />
+        <link rel="stylesheet" href="style/layerslider.css" />
+        <link rel="stylesheet" href="style/jquery.jscrollpane.css" />
+        <link rel="stylesheet" href="style/style.css" />
+
+
+        <!--[if !IE 7]>
+                <style type="text/css">
+                        #wrap {display:table;height:100%}
+                </style>
+        <![endif]-->
+
+
+
+        <script type="text/javascript" src="js/ariadne-json.js"></script>
+        <script type="text/javascript" src="js/experiment.js"></script>
+            
+        <script type="text/javascript">
+            function getItem()
+            {
+                //getItemJSONP('http://83.212.96.169:8080/akifRetriever/getAKIF?ids='+location.search.split("=")[1]);
+                experiment('http://83.212.96.169:8080/akifRetriever/getAKIF?ids='+location.search.split("=")[1]);
+            }
+        </script>
+
+    </head>
+
+    <body class="innerpage listingpage" onload="getItem()" >
+        <section id="wrap">
+
+			<header id="mainheader">
+                <aside id="panel" class="clearfix">
+                    <section class="clearfix">
+                        <article class="clearfix">
+                            <h3>Text Size</h3>
+                            <div id="resizefonts"></div>
+                            <span id="resizefonts_amount" class="amount"></span>
+                        </article>
+                        <article class="clearfix">
+                            <h3>Line Spacing</h3>
+                            <div id="linespacing"></div>
+                            <span id="linespacing_amount" class="amount"></span>
+                        </article>
+                        <label>
+                            <span>Font Type</span>
+                            <select id="font-selector">
+                                <option value="arial">Arial</option>
+                                <option value="tahoma">Tahoma</option>
+                                <option value="helvetica">Helvtica</option>
+                            </select>
+                        </label>
+                    </section>
+                    <div class="brownline"></div>
+                    <a href="#" id="paneltrigger" class="floatright">panel</a>
+                </aside>
+                
+				<!--TOP VERTICAL LOGO-
+                 <div class="clearfix">
+					<a href="#" class="logo">AK-Finder</a>
+				</div>-->
+            </header>
+            
+            
+            
+            
+			<section id="main">
+                <section id="search">
+                    <div class="leftsidelogo">
+                    </div>
+                    
+                    <div class="moduletable_mainsearch">
+                        <div>
+                            <form name="searchForm" id="searchForm" action="" method="post" onsubmit="doSearch(); return false;">
+                                <div>
+                                    <input type="text" name="query" id="query" class="withplaceholder" placeholder="Search..." />
+                                </div>
+                                <!--<input type="submit" value="submit" />-->
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+            <section id="main">
+                <div class="inner">
+
+                    <div class="twocols clearfix">
+
+                        <aside class="leftSidebarInfo">
+                            <div class="clearfix">
+
+                                <ul class="floatleft cleanList">
+                                    <h2>More Info</h2>
+
+                                    <li class="cleanRow">
+                                        <span>Language:</span>
+                                        <nav class="inline-nav" id="itemLanguage">
+                                        </nav>
+                                    </li>
+                                    <li class="cleanRow">
+                                        <span>Educational Context:</span>
+                                        <nav class="inline-nav" id="itemEducationalContext">
+
+                                        </nav>
+                                    </li>
+                                    <li class="cleanRow">
+                                        <span>Resource Type:</span>
+                                        <nav class="inline-nav" id="itemResourceType">
+
+                                        </nav>
+                                    </li>
+                                    <li class="cleanRow">
+                                        <span>Intended Audience:</span>
+                                        <nav class="inline-nav" id="itemIntendedAudience">
+
+                                        </nav>
+                                    </li>
+                                    <li class="cleanRow">
+                                        <span>Typical Age Range:</span>
+                                        <nav class="inline-nav" id="itemAgeRange">
+
+                                        </nav>
+                                    </li>
+                                    <li class="cleanRow">
+                                        <span>Collection:</span>
+                                        <nav class="inline-nav" id="itemCollection">
+
+                                        </nav>
+                                    </li>
+                                    <li class="cleanRow">
+                                        <span>Media Format:</span>
+                                        <nav class="inline-nav" id="itemMediaFormat">
+
+                                        </nav>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </aside>
+
+
+
+                        <section class="itemview">
+                           <!-- <a href="javascript:window.history.back();" class="backbutton secondary">Back</a>-->
+                            <article class="item-main">
+                                <header>
+                                    <h1 id="itemTitle"></h1>
+                                    <!--<img src="style/images/copyright_sample.png" alt="image" />-->
+                                </header>
+                                <div class="item-content">
+                                    <div>
+                                        <p class="itemDescription" id="itemDescription"></p>
+                                        
+                                    </div>
+                                    <div id="itemThumb"></div>
+
+                                    <div class="clearfix">
+                                        <!--<div id="keywords"></div>-->
+                                        <div><ul class="itemKeywords"><li><span>Keywords:</span><nav id="itemKeywords" class="inline-nav clearfix"> <!--auto-generated--></nav></li></ul></div>
+                                        <div style="position: relative; top: 7px;">
+                                            <ul>
+                                                <li id="itemRights">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="floatright"><a href="mailto:info@agroknow.gr?Subject=Green%20Learning%20Network" class="reportaproblem  secondary">Report a problem</a></div>
+                                        <div class="floatright" style="margin-right: 15px;" id="itemAccess"></div>
+                                    </div>
+
+                                </div>
+                            </article>
+                           <!-- <a href="javascript:window.history.back();" class="backbutton secondary">Back</a>-->
+                        </section>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+        <!--<footer id="mainfooter">
+			<div class="inner">
+				<nav class="clearfix credits">
+					<a href="http://www.nhmc.uoc.gr" target="_blank" class="curated">A data pool curated and maintained by</a>
+					<a href="http://www.redpanda.gr" target="_blank" class="redpanda">Designed by</a>
+                    <a href="http://www.natural-europe.eu" target="_blank" class="naturalEurope">with partial EU funding support from</a>
+				</nav>
+				<p class="aligncenter">Natural History Museum of Crete, University of Crete, Knossou Ave., P.O. Box 2208, 71409 Heraklion Crete, Greece, Tel./Fax: +30 2810-324366
+                Exhibition Halls of Natural History Museum of Crete, Sofokli Venizelou Avenue Heraklion Crete, Greece, Tel: +30 2810 282740 - Fax: +30 2810-393636</p>
+			</div>
+		</footer>-->
+
+
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+            <!-- include Select2 plugin -->
+            <script src="js/select2.min.js"></script>
+            <script src="js/select2.js"></script>
+            
+            
+            <script type="text/javascript">
+                
+                $(document).ready(function (){
+                                  function format(state) {
+                                  if (!state.id) return state.text; // optgroup
+                                  return "<img class='flag' alt='flag' src='style/images/flag_" + state.id.toLowerCase() + ".jpg'/>" + state.text;
+                                  }
+        
+                                  
+                                  
+                                  /*panel*/
+                                  jQuery("#font-selector").select2({
+                                                                   minimumResultsForSearch:100
+                                                                   })
+                                  jQuery("#lang-selector").select2({
+                                                                   minimumResultsForSearch:100,
+                                                                   dropdownCssClass:"flag",
+                                                                   formatResult: format,
+                                                                   formatSelection: format
+                                                                   })
+                                  
+                                  jQuery("#paneltrigger").click(function(event){
+                                                                event.preventDefault();
+                                                                jQuery(this).prev().prev().slideToggle("slow");
+                                                                });
+                                  
+                                  jQuery("#resizefonts").slider({
+                                                                orientation: "horizontal",
+                                                                range: "min",
+                                                                max:29,
+                                                                min:9,
+                                                                value:14,
+                                                                slide:refreshFontSize,
+                                                                change:refreshFontSize
+                                                                });
+                                  jQuery( "#resizefonts_amount" ).text( jQuery( "#resizefonts" ).slider( "value" )+"px" );
+                                  
+                                  jQuery("#linespacing").slider({
+                                                                orientation: "horizontal",
+                                                                range: "min",
+                                                                max:3.1,
+                                                                min:0.9,
+                                                                value:1,
+                                                                step:0.1,
+                                                                slide:refreshLinespacing,
+                                                                change:refreshLinespacing
+                                                                });
+                                  jQuery( "#linespacing_amount" ).text( jQuery( "#linespacing" ).slider( "value" )+"px" );
+                                  
+                                  });
+                
+                
+                function refreshFontSize() {
+                    var resizefonts = jQuery( "#resizefonts" ).slider( "value" );
+                    jQuery("#resizefonts_amount").text(resizefonts+"px");
+                    jQuery(".results article > *").css("font-size",resizefonts+"px");
+                    //console.log(resizefonts);
+                }
+                
+                
+                function refreshLinespacing() {
+                    var linespacing = jQuery( "#linespacing" ).slider( "value" );
+                    jQuery( "#linespacing_amount" ).text(linespacing+"px");
+                    //console.log(resizefonts);
+                }
+                
+                
+                
+                </script>
+            
+
+
+    </body>
+
+</html>
