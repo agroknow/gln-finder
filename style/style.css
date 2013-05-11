@@ -52,7 +52,7 @@ h3 {
 /* STICK FOOTER */
 html, body {height: 100%;}
 #wrap {width:100%;min-height: 100%;}
-#main {overflow:auto; /*padding-bottom: 170px;*/}  /* must be same height as the footer IF the footer exists */
+#main {overflow:auto;     min-width: 1024px;/*padding-bottom: 170px;*/}  /* must be same height as the footer IF the footer exists */
 
 footer#mainfooter {
 	position: relative;
