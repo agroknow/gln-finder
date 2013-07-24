@@ -123,6 +123,7 @@
 							
                             <div id="insert_pagination_bottom" class="aligncenter"></div>
 						</section>
+                    
 					</div>
 				</div>
                 
@@ -264,18 +265,16 @@
             $.noConflict();
             function customizeFinder() {
                 return {
-                    /* limit collections|providers
-                    "selectedProviders":["aglrfaocdx"],
-                    */
                     
+                   /* "selectedProviders":["EDUAC"],*/
+                    "selectedLanguage":"en",
                     "externalSources": ["wp","scr","ss","gb"],
                     "pageContainers": ['bottom','top'],
                     "facets": ["provider","language","lrt", "context", "iur", "tagr"], 
-                    "limitFacetDisplay": {"language":["en","eng;","eng","eng; eng","el","fr","nl","de","et","hu","ro","tr"]},
                     "maxLengthDescription":  300,
                     "pageSize": 6,
                     "repositoryName": "Organic.Edunet",//find this in the ariadne.properties file inside your Ariadne folder  ex."repositoryName":"AriadneNext Repository"
-                    "serviceUrl":"http://83.212.96.169:8080/OE_repos/api/ariadne/restp"
+                    "serviceUrl":"http://83.212.96.169:8080/glnRepo/api/ariadne/restp"
                     
                 }
             }
