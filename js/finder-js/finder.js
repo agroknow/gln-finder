@@ -88,11 +88,12 @@ var CHECK = 0;
 var langName = {};
 var iter = 0;
 
-/*experimental providers from json*/
+/*experimental providers from json || doesn't work cross-server*/
 var providerName = [];
+var langName=[];
 
 jQuery.ajax({
-            url: "http://83.212.100.142/test.json",
+            url: "http://83.212.100.142/finders_files/experimental_mapping.json",
             dataType: "json",
             success: function(data)
             {
@@ -101,125 +102,14 @@ jQuery.ajax({
                      providerName[data.providers[i].machine] = data.providers[i].human;
                     }
             
+                    /*LANGUAGES MAPPING*/
+                    for(var i=0, size = data.languages.length; i<size;i++){
+                    langName[data.languages[i].machine] = data.languages[i].human;
+                    }
+            
             }
             })
-/**/
-
-/*LANGUAGE MAPPING*/
-langName['n/a']='Other';
-langName['none']='Other';
-
-langName['en']='English';
-langName['eng;']='English';
-langName['eng']='English';
-langName['eng; eng']='English';
-langName['fr']= 'French';
-langName['fre']= 'French';
-langName['hun']= 'Hungarian';
-langName['hu']= 'Hungarian';
-langName['et']= 'Estonian';
-langName['est']= 'Estonian';
-langName['nl']= 'Dutch';
-langName['ro']= 'Romanian';
-langName['de']= 'German';
-langName['deu']= 'German';
-langName['tr']= 'Turkish';
-langName['pt']= 'Portuguese';
-langName['por']= 'Portuguese';
-langName['es']= 'Spanish';
-langName['sv']= 'Swedish';
-langName['ell']= 'Greek';
-langName['el']= 'Greek';
-langName ['lat'] = 'Latin';
-langName['rus'] = 'Russian';
-
-langName['ori']= 'Oriya';
-langName['hin']='Hindi';
-langName['sat']='Santhali';
-langName['unr']='Mundari';
-langName['sck']='Sadri';
-langName['hok']='Ho';
-langName['ben']='Bengali';
-langName['kan']='Kannada';
-langName['noe']='Neemadi';
-langName['sat']='Santhali';
-langName['gon']='Gondi';
-langName['bns']='Narsinghpuria';
-langName['bhb']='Bhili';
-langName['mup']='Malvi';
-langName['mai']='Maithili';
-langName['bho']='Bhojpuri';
-langName['tel']='Telugu';
-langName['gaz']='Oromifa';
-langName['twi']='Twi';
-
-langName['ar'] = 'Arabic';
-langName['ru'] = 'Russian';
-langName['zh'] = 'Chinese';
-langName['es'] = 'Spanish';
-langName['fi'] = 'Finnish';
-/*--end language mapping*/
-
-/*PROVIDERS MAPPING
-
-providerName['greenoer']='Green OER';
-providerName['digitalgreen']='Digital Green';
-providerName['oerafrica']='OER Africa';
-providerName['sercmicro']='SERCMICRO';
-providerName['faocapacityportal']='FAO capacity portal';
-providerName['traglor']='Traglor';
-providerName['nsdlbeyond']='NSDL Beyond';
-providerName['edunhmc']='Educational National Europe';
-providerName['aglreol']='Encyclopedia of Life';
-providerName['aglrnb']='Natural Bridge';
-providerName['cgiar']='CGIAR';
-providerName['ruforum']='RuForum';
-providerName['gfar']='Global Forum on Agricultural Research';
-providerName['aglrgsg']='Great School Gardens';
-providerName['access']='Access Agricultural';
-providerName['aglrllb']='Life Lab';
-providerName['rurinc']='Rural Inclusion';
-providerName['aglraims']='AIMS';
-providerName['aglrslowfood']='Slow Food';
-providerName['oeagroasis']='AGROASIS/NOVA';
-providerName['oeenoat']='ENOAT';
-providerName['oebioagro']='BioAgro';
-providerName['oeecologiga']='Ecologica';
-providerName['oeintute']='Intute';
-providerName['oeaua']='AUA';
-providerName['oeeulsesthonian']='EULS/Estonian';
-providerName['oebmlfuwaustrian']='BMLFUW/Austrian';
-providerName['oefao']='FAO';
-providerName['oeellinogermaniki']='Ellinogermaniki Agogi';
-providerName['oeorganiceprints']='Organic e-prints';
-providerName['oespanish']='Spanish';
-providerName['oemiksike']='MIKSIKE';
-
-providerName['aglrfaocdx']='FAO Codex';
-providerName['aglrfskn']='Food Safety Knowledge Network';
-providerName['aglrfoodsafety']='Food Safety OER';
-providerName['aglrfaorighttofood']='FAO Right to Food';
-providerName['aglragrjobs']='Agricom Job Profiles';
-providerName['aglragricom']='Agricom Competences';
-
-
-providerName['prodinraagro']='ProdInra';
-providerName['edumnhn']='Natural History Museum of Lisbon';
-providerName['edutnhm']='Estonian Natural History Museum';
-providerName['aglrmiksike']='Miksike collection';
-providerName['optunesco']='Unesco Training Platform';
-providerName['edujura']='Jura-Eichstatt Museum';
-providerName['oebiagro']='Bio@gro';
-providerName['aglrseae']='SEAE';
-providerName['eduac']='Arctic Centre';
-providerName['aglrfaocapacityportal']='FAO Capacity Development Portal';
-providerName['aglrfaogoodpractices']='FAO Good Practices';
-providerName['aglrfaoimark']='FAO iMArk';
-providerName['aglrfaoerptoolkitprimsec']='FAO ERP Toolkit Primary & secondary edication';
-providerName['aglrfaoerptoolkit']='FAO ERP Toolkit';
-providerName['eduhnhm']='Hungarian Natural History Museum';
-
-/*--end providers mapping*/
+/*------experimental-------*/
 
 google.load("language", "1");
 
