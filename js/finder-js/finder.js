@@ -88,6 +88,22 @@ var CHECK = 0;
 var langName = {};
 var iter = 0;
 
+/*experimental providers from json*/
+var providerName = [];
+
+jQuery.ajax({
+            url: "http://83.212.100.142/test.json",
+            dataType: "json",
+            success: function(data)
+            {
+                    /*PROVIDERS MAPPING*/
+                    for(var i=0, size = data.providers.length; i<size;i++){
+                     providerName[data.providers[i].machine] = data.providers[i].human;
+                    }
+            
+            }
+            })
+/**/
 
 /*LANGUAGE MAPPING*/
 langName['n/a']='Other';
@@ -144,8 +160,8 @@ langName['es'] = 'Spanish';
 langName['fi'] = 'Finnish';
 /*--end language mapping*/
 
-/*PROVIDERS MAPPING*/
-var providerName = {};
+/*PROVIDERS MAPPING
+
 providerName['greenoer']='Green OER';
 providerName['digitalgreen']='Digital Green';
 providerName['oerafrica']='OER Africa';

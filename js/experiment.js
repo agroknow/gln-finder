@@ -7,7 +7,7 @@ function experiment(urlTemp)
                 success: function(data)
                 {
                 
-                //alert(data);
+               // alert(data);
                 
                 //parse array and create an JS Object Array
                 //every item is a JSON
