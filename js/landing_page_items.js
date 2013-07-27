@@ -5,12 +5,12 @@ function getFeaturedCollections(){
                 success: function(data)
                 {
                 
-                alert("in here motha faka");
+                alert(JSON.stringify(data));
                 
                     for(var i=0, size=data.languageBlocks["en"].length; i<size; i++){
                         alert(data.languageBlocks["en"][i].title );
                     }
-                
+
                 }
                 }
                 )
