@@ -1,4 +1,4 @@
-function experiment(urlTemp)
+function getItemFromURL(urlTemp)
 {
     //alert(urlTemp);
     jQuery.ajax({

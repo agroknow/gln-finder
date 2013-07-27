@@ -89,23 +89,34 @@ var langName = {};
 var iter = 0;
 
 /*experimental providers from json || doesn't work cross-server*/
+
 var providerName = [];
 var langName=[];
 
+/*PROVIDERS MAPPING*/
 jQuery.ajax({
-            url: "http://83.212.100.142/finders_files/experimental_mapping.json",
+            url: "http://83.212.100.142/finders_files/providers-mapping.json",
             dataType: "json",
             success: function(data)
             {
-                    /*PROVIDERS MAPPING*/
+                    
                     for(var i=0, size = data.providers.length; i<size;i++){
                      providerName[data.providers[i].machine] = data.providers[i].human;
                     }
             
-                    /*LANGUAGES MAPPING*/
-                    for(var i=0, size = data.languages.length; i<size;i++){
-                    langName[data.languages[i].machine] = data.languages[i].human;
-                    }
+            }
+            })
+
+ /*LANGUAGES MAPPING*/
+jQuery.ajax({
+            url: "http://83.212.100.142/finders_files/language-mapping.json",
+            dataType: "json",
+            success: function(data)
+            {
+            
+            for(var i=0, size = data.languages.length; i<size;i++){
+            langName[data.languages[i].machine] = data.languages[i].human;
+            }
             
             }
             })
