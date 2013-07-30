@@ -1,0 +1,346 @@
+/*CSS FOR LANDING PAGE*/
+/*
+*@author : Mathioudakis Theodore
+*@company : Agro-Know Technologies	 
+*/
+
+
+/* SLIDER */
+.slider_block {
+	margin-bottom:80px;
+    width:100%;
+}
+
+
+h2.centerheader{
+	color:#8c9a45;
+	font-size:32px;
+	text-align:center;
+    min-height:60px;
+}
+
+.immersive-exp
+{
+  background:url(images/immersive-exp.png) left 60% repeat-x;
+}
+
+.hot-themes
+{
+  background:url(images/hot-themes.png) left 60% repeat-x;
+}
+
+.hot-themes-back
+{
+    padding:0px;
+    margin:0px;
+    background-color:#e4e6d4;    
+}
+
+h2.centerheader span {
+	display:inline-block;
+	padding:0 30px;
+}
+.slider {
+	padding:50px 0;
+	height:150px;
+}
+
+
+/*
+  root element for the scrollable.
+  when scrolling occurs this element stays still.
+  */
+.scrollable {
+    /* required settings */
+    position:relative;
+    overflow:ellipsis;
+    width:915px;
+    height:144px;
+}
+
+/*
+   root element for scrollable items. Must be absolutely positioned
+   and it should have a extremely large width to accomodate scrollable
+   items.  it's enough that you set the width and height for the root
+   element and not for this element.
+*/
+.scrollable .items {
+    /* this cannot be too large */
+    /*width:20000em; needs change TO CREATE THE SLIDE. */
+    width:915px;
+    position:absolute;
+    clear:both;
+}
+
+.items div {
+    float:right;
+    width:915px;
+}
+
+.rowOfThree div
+{
+    width:780px;
+}
+
+
+
+.items div a {
+	display:inline-block;
+	height:30px;
+	width:150px;
+	padding:160px 0 0 0;
+	text-align:center;
+	font-size:18px;
+	color:#8c9a45;
+	font-weight:100;
+	margin:0px 37px;
+    white-space:wrap; 
+    
+}
+
+.items div a:hover{color:#8b390f;}
+.items div a.inquiry { background:url(images/up-1.png) center top no-repeat; }
+.items div a.game-based { background:url(images/up-2.png) center top no-repeat; }
+.items div a.biodiversity { background:url(images/up-3.png) center top no-repeat; }
+.items div a.images { background:url(images/up-4.png) center top no-repeat; }
+.items div a.ecosystems { background:url(images/ecosystems.png) center top no-repeat; }
+
+.items div a.flora { background:url(images/flora.png) center top no-repeat; }
+.items div a.fauna { background:url(images/fauna.png) center top no-repeat; }
+.items div a.herbs { background:url(images/herbs.png) center top no-repeat; }
+
+.items div a:hover.inquiry { background:url(images/up-1-active.png) center top no-repeat; }
+.items div a:hover.game-based { background:url(images/up-2-active.png) center top no-repeat; }
+.items div a:hover.biodiversity { background:url(images/up-3-active.png) center top no-repeat; }
+.items div a:hover.images { background:url(images/up-4-active.png) center top no-repeat; }
+.items div a:hover.ecosystems { background:url(images/ecosystems-active.png) center top no-repeat; }
+
+.items div a:hover.flora { background:url(images/flora-active.png) center top no-repeat; }
+.items div a:hover.fauna { background:url(images/fauna-active.png) center top no-repeat; }
+.items div a:hover.herbs { background:url(images/herbs-active.png) center top no-repeat; }
+
+
+/* single scrollable item */
+.scrollable img {
+    float:left;
+    margin:20px 5px 20px 21px;
+    background-color:#fff;
+    padding:2px;
+    border:1px solid #ccc;
+    width:100px;
+    height:75px;
+
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+}
+
+/* active item */
+.scrollable .active {
+    border:2px solid #000;
+    position:relative;
+    cursor:default;
+}
+
+/* this makes it possible to add next button beside scrollable */
+.scrollable {
+    float:left;
+}
+
+/* prev, next, prevPage and nextPage buttons */
+a.browse {
+    background:url(images/arrows.png) no-repeat;
+    display:block;
+    width:19px;
+    height:36px;
+    float:left;
+    margin:55px 0px;
+    cursor:pointer;
+    font-size:1px;
+}
+
+/* right */
+a.right { background-position:-19px 0; clear:right; margin-right: 0px;}
+a.right:hover { background-position:-19px -36px; }
+a.right:active { background-position:-19px -36px; }
+
+
+/* left */
+a.left { margin-left: 0px; }
+a.left:hover  { background-position:0 -36px; }
+a.left:active { background-position:0 -36px; }
+
+/* up and down */
+a.up, a.down  {
+    background:url(/media/img/scrollable/arrow/vert_large.png) no-repeat;
+    float: none;
+    margin: 10px 50px;
+}
+
+/* up */
+a.up:hover { background-position:-30px 0; }
+a.up:active { background-position:-60px 0; }
+
+/* down */
+a.down { background-position: 0 -30px; }
+a.down:hover { background-position:-30px -30px; }
+a.down:active { background-position:-60px -30px; }
+
+
+/* disabled navigational button */
+a.disabled {
+    visibility:hidden !important;
+}
+/*-----------*/
+div.twocols > * {
+	float:left; /*changed from right to left*/
+    
+}
+div.twocols > *:first-child {
+	float:left;
+}
+div.width500 {
+	width:500px;
+}
+div.width400 {
+	width:400px;
+}
+div.moduletable.slidermodule {
+	position:relative;
+}
+
+div.moduletable.slidermodule h3
+{
+	width:100%;
+    font-size: 18px;
+    padding:0px;
+    margin:0px 0px 7px 0px;
+}
+
+div.slider_page {
+	padding:3px 50px 0 3px;
+}
+
+/* listitem */
+li.slider_page_listitem a
+{
+    color:#8c9a45;
+}
+
+li.slider_page_listitem a:hover
+{
+    color:#8b390f;
+}
+
+
+li.slider_page_listitem {
+	padding-bottom:10px;
+	border-bottom:1px solid #ececec;
+	margin-bottom:10px;
+}
+li.slider_page_listitem.movie_label {
+	padding-left:80px;
+	background:url(images/movie_label.png) 17px 8px no-repeat;
+}
+li.slider_page_listitem > a {
+	float:left;
+	display:block;
+	border:2px solid #fff;
+    
+}
+
+li.slider_page_listitem > div {
+	/*margin-left:172px;*/
+	width:450px;
+}
+li.slider_page_listitem > div p {
+	line-height:1.1em;
+	display:block;
+}
+li.slider_page_listitem > div .info {
+	margin-top:12px;
+	font-size:12px;
+}
+li.slider_page_listitem > div .info label {
+	margin-right:10px;
+}
+li.slider_page_listitem > div .info > a {
+	float:right;
+	margin-left:18px;
+}
+/* singleitem */
+
+.slider_page_singleitem {
+	width:400px;
+}
+
+.slider_page_singleitem a
+{
+    color:#8c9a45;
+}
+
+.slider_page_singleitem a:hover
+{
+    color:#8b390f;
+}
+
+
+
+.slider_page_singleitem > a {
+	display:inline-block;
+	border:4px solid #fff;
+	margin-bottom:23px;
+    color:#8c9a45;
+    
+
+}
+.slider_page_singleitem h2 {
+	margin-bottom:11px;
+    color:#8c9a45;
+}
+.slider_page_singleitem p {
+	line-height:1.1em;
+	display:block;
+}
+.slider_page_singleitem .info {
+	margin-top:5px;
+	font-size:12px;
+}
+.slider_page_singleitem .info > a {
+	float:right;
+	margin-left:18px;
+}
+
+/* navigation */
+.slider-navigation {
+	/*position:absolute;
+	top:10px;
+	right:0;*/
+}
+.slider-navigation > * {
+	float:right;
+	display:block;
+}
+.slider-navigation a.slider-prev {
+	text-indent:-9999px;
+	height:13px;
+	width:13px;
+	background:url(images/pager_sprite.png) -27px 0 no-repeat;
+	margin-left:5px;
+}
+.slider-navigation a.slider-next {
+	text-indent:-9999px;
+	height:13px;
+	width:13px;
+	background:url(images/pager_sprite.png) -27px -20px no-repeat;
+	margin-right:5px;
+}
+.pager a {
+	text-indent:-9999px;
+	background:url(images/pager_sprite.png) 3px 3px no-repeat;
+	height:13px;
+	width:13px;
+	display:inline-block;
+}
+.pager a.activeSlide, .pager a:hover {
+	background-position:3px -20px;
+}

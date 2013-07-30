@@ -1,0 +1,361 @@
+/*CSS FOR LISTING (FACETS & SNIPPETS)*/
+/*
+*@author : Mathioudakis Theodore
+*@company : Agro-Know Technologies	 
+*/
+
+
+#search_terms /*indicator of result in left menu */
+{
+    color:white;
+}
+
+#insert_summary /*indicator of result in left menu*/
+{
+    margin:0px 0px 5px 15px;
+}
+
+#search_status /*indicator of processing time in left menu*/
+{
+    color:white;
+    margin:10px 0px 15px 15px;
+}
+
+.left_details /*details of the above items (results & processing time)*/
+{
+    color:#62a6d3;
+}
+/*-----*/
+
+
+/* FACETS */
+.filter {
+	width:230px;
+	background:url(images/filters_body.png);
+    margin-bottom:30px;
+
+	-webkit-border-radius:0 0 4px 4px;
+	-moz-border-radius:0 0 4px 4px;
+	border-radius:0 0 4px 4px;
+}
+.filter a
+{
+	display:block;
+	font-family:'Signika', Tahoma, sans-serif;
+	font-size:11px;
+	color:#81a54e;
+	/*text-transform:uppercase;*/
+	
+}
+
+.filter .search_filter
+{
+	padding:10px 0px;
+    width:220px;
+    margin: 0px 0px 5px 3px;
+    color:white;
+    font-size:16px;
+    background-color:transparent;
+    border-width: 1px;
+}
+
+
+
+.filter_parent
+{
+	line-height:35px;
+    background: url(images/parent_closed.png);
+}
+
+.filter_parent:hover
+{
+    /*background: url(images/filter_parent_hover.png);*/
+}
+
+.filter_parent.opened:hover
+{
+    /*background: url(images/filter_parent_hover.png);*/
+}
+
+.filter_parent.opened
+{
+	background-color:#cad0a9;
+	background-position:93% -22px;
+    background: url(images/parent_opened.png);
+    /*background: url(images/arrow_right_red.png) right center no-repeat;*/
+    
+}
+
+.filter_parent span {
+	margin-left:20px;
+	display:block;
+    font-size:14px;
+    color:white;
+}
+.filter_child {
+	/*display:none;*/
+
+}
+.filter_child.hasscroll {
+	overflow:hidden;
+	height:auto;
+    max-height: 215px;
+}
+.filter_child a {
+    color:white;
+    background:url(images/unchecked.png) 3px center no-repeat;
+	padding:7px 13px 7px 20px;
+	position:relative;
+    font-size:13px;
+    /*height:25px;*/
+}
+.filter_child a:hover
+{
+    background-color:#f8fde8;
+    font-weight:bold;
+    color:#3c5b6f;
+}
+
+.filter_child a.facet-selected
+{
+    font-size:14px;
+    font-weight:bold;
+    color:#3c5b6f;
+    background:white url(images/checked.png) 3px center no-repeat;
+}
+
+.filter_child span {
+	display:block;
+	padding:0 0 0 5px;
+	width:130px;
+	display:table-cell;
+	vertical-align:middle;
+	/*height:25px;*/
+	float:none;
+}
+/*.filter_child span.image-icon { background:url(images/filter_icons.png) 0 9px no-repeat; }*/
+/*.filter_child span.audio-icon { background:url(images/filter_icons.png) 0 -36px no-repeat; }*/
+/*.filter_child span.video-icon { background:url(images/filter_icons.png) 0 -80px no-repeat; }*/
+/*.filter_child span.url-icon { background:url(images/filter_icons.png) 5px -125px no-repeat; }*/
+.filter_child span.total
+{
+    color:white;
+	position:absolute;
+	height:16px;
+	width:25px;
+	right:0;
+	top:0;
+	line-height:16px;
+	margin:5px 10px 0 0;
+	padding:0px 8px;
+	border:1px solid #20272d;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	background-color:#2e3740;
+	font-weight:normal;
+	text-align:center;
+}
+
+.filter_child a.facet-selected span.total
+{
+    background-color:#3c5b6f;   
+}
+
+.remove_filters {
+	text-align:right;
+	height:18px;
+	text-transform:uppercase;
+   
+}
+.remove_filters a {
+	margin-right:9px;
+	display:inline-block;
+	height:18px;
+	line-height:18px;
+	font-size:10px;
+    color:#41647b;
+}
+.remove_filters a:hover
+{
+	color: #8b390f;
+}
+
+/*footer replacement on the left menu*/
+.links_left
+{
+    padding:10px 10px 10px 10px;
+    margin: 90px 0px 50px 0px;
+    background:url(images/filters_body_light.png);
+}
+
+.links_left_title
+{
+    color:white;
+    font-size:11px;
+    margin-bottom:2px;
+    
+    
+}
+.links_left_content
+{
+    color:#6592b0;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+/*---*/
+
+/* TAG CLOUD */
+.tagcloud {
+	padding:15px 9px 5px;
+	text-align:center;
+	border-top: 1px solid #175867;
+}
+.tagcloud a {
+    color:#FFFFFF;
+    display:inline-block;
+    font-family:Tahoma,sans-serif;
+    font-size:12px;
+    height:18px;
+    line-height:18px;
+    text-transform:none;
+    margin:0 1px 7px 1px;
+    padding:1px 3px;
+}
+.tagcloud a.layer1 {
+	background-color:#5fa1b7;
+}
+.tagcloud a.layer2 {
+	background-color:#5fa1b7;
+}
+.tagcloud a.layer3 {
+	background-color:#2d7188;
+}
+.tagcloud a.layer4 {
+	background-color:#0b4356;
+}
+.tagcloud a:hover, .tagcloud a.active {
+	background-color:#3d9d8c;
+}
+
+/*LISTING*/
+
+.listing {
+	margin-top:15px;
+    width:780px;
+    padding-left:5px;
+    padding-bottom:50px;
+    
+}
+.odd {
+	background-color:#ffffff;
+    border-bottom: 1px solid #E0E0E0;
+    border-top: 1px solid #E0E0E0;
+}
+.item-intro {
+	padding:8px 9px;
+	font-family:'Signika', Tahoma, sans-serif;
+	font-size:14px;
+	margin-bottom:16px;
+    background-color:none;
+    /*box-shadow: 1px 1px 1px #888888;*/
+}
+
+.item-intro a{
+    color:#41647b;
+}
+
+.item-intro a:hover{
+    color:#323b45;
+    text-decoration:underline;
+}
+
+.item-intro h2 {
+	font-size:18px;
+	padding:2px 0 8px 5px;
+/*	background:url(images/item_intro_sprite.png) 0 -95px no-repeat;*/
+	line-height:1.2em;
+}
+
+.item-intro h2 img{
+    height:20px;
+}
+
+.item-intro h3 {
+	font-size:12px;
+	border-bottom:none;
+	margin:0;
+	padding:0px;
+}
+.item_intro_desc {
+	padding:8px 0;
+	line-height:1.3em;
+}
+.item-intro .line {
+    max-width : 650px; /*fix infinite length of keywords line*/
+	margin-bottom:7px;
+}
+.item-intro .keywords a::after {
+	content:",";
+}
+.item-intro .keywords a.last::after {
+	content:"";
+}
+.item-intro .select2-container .select2-choice span img {
+    float: left;
+    padding: 4px 6px 0 0;
+}
+.translation {
+	display:inline-block;
+	height:29px;
+	line-height:29px;
+	margin-left:27px;
+	padding-left:37px;
+	background:url(images/item_intro_sprite.png) 0 7px no-repeat;
+}
+.item-intro .floatright {
+	width:120px;
+	margin-right:16px;
+}
+.item-intro .rate {
+	display:inline-block;
+}
+.item-intro .moreinfo {
+	height:15px;
+	line-height:15px;
+	padding-right:20px;
+	/*background:url(images/item_intro_sprite.png) 64px -63px no-repeat;*/
+	display:inline-block;
+	margin-top:9px;
+	font-size:14px;
+}
+
+/* PAGINATION */
+#pagination_top
+{
+    margin:0px 0px 15px 0px;
+}
+.yui-pg-page
+{
+    margin:30px 0px 0px 5px;
+    padding:4px 10px 4px 10px;
+	font-size:16px;
+    background:url(images/nav_back.png) center no-repeat;
+}
+
+.yui-pg-current-page
+{
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+    background:url(images/nav_back_active.png)center no-repeat;
+}
+.yui-pg-previous
+{
+    padding-left:10px;
+    
+}
+.yui-pg-next
+{
+    padding-left:10px;
+}

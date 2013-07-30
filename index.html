@@ -15,10 +15,11 @@
         <link rel="stylesheet" href="style/my-style.css" />
 
         <!--js-->
-        <script type="text/javascript" src="js/landing_page_items.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="js/landing_page_modules.js"></script>
         
     </head>
-    <body onload="getFeaturedCollections()">
+    <body onload="getFeaturedCollections(), getLandingBanners()">
         <section id="wrap">
             
 			<header id="mainheader">
@@ -47,14 +48,12 @@
                     <a href="#" id="paneltrigger" class="floatright">panel</a>
                 </aside>
             </header>
-            
-            
-            
-            
+
+       
 			<section id="main">
                 <section id="search">
                     
-                    <div class="leftsidelogo">
+                    <div class=" leftsidelogo">
                     </div>
                     
                     <div class="moduletable_mainsearch">
@@ -93,10 +92,17 @@
                             
                         </div>
                         
+                        <!--INSERT DATA FROM JSONS-->
+                        <div class="banners" ></div>
+                        <div class="featured_collections" ></div>
+                        <!--->
+                        
+                        
+                        
                     </section>
                     <!--end slider-->
                     
-                    <!-------------------------------------------------------- Treasures-->
+                    <!-------------------------------------------------------- Treasures
                     <section class="icons_nav treasures">
                         <nav class="aligncenter">
                             <a href="listing.html?query=keyword:anthropology,paleontology" class="trea0"><span>From the past</span></a>
@@ -108,7 +114,7 @@
                     <!-------------------------------------------------------- end  Featured-->
                     
                     
-                    <!-------------------------------------------------------- Life and Earth--->
+                    <!-------------------------------------------------------- Life and Earth
                     <section class="icons_nav life_earth">
                         <nav class="aligncenter">
                             <a href="listing.html?query=keyword:mineralogy" class="le0">Minerals</a>
@@ -121,7 +127,7 @@
                     <!-------------------------------------------------------- end Recommended-->
                     
                     
-                    <!--highlighted specimens-->
+                    <!--highlighted specimens
                     <div class="twocols clearfix lower_page">
                         
                         <div>
@@ -129,7 +135,7 @@
                                 <h3 class="yellow_decoration">Highlighted specimens from other museums</h3>
                                 <div class="articles_mod_list is_slider" style="position: relative; width: 353px; height:480px;" >
                                     
-                                    <!-- page 1 -->
+                                    <!-- page 1 
                                     <div class="slider_page">
                                         <div class="slider_page_singleitem">
                                             <a class="hasshadow" href="http://jme.collections.natural-europe.eu/content/297df056-0b43-414f-a604-4a166fc3b51b" target="_blank">
@@ -141,7 +147,7 @@
                                             <p>Origin of ancient bird Archaeopteryx lithographica, Eichstätt specimen <br/> source:Jura-Museum Eichstätt</p>
                                         </div>
                                     </div>
-                                    <!-- page 2 -->
+                                    <!-- page 2 
                                     <div class="slider_page">
                                         <div class="slider_page_singleitem">
                                             <a class="hasshadow" href="http://nhmc.collections.natural-europe.eu/content/b85b71f4-8550-44cf-9c8c-051f8fc6b0f6" target="_blank">
@@ -153,7 +159,7 @@
                                             <p>Photo of a female Crab spider, Thomisus onustus (Thomisidae). Crab spiders are characterized by the shape of their body and their capacity to walk laterally like crabs. Males of this species are many times smaller than females and have different coloration. <br/> source: Natural History Museum of Crete </p>
                                         </div>
                                     </div>
-                                    <!-- page 3 -->
+                                    <!-- page 3 
                                     <div class="slider_page">
                                         <div class="slider_page_singleitem">
                                             <a class="hasshadow" href="http://tnhm.collections.natural-europe.eu/content/4354a070-d4b4-4b73-af4a-20831df5c5dd" target="_blank">
@@ -171,7 +177,7 @@
                         </div>
                         <!--end highlighted-->
                         
-                        <!--Featured Species-->
+                        <!--Featured Species
                         
                         <div class="width330">
                             <div class="moduletable slidermodule">
@@ -181,7 +187,7 @@
                                     
                                     <!--TO ADD MORE ITEMS HERE: duplicate the following page and edit it. First item will appear first-->
                                     
-                                    <!-- page 1 -->
+                                    <!-- page 1 
                                     <div class="slider_page">
                                         <div class="slider_page_singleitem">
                                             <a class="hasshadow" href="http://publication.nhmus.hu/NatEu/HNHM_Zoology/HNHM-DIP_4-aurl.jpg" target="_blank">
@@ -200,17 +206,17 @@
                             </div>
                         </div>
                         
-                        <!--end Featured Species-->
+                        <!--end Featured Species
                         
                     </div>
                     
                 
-                    <!--/#center -->
+                    <!--/#center 
 
                     
 				</div>
                 
-                <!--footer-->
+                <!--footer
                 <section class="supporters">
                     <div class="inner aligncenter">
                         <div class="footer_menu floatleft">
@@ -236,9 +242,9 @@
                         <!--<a href="#" class="developed_by">Developed by</a>
                          <a href="#" class="operated_by">Operated by</a>
                          <a href="#" class="designed_by">Designed by</a>
-                         <!--<a href="#" class="supported_by">With partial EU funding support from</a>-->
+                         <!--<a href="#" class="supported_by">With partial EU funding support from</a>
                     </div>
-                </section>
+                </section>-->
                 
 			</section>
 		</section>
@@ -265,7 +271,7 @@
             
             </script>
         
-        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+     
 		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 		<script src="http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js"></script>
 		<!-- include Select2 plugin -->
@@ -308,7 +314,7 @@
                                                               dropdownCssClass:"simple"
                                                               })
                               
-                              $("#jMenu").jMenu();
+                              //$("#jMenu").jMenu();
                               
                               $('#layerslider').layerSlider({
                                                             navPrevNext : false,
