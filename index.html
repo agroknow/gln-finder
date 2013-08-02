@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="style/select2.css" />
 		<link rel="stylesheet" href="style/jMenu.jquery.css" />
 		<link rel="stylesheet" href="style/layerslider.css" />
-        <link rel="stylesheet" href="style/style.css" />
+        <link rel="stylesheet" href="style/finder/style.css" />
         <link rel="stylesheet" href="style/my-style.css" />
 
         <!--js-->
@@ -50,23 +50,23 @@
             </header>
 
        
-			<section id="main">
-                <section id="search">
-                    
-                    <div class=" leftsidelogo">
-                    </div>
-                    
-                    <div class="moduletable_mainsearch">
-                        <div>
-                            <form name="searchForm" id="searchForm" action="" method="post" onsubmit="doSearch(); return false;">
-                                <div>
-                                    <input type="text" name="query" id="query" class="withplaceholder" placeholder="Search..." />
-                                </div>
-                                <!--<input type="submit" value="submit" />-->
-                            </form>
+				<section id="main">
+                    <!-- <div class="sorting"><a href="index.html">Home Page</a> > Results</div> -->
+                    <section id="search">
+                        
+                        <div >
+                            <div>
+                                <form class="form-wrapper cf" action="listing.html" method="get">
+                                    <div>
+                                        <input type="text" name="query" id="query" class="withplaceholder" placeholder="Search..." required>
+                                            <button type="submit">Search</button>
+                                            </div>
+                                    <!--<input type="submit" value="submit" />-->
+                                </form>
+                                
+                            </div>
                         </div>
-                    </div>
-                </section>
+                  </section>
                 
                 
 				<div class="inner">
