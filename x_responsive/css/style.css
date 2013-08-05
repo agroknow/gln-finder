@@ -138,7 +138,7 @@
 			images. I added this to help mask the distortion introduced when a browser
 			resizes an image, but if you don't want this to happen just remove or comment
 			out the entire style.
-		*/
+		
 		
 		.image:before
 		{
@@ -152,6 +152,7 @@
 			opacity: 0.2;
 			border-radius: 8px;
 		}
+		*/
 
 	.image-full
 	{
@@ -438,6 +439,7 @@
 	
 	.is-feature
 	{	
+		width:100%;
 	}
 
 	.is-blog
@@ -455,7 +457,19 @@
 	.is-page-content
 	{
 	}
-
+	
+	.hot_themes
+	{
+	}
+	
+	.hot_themes a
+	{
+		float:left;
+	}
+	
+	.highlighted_microsite
+	{
+	}
 /*********************************************************************************/
 /* Sidebar + Content                                                             */
 /*********************************************************************************/
@@ -641,3 +655,43 @@
 		{
 			color: inherit;
 		}
+		
+/*********************************************************************************/
+/* Slider	                                                                     */
+/*********************************************************************************/
+
+.slider-navigation {
+	text-align: center;
+}
+.slider-navigation > * 
+{
+	display:inline-block;
+	font-size: 20px;
+}
+.slider-navigation a.slider-prev {
+/* 	text-indent:-9999px; */
+	float:left;
+	height:13px;
+	width:13px;
+	background: url(images/pager_sprite.png) -27px 0 no-repeat;
+	margin-left:5px;
+	
+}
+.slider-navigation a.slider-next {
+/* 	text-indent:-9999px; */
+	float:right;
+	height:13px;
+	width:13px;
+	background: url(images/pager_sprite.png) -27px -20px no-repeat;
+	margin-right:5px;
+}
+.pager a {
+/* 	text-indent:-9999px; */
+	background:  url(images/pager_sprite.png) 3px 3px no-repeat;
+	height:13px;
+	width:13px;
+	display:inline-block;
+}
+.pager a.activeSlide, .pager a:hover {
+	background-position:3px -20px;
+}

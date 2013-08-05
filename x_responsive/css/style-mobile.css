@@ -322,6 +322,8 @@
 			padding: 1em 0 1em 0;
 		}
 
+
+
 /*********************************************************************************/
 /* Mobile UI                                                                     */
 /*********************************************************************************/
@@ -422,9 +424,99 @@
 		{
 			border-top: 0;
 		}
-		
+
 /*********************************************************************************/
 /* Search Box                                                                    */
 /*********************************************************************************/
+.cf:before, .cf:after{
+    content:"";
+    display:table;
+}
 
-/*-------END Search Box*/
+.cf:after{
+    clear:both;
+}
+
+.cf{
+    zoom:1;
+}
+
+.form-wrapper {
+    width: 350px;
+    padding: 5px;
+    margin:5em auto 5em auto;
+    background: #E3DAA8; /*color of the search border*/
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.form-wrapper input {
+    width: 230px;
+    height: 40px;
+    padding: 10px 5px;
+    float: left;
+    font: 16px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    background: #eee;
+    -moz-border-radius: 8px 0 0 8px;
+    -webkit-border-radius: 8px 0 0 8px;
+    border-radius: 8px 0 0 8px;
+}
+
+.form-wrapper input:focus {
+    outline: 0;
+    background: #fff;
+}
+
+.form-wrapper input::-webkit-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper button {
+    overflow: visible;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 110px;
+    font: bold 15px/20px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: #fff;
+    text-transform: uppercase;
+    background: #E3DAA8; /*color of the search button*/
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.form-wrapper button:hover{
+    background: #C1CAC5;
+}
+
+.form-wrapper button:active,
+
+.form-wrapper button:focus{
+    background: #C1CAC5;
+}
+
+.form-wrapper button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+/*-------END Search Box*/		

@@ -113,6 +113,7 @@
 	.is-feature
 	{
 		text-align: left;
+		display:block;
 	}
 	
 	.is-post
