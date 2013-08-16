@@ -442,7 +442,7 @@
 }
 
 .form-wrapper {
-    width: 350px;
+    width: 300px;
     padding: 5px;
     margin:5em auto 5em auto;
     background: #E3DAA8; /*color of the search border*/
@@ -452,7 +452,7 @@
 }
 
 .form-wrapper input {
-    width: 230px;
+    width: 210px;
     height: 40px;
     padding: 10px 5px;
     float: left;
@@ -495,7 +495,7 @@
     padding: 0;
     cursor: pointer;
     height: 40px;
-    width: 110px;
+    width: 80px;
     font: bold 15px/20px 'lucida sans', 'trebuchet MS', 'Tahoma';
     color: #fff;
     text-transform: uppercase;

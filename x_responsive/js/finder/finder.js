@@ -558,7 +558,7 @@ function findMaterials(start,numberResults,needsUpdate,initUpdate)
 				oddCtr++;
 				item.isOdd = oddCtr;
 				
-				// alert(JSON.stringify(item));
+				//alert(JSON.stringify(item));
 				
 				if(item.format!=undefined && item.format[0]!=undefined)
 				{

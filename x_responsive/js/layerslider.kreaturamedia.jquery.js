@@ -742,7 +742,7 @@
 			if( !bugfix ){
 				layer.css({
 					display: 'block',
-					visibility: 'hidden'
+					visibility: 'visible'
 				});
 			}
 
