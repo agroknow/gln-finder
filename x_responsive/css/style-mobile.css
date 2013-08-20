@@ -1,7 +1,10 @@
 /*
-	TXT 2.0 by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+* Responsive Design HTML5 + CSS3 
+* Mathioudakis Theodore / Agro-Know Technologies (2013)
+*/
+
+/*-Colors
+*Color_1: #41647B (raf blue)
 */
 
 /*********************************************************************************/
@@ -365,7 +368,7 @@
 			left: 0;
 			top: 0;
 			text-indent: -9999px;
-			background: #e3daa8 url('images/mobileUI-site-nav-opener-bg.svg') 8px 14px no-repeat;
+			background: #41647B url('images/mobileUI-site-nav-opener-bg.svg') 8px 14px no-repeat;
 			width: 44px;
 			height: 44px;
 			z-index: 1001;
@@ -445,7 +448,7 @@
     width: 300px;
     padding: 5px;
     margin:5em auto 5em auto;
-    background: #E3DAA8; /*color of the search border*/
+    background: #41647B; /*color of the search border*/
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
@@ -499,7 +502,7 @@
     font: bold 15px/20px 'lucida sans', 'trebuchet MS', 'Tahoma';
     color: #fff;
     text-transform: uppercase;
-    background: #E3DAA8; /*color of the search button*/
+    background: #41647B; /*color of the search button*/
     -moz-border-radius: 0 3px 3px 0;
     -webkit-border-radius: 0 3px 3px 0;
     border-radius: 0 3px 3px 0;

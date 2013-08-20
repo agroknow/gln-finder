@@ -84,7 +84,7 @@ body:before {
     padding-top:0px;
     float:left;
     min-width:1014px;
-    background-image:url(images/back_dots.png);
+    background-image:url(../images/back_dots.png);
 }
 
 
@@ -215,7 +215,7 @@ body:before {
 /* FOOTER */
 footer#mainfooter
 {
-	background:#263433 url(images/bg_footer.jpg) 0 0 repeat-x;
+	background:#263433 url(../images/bg_footer.jpg) 0 0 repeat-x;
 }
 
 footer#mainfooter p
@@ -245,13 +245,13 @@ nav.credits a:hover {
 }
 nav.credits a.naturalEurope
 {
-	background:url(images/naturalEurope.png) 50% 100% no-repeat;
+	background:url(../images/naturalEurope.png) 50% 100% no-repeat;
 }
 nav.credits a.curated {
-	background:url(images/combo.png) 50% 133% no-repeat;
+	background:url(../images/combo.png) 50% 133% no-repeat;
 }
 nav.credits a.redpanda {
-	background:url(images/redpanda_logo.png) 50% 113% no-repeat;
+	background:url(../images/redpanda_logo.png) 50% 113% no-repeat;
 }
 
 
@@ -294,7 +294,7 @@ header#mainheader {
 	display:block;
 	width:100%;
 	height:90px;
-	background:url(images/clean-header.png) center center no-repeat;
+	background:url(../images/clean-header.png) center center no-repeat;
 	text-indent:-9999px;
     margin:auto;
 }
@@ -336,7 +336,7 @@ header#mainheader {
 .leftsidelogo
 {
     display:block;
-    background:url(images/gln-logo.png) left center no-repeat;
+    background:url(../images/gln-logo.png) left center no-repeat;
     margin: 10px 0px 20px 20px;
     height:90px;
     width:320px;
@@ -368,7 +368,7 @@ header#mainheader {
 	/*position:relative;*/
 }
 .moduletable_mainsearch form > div {
-	background:url(images/search_input.png) 0 0 no-repeat;
+	background:url(../images/search_input.png) 0 0 no-repeat;
 	width:505px;
 	height:62px;
     margin:auto;
@@ -464,7 +464,7 @@ header#mainheader {
 	outline: none;
 }
 .moduletable_extendedsearch .select2-container .select2-choice div {
-	background:url(images/select_arrow.png) 0 0 no-repeat;
+	background:url(../images/select_arrow.png) 0 0 no-repeat;
 	border-left:0;
 	border-radius:0;
 	display: block;
@@ -534,7 +534,7 @@ header#mainheader {
 	outline: none;
 }
 .stdselect .select2-container .select2-choice div {
-	background:url(images/select_arrow.png) 0 0 no-repeat;
+	background:url(../images/select_arrow.png) 0 0 no-repeat;
 	border-left:0;
 	border-radius:0;
 	display: block;
@@ -571,7 +571,7 @@ nav #jMenu li {
 	margin: 0;
 }
 nav #jMenu li.hassubmenu {
-	background:url(images/menu_hassub.png) 93% 53% no-repeat;
+	background:url(../images/menu_hassub.png) 93% 53% no-repeat;
 }
 .ie9 nav #jMenu li.hassubmenu { background-position:93% 48%; }
 nav #jMenu li a
@@ -586,7 +586,7 @@ nav #jMenu > li.active > a, nav #jMenu > li:hover > a {
 	color:#8a9658;
 }
 nav #jMenu > li.active a {
-	/*background:url(images/menu_active.png) center bottom no-repeat;*/
+	/*background:url(../images/menu_active.png) center bottom no-repeat;*/
 }
 nav #jMenu li ul {
 	z-index:10000;
@@ -612,7 +612,7 @@ nav #jMenu li ul li.arrow {
 	border-right:1px solid blue;
 }
 nav #jMenu li ul li a.isParent {
-	background:url(images/menu_subparent.png) 95% center no-repeat transparent;
+	background:url(../images/menu_subparent.png) 95% center no-repeat transparent;
 }
 nav #jMenu li ul li a {
 	font-size:16px;
@@ -635,7 +635,7 @@ nav #jMenu li ul li a:hover {
 /* PARALAX SLIDESHOW */
 #slideshow-wrapper {
 	height:370px;
-	/*background:url(images/slideshow_bg_patter.png) 0 0 repeat;*/
+	/*background:url(../images/slideshow_bg_patter.png) 0 0 repeat;*/
     background-color:#f2f3e9;
 }
 
@@ -684,7 +684,7 @@ nav #jMenu li ul li a:hover {
 .sorting {
 	height:40px;
 	line-height:40px;
-	background:url(images/filters_body.png);
+	background:url(../images/filters_body.png);
 	color:#666666;
 	padding:0 9px 0 21px;
     
@@ -720,20 +720,20 @@ nav #jMenu li ul li a:hover {
 	display:inline-block;
 }
 .developed_by {
-	background:url(images/uah.jpg) center bottom no-repeat;
+	background:url(../images/uah.jpg) center bottom no-repeat;
 	width:82px;
 }
 .operated_by {
-	background:url(images/agroknow.jpg) center bottom no-repeat;
+	background:url(../images/agroknow.jpg) center bottom no-repeat;
 	width:88px;
 }
 .designed_by {
-	background:url(images/redpanda.jpg) center bottom no-repeat;
+	background:url(../images/redpanda.jpg) center bottom no-repeat;
 	width:90px;
 }
 .supported_by {
 	text-align:left !important;
-	background:url(images/naturalEurope.png) center bottom no-repeat;
+	background:url(../images/naturalEurope.png) center bottom no-repeat;
 	width:185px;
 }
 
@@ -748,7 +748,7 @@ body.innerpage #main {
 .langselector {
 	background-clip: padding-box;
 	background-color: #FFFFFF;
-	background-image: url(images/select_arrow.png);
+	background-image: url(../images/select_arrow.png);
 	background-position:99% 2px;
 	background-repeat:no-repeat;
 	border: 3px solid #E0E0E0;
@@ -768,7 +768,7 @@ body.innerpage #main {
 	display:block;
 	margin-left:8px;
 	padding-left:20px;
-	background:url(images/face_1.png) left center no-repeat;
+	background:url(../images/face_1.png) left center no-repeat;
 }
 .langselector > li ul {
 	display:none;
@@ -814,7 +814,7 @@ body.innerpage #main {
 #panel > a {
 	width:36px;
 	height:31px;
-	background:#2e373f url(images/sprite.png) 6px 4px no-repeat;
+	background:#2e373f url(../images/sprite.png) 6px 4px no-repeat;
 	display:block;
 	text-indent:-9999px;
 	border-radius: 0px 0px 4px 4px;
@@ -900,7 +900,7 @@ body.innerpage #main {
 	filter:0;
 }
 #s2id_font-selector.select2-container .select2-choice div b {
-    background: url("images/select2.png") no-repeat scroll 2px 1px transparent;
+    background: url("../images/select2.png") no-repeat scroll 2px 1px transparent;
     display: block;
     height: 100%;
     width: 100%;

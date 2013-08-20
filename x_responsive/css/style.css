@@ -1,7 +1,10 @@
 /*
-	TXT 2.0 by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+* Responsive Design HTML5 + CSS3 
+* Mathioudakis Theodore / Agro-Know Technologies (2013)
+*/
+
+/*-Colors
+*Color_1: #41647B (raf blue)
 */
 
 /*********************************************************************************/
@@ -131,7 +134,6 @@
 			display: block;
 			width: 100%;
 			border-radius: 8px;
-			height:250px;
 		}
 		
 		/*
@@ -187,7 +189,7 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		text-decoration: none;
-		background: #e3daa8;
+		background: #41647B;
 		color: #fff;
 		border-radius: 8px;
 		outline: 0;
@@ -519,7 +521,7 @@
 	#main-wrapper
 	{
 		background: #fff;
-		border-top: solid 5px #e3daa8;
+		border-top: solid 5px #41647B;
 		border-bottom: solid 5px #c1cac5;
 	}
 	
@@ -668,31 +670,35 @@
 {
 	display:inline-block;
 	font-size: 20px;
+	height: 43px;
 }
 .slider-navigation a.slider-prev {
-/* 	text-indent:-9999px; */
+	text-indent:-9999px;
+	white-space: nowrap;
 	float:left;
-	height:13px;
-	width:13px;
-	background: url(images/pager_sprite.png) -27px 0 no-repeat;
+	height:42px;
+	width:42px;
+	background: url(images/ui/previous.png);
 	margin-left:5px;
 	
 }
 .slider-navigation a.slider-next {
-/* 	text-indent:-9999px; */
+	text-indent:-9999px;
+	white-space: nowrap;
 	float:right;
-	height:13px;
-	width:13px;
-	background: url(images/pager_sprite.png) -27px -20px no-repeat;
+	height:42px;
+	width:42px;
+	background: url(images/ui/next.png);
 	margin-right:5px;
 }
 .pager a {
-/* 	text-indent:-9999px; */
-	background:  url(images/pager_sprite.png) 3px 3px no-repeat;
-	height:13px;
-	width:13px;
+	text-indent:-9999px;
+	white-space: nowrap;
+	background: url(images/ui/inactive.png);
+	width:25px;
 	display:inline-block;
 }
 .pager a.activeSlide, .pager a:hover {
-	background-position:3px -20px;
+	background:  url(images/ui/active.png);
+/* 	background-position:3px -20px; */
 }
