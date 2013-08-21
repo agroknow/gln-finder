@@ -5,6 +5,7 @@
 
 /*-Colors
 *Color_1: #41647B (raf blue)
+*Color_2: #a5bac9 (lightblue for borders @ microsites and collections)
 */
 
 /*********************************************************************************/
@@ -461,18 +462,39 @@
 	{
 	}
 	
+	/*Featured Microsites*/
+	.microsite_main
+	{
+		clear:right;
+	}
+	
 	.hot_themes
 	{
+		border:solid 1px #a5bac9;
+		display:block;
+		float:left;
+		text-align: center;
+		vertical-align: middle;
+		padding: 0px 10px 0px 10px;
 	}
 	
 	.hot_themes a
 	{
 		float:left;
+		margin-left:2px;
+		margin-right:2px;
 	}
 	
 	.highlighted_microsite
 	{
+		border:solid 1px #a5bac9;
+		display: inline-block;
+		float:left;
+		margin-left:5px;
+		padding: 0px 10px 0px 10px;
 	}
+	/*End Featured Microsites*/
+	
 /*********************************************************************************/
 /* Sidebar + Content                                                             */
 /*********************************************************************************/
@@ -492,9 +514,14 @@
 	#banner-wrapper
 	{
 		position: relative;
-		background: url('../images/main_banner.png') center center no-repeat;
+/* 		background: url('../images/main_banner.png') center center no-repeat; */
 		background-size: cover;
 		z-index: 1;
+	}
+	
+	.landing_banner
+	{
+		background: url('../images/main_banner.png') center center no-repeat;
 	}
 
 		/*

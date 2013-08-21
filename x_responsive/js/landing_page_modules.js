@@ -76,7 +76,7 @@ function getFeaturedMicrosites(){
 					//console.log(JSON.stringify(data.languageBlocks[i].en));
                     var featured_section="";
                     for(var j=0; j<data.languageBlocks[i].en.length;j++){//for every item of the language
-                          featured_section = featured_section + '<section class="is-feature"><a href="#" class="image image-left"><img src="images/'+data.languageBlocks[i].en[j].microsite_thumb+'" alt="" /></a><h2><a href="#">'+data.languageBlocks[i].en[j].microsite_title+'</a></h2><p>'+data.languageBlocks[i].en[j].microsite_description+'</p><div class="hot_themes"><h4>Hot Themes</h4>';
+                          featured_section = featured_section + '<section class="is-feature"><a href="#" class="image image-left"><img src="images/'+data.languageBlocks[i].en[j].microsite_thumb+'" alt="" /></a><div class="microsite_main"><h2><a href="#">'+data.languageBlocks[i].en[j].microsite_title+'</a></h2><p>'+data.languageBlocks[i].en[j].microsite_description+'</p></div><div class="hot_themes"><h4>Hot Themes</h4>';
                           
                           for(var k=0;k<data.languageBlocks[i].en[j].hot_themes.length;k++){
 	                       featured_section = featured_section + '<a href="'+data.languageBlocks[i].en[j].hot_themes[k].link+'"><img src="images/'+data.languageBlocks[i].en[j].hot_themes[k].link_thumb+'"/><h5>'+data.languageBlocks[i].en[j].hot_themes[k].title+'</h5></a>';

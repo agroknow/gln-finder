@@ -7,14 +7,14 @@ function getItemFromURL(urlTemp)
                 success: function(data)
                 {
                 
-               // alert(data);
+				/*alert(data); */
                 
                 //parse array and create an JS Object Array
                 //every item is a JSON
                 var temp1 =  JSON.stringify(data);
                 var temp = temp1.replace("\\r","");
                 var obj = eval("(" + temp + ")");
-                alert(obj);
+				/*alert(obj); */
                 var arrayWithJSONS = JSON.parse(data);
                 //alert(arrayWithJSONS);
                 
