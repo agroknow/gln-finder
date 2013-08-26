@@ -727,12 +727,12 @@
 .pager a {
 	text-indent:-9999px;
 	white-space: nowrap;
-	background: url(images/ui/inactive.png);
+	background: url(images/ui/slider_inactive.png);
 	width:25px;
 	display:inline-block;
 }
 .pager a.activeSlide, .pager a:hover {
-	background:  url(images/ui/active.png);
+	background:  url(images/ui/slider_active.png);
 /* 	background-position:3px -20px; */
 }
 
@@ -827,17 +827,28 @@ a.grflag {
 /*********************************************************************************/
 
 .moreinfo {
-	height:15px;
-	line-height:15px;
-	padding-right:20px;
+	
+	margin-right:9px;
 	display:inline-block;
-	margin-top:9px;
-	font-size:14px;
-	text-decoration: none;
+	line-height:18px;
+	font-size:12px;
+	padding:0px 3px 0px 3px;
+    color:white;
+    text-decoration: none;
+	
+	background-color:rgba(0,0,0,0.4);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.moreinfo a:hover
+{
+	color: #8b390f;
 }
 
 .item-intro {
-	padding:8px 9px;
+	padding:0px 10px;
 	margin-top:16px;
     border-top: 1px solid #E0E0E0;
 }
@@ -850,6 +861,11 @@ a.grflag {
 .item-intro h2 img{
     height:20px;
 }
+
+.item-intro-desc{
+}
+
+
 
 
 /* PAGINATION */
@@ -900,17 +916,15 @@ a.grflag {
 }
 .filter a
 {
-/* 	display:block; */
 	font-size:11px;
 	color:#82a64f;
 	float:left;
 }
 
-
 .filter_parent
 {
 	line-height:35px;
-    background: red;
+    text-decoration: none;
 }
 
 .filter_parent:hover
@@ -925,18 +939,19 @@ a.grflag {
 
 .filter_parent.opened
 {
-	background-position:93% -22px;
+/* 	background-position:93% -22px; */
 }
 
 .filter_parent span {
-	margin-left:20px;
+	margin-left:0px;
 	display:block;
     font-size:14px;
     color:black;
+    border-bottom: solid 1px rgba(0,0,0, 0.3)
 }
 .filter_child {
 	/*display:none;*/
-
+	padding-top:0.2em;
 }
 .filter_child.hasscroll {
 	overflow:hidden;
@@ -945,16 +960,16 @@ a.grflag {
 }
 .filter_child a {
     color:black;
-    background:url(images/unchecked.png) 3px center no-repeat;
-	padding:7px 13px 7px 20px;
 	position:relative;
     font-size:13px;
-    /*height:25px;*/
+    text-decoration: none;
+	
 }
 .filter_child a:hover
 {
-    background-color:#f8fde8;
+    background-color:#c9ff15;
     color:#3c5b6f;
+    font-weight:bold;
 }
 
 .filter_child a.facet-selected
@@ -962,18 +977,18 @@ a.grflag {
     font-size:14px;
     font-weight:bold;
     color:#3c5b6f;
-    background:white url(images/checked.png) 3px center no-repeat;
 }
 
 .filter_child span {
-	display:block;
-	padding:0 0 0 5px;
-	width:130px;
-	display:table-cell;
+	display:inline-block;
+	padding:0px;
+	margin:3px 0px 3px 0px;
+	width:80%;
 	vertical-align:middle;
-	/*height:25px;*/
-	float:none;
+	float:left;
 }
+
+
 /*.filter_child span.image-icon { background:url(images/filter_icons.png) 0 9px no-repeat; }*/
 /*.filter_child span.audio-icon { background:url(images/filter_icons.png) 0 -36px no-repeat; }*/
 /*.filter_child span.video-icon { background:url(images/filter_icons.png) 0 -80px no-repeat; }*/
@@ -981,26 +996,28 @@ a.grflag {
 .filter_child span.total
 {
     color:black;
-	position:absolute;
-	height:16px;
-	width:25px;
+/* 	position:relative; */
+	width:40px;
 	right:0;
 	top:0;
 	line-height:16px;
-	margin:5px 10px 0 0;
-	padding:0px 8px;
+	margin:7px 0px 0px 0px;
+	padding:1px 2px 1px 2px;
 	border:1px solid #20272d;
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	border-radius:4px;
-	background-color:#2e3740;
+	background-color:none;
 	font-weight:normal;
 	text-align:center;
 }
 
 .filter_child a.facet-selected span.total
 {
-    background-color:#3c5b6f;   
+    background-color:#3c5b6f;
+    font-weight:none;  
+    font-size:1em; 
+    color:white;
 }
 
 .remove_filters {
@@ -1015,7 +1032,14 @@ a.grflag {
 	height:18px;
 	line-height:18px;
 	font-size:10px;
-    color:#41647b;
+	padding:0px 3px 0px 3px;
+    color:white;
+    text-decoration: none;
+    
+    background-color:#fbbb4b;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 .remove_filters a:hover
 {
