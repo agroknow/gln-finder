@@ -521,7 +521,7 @@
 	{
 		position: relative;
 /* 		background: url('../images/main_banner.png') center center no-repeat; */
-		background-size: cover;
+		background-size:cover;
 		z-index: 1;
 	}
 	
@@ -825,7 +825,12 @@ a.grflag {
 /*********************************************************************************/
 /* Listing Page	                                                                 */
 /*********************************************************************************/
-
+.results_header{
+	visibility: hidden;
+	padding: 0px;
+	margin:0px;
+	height:0px;
+}
 .moreinfo {
 	
 	margin-right:9px;
@@ -863,6 +868,7 @@ a.grflag {
 }
 
 .item-intro-desc{
+	margin-bottom: 0.5em;
 }
 
 
@@ -871,12 +877,15 @@ a.grflag {
 /* PAGINATION */
 #pagination_top
 {
-    margin:0px 0px 15px 0px;
+    margin:auto;
+	text-align: center;
+	text-decoration: none;
 }
 
 #pagination_bottom
 {
-    margin:25px 0px 0px 0px;
+    margin:auto;
+    text-align: center;
 }
 
 .yui-pg-page
@@ -892,7 +901,11 @@ a.grflag {
     color:white;
     font-weight:bold;
     text-decoration:none;
-    background:url(images/nav_back_active.png)center no-repeat;
+    
+    border:1px solid #20272d;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
 }
 .yui-pg-previous
 {
@@ -1046,3 +1059,115 @@ a.grflag {
 	color: #8b390f;
 }
 
+/*********************************************************************************/
+/* Contact Form	                                                                 */
+/*********************************************************************************/
+.wrapper {
+	max-width:500px;
+	width:95%;
+	margin:0 auto;
+	position:relative;
+}
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form input[type="url"],
+#contact-form textarea,
+#contact-form button[type="submit"] {
+	font:400 12px/12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#contact-form {
+	text-shadow:0 1px 0 #FFF;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	background:#F9F9F9;
+	padding:25px;
+}
+#contact-form h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+#contact-form label span {
+	cursor:pointer;
+	color:#41647B;
+	display:block;
+	margin:5px 0;
+	font-weight:900;
+}
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form input[type="url"],
+#contact-form textarea {
+	width:100%;
+	box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-webkit-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-moz-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}
+#contact-form input[type="text"]:hover,
+#contact-form input[type="email"]:hover,
+#contact-form input[type="tel"]:hover,
+#contact-form input[type="url"]:hover,
+#contact-form textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+#contact-form textarea {
+	height:100px;
+	max-width:100%;
+}
+#contact-form button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:#41647B;
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}
+#contact-form button[type="submit"]:hover {
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+#contact-form button[type="submit"]:active {
+	box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);
+}
+#contact-form select{
+	width:100%;
+	box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-webkit-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-moz-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}
+#contact-form input:focus,
+#contact-form textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+::-webkit-input-placeholder {
+    color:#888;
+}
+:-moz-placeholder {
+    color:#888;
+}
+::-moz-placeholder {
+    color:#888;
+}
+:-ms-input-placeholder {
+    color:#888;
+}
