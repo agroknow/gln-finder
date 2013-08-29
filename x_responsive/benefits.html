@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>GLN - Contact</title>
+		<title>GLN - Benefits</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -20,6 +20,8 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>
+
+		
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
@@ -32,7 +34,7 @@
 				<div class="logo">
 					<div>
 						<h1><a href="#" id="logo">Green learning Network</a></h1>
-						<span class="byline">/ Contact</span>
+						<span class="byline">/ What organisations can benefit</span>
 					</div>
 				</div>
 			</header>
@@ -62,59 +64,60 @@
 									<article class="is-page-content">
 
 										<header>
-											<h2>Contact</h2>
-											<span class="byline">something to say maybe...?<span>
+											<h2>Benefits</h2>
+											<span class="byline">What organisations can benefit? <span>
 										</header>
 										
+										<!-- Tab Slider -->
+										<ul id="menu2" class="menu">
+											<li class="active"><a href="#microsites">Microsites</a></li>
+											<li><a href="#developers">For Developers</a></li>
+										</ul>
 										
-								<!-- Contact Form -->
+										<!-- Microsites tab -->
+										<div id="microsites" class="tab_content">
 										<section>
-											<form id="contact-form" action="/" method="post">
-												
-												<div>
-													<label>
-													<span>About (required)</span>
-													<select>
-													  <option value="comment">General Comment</option>
-													  <option value="connect">Connect to GLN</option>
-													  <option value="request">Request Feature</option>
-													  <option value="bug">Bug</option>
-													</select>
-													</label>
-												</div>
-												<div>
-													<label>
-														<span>Your Name: (required)</span>
-														<input placeholder="Please enter your name" type="text" tabindex="1" required autofocus>
-													</label>
-												</div>
-												<div>
-													<label>
-														<span>Your Email: (required)</span>
-														<input placeholder="Please enter your email address" type="email" tabindex="2" required>
-													</label>
-												</div>
-												<div>
-													<label>
-														<span>Subject: (required)</span>
-														<input placeholder="Please enter your number" type="text" tabindex="3" required>
-													</label>
-												</div>
-												<div>
-													<label>
-														<span>Message: (required)</span>
-														<textarea placeholder="Include all the details you can" tabindex="5" required></textarea>
-													</label>
-												</div>
-												<div>
-													<button name="submit" type="submit" id="contact-submit">Send Email</button>
-												</div>
-											</form>
+											<span>
+											<h2>Microsites for Museums</h2>
+											<h4>Featured : Natural History Museum for Crete</h4>
+											<p>Url: <a href="#">http://www.greenlearningnetwork.org/nhmc/</a> </p>
+											</span>
+											<img src="images/microsite_pic02.png"/>
 										</section>
-									</article>
-
-								<!-- /Content -->
+										<section>
+											<span>
+											<h2>Microsites for Academic institutions</h2>
+											<h4>Featured : Michigan State University — Food Safety Knowledge Network(FSKN)</h4>
+											<p>Url:<a href="#">http://greenlearningnetwork.org/fskn/fskn-main/</a> </p>
+											</span>
+											<img src="images/microsite_pic02.png"/>
+										</section>
+										<section>
+											<span>
+											<h2>Microsites for  Research groups</h2>
+											<h4>Featured : Organic.Edunet</h4>
+											<p>Url: <a href="#">http://www.greenlearningnetwork.org/nhmc/</a> </p>
+											</span>
+											<img src="images/microsite_pic02.png"/>
+										</section>
+										<section>
+											<span>
+											<h2>Microsites for International organisations</h2>
+											<h4>Featured : FAO Capacity Development Portal</h4>
+											<p>Url: <a href="#">http://www.greenlearningnetwork.org/nhmc/</a> </p>
+											</span>
+											<img src="images/microsite_pic02.png"/>
+										</section>
+										</div> <!-- /Microsites tab -->
+										<!-- Developers tab -->
+										<div id="developers" class="tab_content">
+											<h2>Developers</h2>
+											<p>Twitter has updated its iOS app, bringing it up to version 5.1. The update brings a redesign of the look of Conversations within the app. Conversations should now be easier to find, as they are now indicated with a blue line in the Twitter timeline.
+											</p>
+										</div> <!-- /Developers tab -->
 								
+										<!-- /Tab Slider -->
+																	
 							</div>
 						</div>
 					</div>
@@ -174,35 +177,20 @@
 				</div>
 			</footer>
 		<!-- /Footer -->
-
-		<!-- Script for providers accordeon -->
-		<script type="text/javascript">
-		(function($){
-		  var allPanels = $('.accordion > dd').hide();
-		    
-		  $('.accordion > dt > a').click(function() {
-		    allPanels.slideUp();
-		    
-		    
-		    
-		    if($(this).hasClass("closed"))
-		    {	
-		    	$(this).removeClass("closed");
-				$(this).addClass("opened");
-		    	$(this).parent().next().slideDown();
-		    }
-		    else if($(this).hasClass("opened"))
-		    {	
-		    	$(this).removeClass("opened");
-				$(this).addClass("closed");
-		    	$(this).parent().next().slideUp();
-		    }
-				
-				return false;		    
-		  });
 		
-		})(jQuery);
+		<!-- scripts for tab slider -->
+		<script src="js/jquery.tabify.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// <![CDATA[
+				
+			$(document).ready(function () {
+				$('#menu').tabify();
+				$('#menu2').tabify();
+			});
+					
+			// ]]>
 		</script>
-
+		<!-- /scripts for tab slider -->
+		
 	</body>
 </html>

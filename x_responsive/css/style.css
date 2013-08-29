@@ -467,7 +467,7 @@
 	{
 	}
 	
-	/*Featured Microsites*/
+	/*Featured Microsites @index.html*/
 	.microsite_main
 	{
 		clear:right;
@@ -499,7 +499,27 @@
 		margin:5px 0px 0px 5px;
 		padding: 0px 10px 0px 10px;
 	}
-	/*End Featured Microsites*/
+	/*/Featured Microsites*/
+	
+	/*Microsites @benefits */
+	#microsites section{
+		display: inline-block;
+		width:100%;
+		padding-bottom: 2em;
+		padding-top:2em;
+		margin-bottom: 0;
+		border-bottom: 1px solid lightgray;
+	}
+	#microsites section span{
+		width:70%;
+		float:left;
+	}
+	
+	#microsites section img{
+		float:left;
+		width:25%;
+	}
+	/* /Microsites @benefits */
 	
 /*********************************************************************************/
 /* Sidebar + Content                                                             */
@@ -1171,3 +1191,48 @@ a.grflag {
 :-ms-input-placeholder {
     color:#888;
 }
+
+/*********************************************************************************/
+/* Tab Slider                                         			                 */
+/*********************************************************************************/
+.menu { 
+	padding: 0; clear: both; 
+}
+.menu li { 
+	display: inline; 
+}
+.menu li a { 
+	background: none; 
+	padding: 10px; 
+	float:left;  
+	text-decoration: none; 
+	color: #000; 
+	font-weight: bold;
+	/* border: 1px solid lightgray; */
+}
+.menu li.active a { 
+	background: lightgray; 
+}
+.tab_content { 
+	float: left; 
+	clear: both; 
+	border-top: 1px solid lightgray;
+	background: none; 
+	padding: 10px 20px 20px; 
+	width: 100%; 
+}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
