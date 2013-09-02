@@ -25,7 +25,7 @@
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
 
 	</head>
-	<body onload="appendFooter(), appendNav()">
+	<body onload="appendFooter(), appendNav('topics')">
 
 		<!-- Header -->
 			<header id="header">
@@ -61,10 +61,21 @@
 										</header>
 										
 										
-								<!-- Carousel Browsing -->
-										
+								<!-- topics links -->
+										<div id="topics_links">
+										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
+										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
+										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
+										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
+										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
+										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
+										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
+										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
+										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
+										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
+										</div>
 
-								<!-- /Carousel browsing -->
+								<!-- /topics links -->
 								
 							</div>
 						</div>
@@ -78,34 +89,6 @@
 			</footer>
 		<!-- /Footer -->
 
-		<!-- Script for providers accordeon -->
-		<script type="text/javascript">
-		(function($){
-		  var allPanels = $('.accordion > dd').hide();
-		    
-		  $('.accordion > dt > a').click(function() {
-		    allPanels.slideUp();
-		    
-		    
-		    
-		    if($(this).hasClass("closed"))
-		    {	
-		    	$(this).removeClass("closed");
-				$(this).addClass("opened");
-		    	$(this).parent().next().slideDown();
-		    }
-		    else if($(this).hasClass("opened"))
-		    {	
-		    	$(this).removeClass("opened");
-				$(this).addClass("closed");
-		    	$(this).parent().next().slideUp();
-		    }
-				
-				return false;		    
-		  });
-		
-		})(jQuery);
-		</script>
 		
 		<!-- Page components import -->
 		<script type="text/javascript" src="js/page_components.js"></script>

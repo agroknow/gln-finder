@@ -843,7 +843,7 @@ a.grflag {
 }
 
 /*********************************************************************************/
-/* Listing Page	                                                                 */
+/* SEARCH Page	                                                                 */
 /*********************************************************************************/
 .results_header{
 	visibility: hidden;
@@ -1193,7 +1193,50 @@ a.grflag {
 }
 
 /*********************************************************************************/
-/* Tab Slider                                         			                 */
+/* PROVIDER page                                                                */
+/*********************************************************************************/
+/* accordion */
+#providers a{
+	text-decoration: none;
+}
+
+.provider_info{
+	border-bottom: gray 1px solid;
+
+}
+.provider_info p{
+	margin:0px;
+	padding:0px;
+}
+
+.provider_label{
+	color:black;
+	font-size: 1.2em;
+}
+
+/*********************************************************************************/
+/* TOPICS page                                                                */
+/*********************************************************************************/
+#topics_links{
+	display: inline-block;
+}
+#topics_links a{
+	width:110px;
+	text-align: center;
+	float:left;
+	margin: 5px;
+	overflow: hidden;
+}
+
+#topics_links a img{
+}
+
+#topics_links a h5{
+}
+
+
+/*********************************************************************************/
+/* Tab Slider                                     			                 */
 /*********************************************************************************/
 .menu { 
 	padding: 0; clear: both; 

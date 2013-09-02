@@ -333,6 +333,8 @@ function searchExternalSource(prefix){
                          onSuccess: function(transport) {
                          var result = transport.responseText.evalJSON(true).result;
                          
+
+                         
                          result['title'] = 'Search '+ AVAILABLE_ES[prefix]['name'];
                          res.insert(Jaml.render(prefix+'_field',result));
                          },

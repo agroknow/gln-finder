@@ -6,13 +6,18 @@
 -->
 <html>
 	<head>
-		<title>GLN LISTING RESPONSIVE EXPERIMENT</title>
+		<title>GLN Search</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
 		<script src="js/jquery.min.js"></script>
 		<script src="js/config.js"></script>
+		
+		<!-- Page components import -->
+		<script type="text/javascript" src="js/page_components.js"></script>
+
+		
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-panels.min.js"></script>
 		<noscript>
@@ -36,7 +41,7 @@
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
 	</head>
-	<body onload="appendFooter(), appendNav()">
+	<body onload="appendFooter(), appendNav('search')">
 
 		<!-- Header -->
 			<header id="header">
@@ -150,15 +155,13 @@
             "maxLengthDescription":  300,
             "pageSize": 6,
             "repositoryName": "Organic.Edunet",//find this in the ariadne.properties file inside your Ariadne folder  ex."repositoryName":"AriadneNext Repository"
-            "serviceUrl":"http://83.212.96.169:8080/glnRepo/api/ariadne/restp"
+            "serviceUrl":"http://83.212.96.219:8080/glnRepo/api/ariadne/restp"
             
         }
     }
     
     </script>
 
-	<!-- Page components import -->
-	<script type="text/javascript" src="js/page_components.js"></script>
 
 	</body>
 </html>
