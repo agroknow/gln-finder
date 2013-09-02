@@ -32,6 +32,15 @@ function appendNav(active_tab){
 	  default:  navigation = '<ul><li class="current_page_item"><a href="index.html">Home</a></li><li><a href="search.html">Search</a></li><li><a href="topics.html">Topics</a></li><li><a href="providers.html">Providers</a></li><li><a href="benefits.html">Benefits</a></li><li><a href="contact.html">Contact</a></li></ul>';
 	}
 
+	if(document.getElementById("navList")){
+		var slide_nav = "<nav><a class=\"link depth-0\" href=\"index.html\" style=\"cursor: pointer; display: block; \"><span class=\"indent-0\"></span>Home</a><a class=\"link depth-0\" href=\"search.html\" style=\"cursor: pointer; display: block; \"><span class=\"indent-0\"></span>Search</a><a class=\"link depth-0\" href=\"topics.html\" style=\"cursor: pointer; display: block; \"><span class=\"indent-0\"></span>Topics</a><a class=\"link depth-0\" href=\"providers.html\" style=\"cursor: pointer; display: block; \"><span class=\"indent-0\"></span>Providers</a><a class=\"link depth-0\" href=\"benefits.html\" style=\"cursor: pointer; display: block; \"><span class=\"indent-0\"></span>Benefits</a><a class=\"link depth-0\" href=\"contact.html\" style=\"cursor: pointer; display: block; \"><span class=\"indent-0\"></span>Contact</a></nav>"
+		
+		document.getElementById("navList").innerHTML = slide_nav;
+	}
+	
+	
+	
+	
 	
 	document.getElementById("nav").innerHTML = navigation;
 }

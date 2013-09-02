@@ -11,7 +11,7 @@
  */
 function getLandingBanners(){
     $.ajax({
-           url: "http://83.212.100.142/finders_files/gln-banners.json",
+           url: "http://greenlearningnetwork.com/finders_files/gln-banners.json",
            dataType: "json",
            success: function(data)
            {
@@ -40,7 +40,7 @@ function getLandingBanners(){
  */
 function getFeaturedCollections(){
    $.ajax({
-          url: "http://83.212.100.142/finders_files/gln-featured-collections.json",
+          url: "http://greenlearningnetwork.com/finders_files/gln-featured-collections.json",
           dataType: "json",
           success: function(data)
             {
@@ -66,7 +66,7 @@ function getFeaturedCollections(){
  */
 function getFeaturedMicrosites(){
     $.ajax({
-           url: "http://83.212.100.142/finders_files/gln-featured-microsites.json",
+           url: "http://greenlearningnetwork.com/finders_files/gln-featured-microsites.json",
            dataType: "json",
            async:"true",
            success: function(data)
