@@ -25,7 +25,7 @@
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
 				
 	</head>
-	<body onload="appendFooter(), appendNav('providers')">
+	<body onload="appendFooter(), appendNav('providers'), getProviders()">
 
 		<!-- Header -->
 			<header id="header">
@@ -63,37 +63,6 @@
 								<!-- Providers List -->
 										<section>
 											<dl id="providers" class="accordion">
-											
-<!-- 												first -->
-												<dt><a href="" class="closed"><h3>Austrian Federal Ministry for Education, Arts and Culture (BMUKK)</h3></a></dt>
-												<dd class="provider_info">
-												<span class="provider_label">Logo:</span>
-												<img class="image left" src="images/hot_nike.png">
-												<p> <span class="provider_label">Description: </span> cocoblocoPhasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi consequat etiam lorem ipsum dolor sit amet nullam.Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.</p>
-												<p><span class="provider_label">Country: </span>Greece</p>
-												</dd>
-												
-<!-- 												second -->
-												<dt><a href="" class="closed"><h3>Estonian University of Life Sciences</h3></a></dt>
-												<dd class="provider_info">
-												<span class="provider_label">Logo:</span>
-												<img class="image left" src="images/hot_nike.png">
-
-												<p> <span class="provider_label">Description: </span> cocoblocoPhasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi consequat etiam lorem ipsum dolor sit amet nullam.Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.</p>
-												<p><span class="provider_label">Country: </span>Greece</p>
-												</dd>
-												
-												
-<!-- 												third -->
-												<dt><a href="" class="closed"><h3>MIKSIKE</h3></a></dt>
-												<dd class="provider_info">
-												<span class="provider_label">Logo:</span>
-												<img class="image left" src="images/hot_nike.png">
-
-												<p> <span class="provider_label">Description: </span> cocoblocoPhasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi consequat etiam lorem ipsum dolor sit amet nullam.Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.</p>
-												<p><span  class="provider_label">Country: </span>Greece</p>
-												</dd>
-												
 											</dl>
 										</section>
 
@@ -114,15 +83,19 @@
 			</footer>
 		<!-- /Footer -->
 
-		<!-- Script for providers accordeon -->
+	
+
+		<!-- Page components import -->
+		<script type="text/javascript" src="js/pages_modules.js"></script>
+		<script type="text/javascript" src="js/page_components.js"></script>
+		
+			<!-- Script for providers accordeon -->
 		<script type="text/javascript">
-		(function($){
+		$(document).ready(function(){
 		  var allPanels = $('.accordion > dd').hide();
 		    
 		  $('.accordion > dt > a').click(function() {
 		    allPanels.slideUp();
-		    
-		    
 		    
 		    if($(this).hasClass("closed"))
 		    {	
@@ -140,11 +113,8 @@
 				return false;		    
 		  });
 		
-		})(jQuery);
+		});
 		</script>
-
-		<!-- Page components import -->
-		<script type="text/javascript" src="js/page_components.js"></script>
 
 	</body>
 </html>

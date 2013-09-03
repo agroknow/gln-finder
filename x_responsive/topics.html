@@ -25,7 +25,7 @@
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
 
 	</head>
-	<body onload="appendFooter(), appendNav('topics')">
+	<body onload="appendFooter(), appendNav('topics'), getTopics()">
 
 		<!-- Header -->
 			<header id="header">
@@ -62,18 +62,7 @@
 										
 										
 								<!-- topics links -->
-										<div id="topics_links">
-										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
-										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
-										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
-										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
-										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
-										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
-										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
-										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
-										<a href="#"><img src="images/hot_apple.png" /><h5>Nike</h5></a>
-										<a href="#"><img src="images/hot_nike.png" /><h5>Apple</h5></a>
-										</div>
+										<div id="topics_links"></div>
 
 								<!-- /topics links -->
 								
@@ -91,6 +80,7 @@
 
 		
 		<!-- Page components import -->
+		<script type="text/javascript" src="js/pages_modules.js"></script>
 		<script type="text/javascript" src="js/page_components.js"></script>
 
 	</body>

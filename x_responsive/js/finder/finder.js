@@ -479,12 +479,29 @@ function findMaterials(start,numberResults,needsUpdate,initUpdate)
 	var selectedFacets = $('insert_facets').select('a.facet-selected');
 	
 	var facetExpressions = $H();
+	
+	
+	/*check if already exist active_facets. 
+	I exist cleans them to avoid duplicates*/
+	if(document.getElementsByClassName("active_facet").length > 0)
+	{
+		console.log("Facets already exist. Clean them");
+		document.getElementById("active_facet_container").remove();
+	}
+	
+	$('active_facets').insert("<div id=\"active_facet_container\"></div>");
+	
 	selectedFacets.each(function(item,index){
 	var pos = item.id.indexOf(':');
 	var facet = item.id.substring(0,pos);
 	var facetValue = item.id.substring(pos+1);
 	facetValue = facetValue.replace(/\"/g,"'");
 	facetExpressions.set(facet,(facetExpressions.get(facet) == undefined) ? facetValue : facetExpressions.get(facet) + "," + facetValue);
+	
+	/* add active facets */
+	$('active_facet_container').insert(Jaml.render('active_facets', facetValue));	
+		
+
 	});
 	
 	var clauses = parseQueryString(initUpdate);
@@ -642,6 +659,7 @@ function findMaterials(start,numberResults,needsUpdate,initUpdate)
 				}
 				
 				
+				
 				}); //end result.metadata.each()
 				
 				
@@ -711,10 +729,7 @@ function findMaterials(start,numberResults,needsUpdate,initUpdate)
 				
 				
 				facetSlide();
-				selectedFacets.each(function(item,index){
-				$(item.id).addClassName('facet-selected');
 				
-				});
 			}//end if(needsUpdate)
 	
 		},
@@ -769,6 +784,11 @@ function checkLang(name,counter)
 */                                            
 function initializeJamlTemplates()
 	{
+	
+	Jaml.register('active_facets', function(data){
+		div({cls:'active_facet'}, a({href:'#',data))/*NEEDS UPDATE*/
+	})
+	
 	
 	/*
 	* RENDER RESULT LISTING ITEMS
@@ -956,11 +976,13 @@ function selectParent(parent){
 	$(parent).removeClassName('parent-selected');
 }
 
+/*select/deselect facets on sidebar*/
 function toggleFacetValue(elem,parent){
 	$(elem).toggleClassName('facet-selected');
 	selectParent(parent);
 	findMaterials(0,PAGE_SIZE,true,false);
 }
+
 
 
                                              

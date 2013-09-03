@@ -31,7 +31,7 @@
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
 
 	</head>
-	<body onload="appendFooter(), appendNav('benefits')">
+	<body onload="appendFooter(), appendNav('benefits'), getBenefits()">
 
 		<!-- Header -->
 			<header id="header">
@@ -74,39 +74,8 @@
 										
 										<!-- Microsites tab -->
 										<div id="microsites" class="tab_content">
-										<section>
-											<span>
-											<h2>Microsites for Museums</h2>
-											<h4>Featured : Natural History Museum for Crete</h4>
-											<p>Url: <a href="#">http://www.greenlearningnetwork.org/nhmc/</a> </p>
-											</span>
-											<img src="images/microsite_pic02.png"/>
-										</section>
-										<section>
-											<span>
-											<h2>Microsites for Academic institutions</h2>
-											<h4>Featured : Michigan State University — Food Safety Knowledge Network(FSKN)</h4>
-											<p>Url:<a href="#">http://greenlearningnetwork.org/fskn/fskn-main/</a> </p>
-											</span>
-											<img src="images/microsite_pic02.png"/>
-										</section>
-										<section>
-											<span>
-											<h2>Microsites for  Research groups</h2>
-											<h4>Featured : Organic.Edunet</h4>
-											<p>Url: <a href="#">http://www.greenlearningnetwork.org/nhmc/</a> </p>
-											</span>
-											<img src="images/microsite_pic02.png"/>
-										</section>
-										<section>
-											<span>
-											<h2>Microsites for International organisations</h2>
-											<h4>Featured : FAO Capacity Development Portal</h4>
-											<p>Url: <a href="#">http://www.greenlearningnetwork.org/nhmc/</a> </p>
-											</span>
-											<img src="images/microsite_pic02.png"/>
-										</section>
 										</div> <!-- /Microsites tab -->
+										
 										<!-- Developers tab -->
 										<div id="developers" class="tab_content">
 											<h2>Developers</h2>
@@ -142,6 +111,8 @@
 		</script>
 		<!-- /scripts for tab slider -->
 		
+		
+		<script type="text/javascript" src="js/pages_modules.js"></script>
 		
 	</body>
 </html>
