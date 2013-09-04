@@ -173,10 +173,10 @@ function getItemFromURL(urlTemp)
                 for(var j=0; j<languageBlock.keywords.length;j++)//*ARRAY of keywords in current version
                 {
                 if(j==languageBlock.keywords.length-1){
-                jQuery('#itemKeywords').append('<a  href="listing.html?query='+languageBlock.keywords[j]+'" class="forKomma link last">'+languageBlock.keywords[j]+'</a>');
+                jQuery('#itemKeywords').append('<a  href="search.html?query='+languageBlock.keywords[j]+'" class="forKomma link last">'+languageBlock.keywords[j]+'</a>');
                 
                 }else{
-                jQuery('#itemKeywords').append('<a  href="listing.html?query='+languageBlock.keywords[j]+'" class="forKomma link">'+languageBlock.keywords[j]+'</a>');
+                jQuery('#itemKeywords').append('<a  href="search.html?query='+languageBlock.keywords[j]+'" class="forKomma link">'+languageBlock.keywords[j]+'</a>');
                 
                 }
                 
@@ -348,10 +348,10 @@ function getItemFromURL(urlTemp)
                 for(var j=0; j<languageBlock.keywords.length;j++)//*ARRAY of keywords in current version
                 {
                 if(j==languageBlock.keywords.length-1){
-                jQuery('#itemKeywords').append('<a  href="listing.html?query='+languageBlock.keywords[j]+'" class="forKomma link last">'+languageBlock.keywords[j]+'</a>');
+                jQuery('#itemKeywords').append('<a  href="search.html?query='+languageBlock.keywords[j]+'" class="forKomma link last">'+languageBlock.keywords[j]+'</a>');
                 
                 }else{
-                jQuery('#itemKeywords').append('<a  href="listing.html?query='+languageBlock.keywords[j]+'" class="forKomma link">'+languageBlock.keywords[j]+'</a>');
+                jQuery('#itemKeywords').append('<a  href="search.html?query='+languageBlock.keywords[j]+'" class="forKomma link">'+languageBlock.keywords[j]+'</a>');
                 
                 }
                 

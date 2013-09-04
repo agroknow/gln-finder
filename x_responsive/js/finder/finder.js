@@ -812,11 +812,11 @@ function initializeJamlTemplates()
 				{
 					if(i!==length-1)
 					{
-					keywordsToEmbed +="<a class=\"secondary\" href=\"listing.html?query="+data.subject[i].value+"\">&nbsp"+data.subject[i].value+"</a>"
+					keywordsToEmbed +="<a class=\"secondary\" href=\"search.html?query="+data.subject[i].value+"\">&nbsp"+data.subject[i].value+"</a>"
 					}
 					else
 					{
-					keywordsToEmbed +="<a class=\"secondary last\" href=\"listing.html?query="+data.subject[i].value.split(" ")[0]+"\">&nbsp"+data.subject[i].value+"</a>"
+					keywordsToEmbed +="<a class=\"secondary last\" href=\"search.html?query="+data.subject[i].value.split(" ")[0]+"\">&nbsp"+data.subject[i].value+"</a>"
 					}
 				}//end lang check
 			}//end for
@@ -864,11 +864,11 @@ function initializeJamlTemplates()
        if(data.subject[i].lang=='en'){
        if(i!==length-1)
        {
-       keywordsToEmbed +="<a class=\"secondary\" href=\"listing.html?query="+data.subject[i].value+"\">&nbsp"+data.subject[i].value+"</a>"
+       keywordsToEmbed +="<a class=\"secondary\" href=\"search.html?query="+data.subject[i].value+"\">&nbsp"+data.subject[i].value+"</a>"
        }
        else
        {
-       keywordsToEmbed +="<a class=\"secondary last\" href=\"listing.html?query="+data.subject[i].value.split(" ")[0]+"\">&nbsp"+data.subject[i].value+"</a>"
+       keywordsToEmbed +="<a class=\"secondary last\" href=\"search.html?query="+data.subject[i].value.split(" ")[0]+"\">&nbsp"+data.subject[i].value+"</a>"
        }
        }//end lang check
        
