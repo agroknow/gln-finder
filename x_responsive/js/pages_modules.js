@@ -39,14 +39,48 @@ function getProviders(){
                for(var i=0, size=data.languageBlocks.length; i<size; i++){
                    if(data.languageBlocks[i].hasOwnProperty("en")){ //finds language
                     for(var j=0; j<data.languageBlocks[i].en.length;j++){//for every item of the language
-                     $('#providers').append('<dt><a href="#" class="closed" onclick="myAccordeon()"><h3>'+data.languageBlocks[i].en[j].name+'</h3></a></dt><dd class="provider_info"><span class="provider_label">Logo:</span><img class="image left" src="'+data.languageBlocks[i].en[j].image_url+'"><p> <span class="provider_label">Description: </span>'+data.languageBlocks[i].en[j].description+'</p><p><span class="provider_label">Country: </span>'+data.languageBlocks[i].en[j].country+'</p></dd>');                    
+                     $('#providers').append('<dt><a href="#" class="closed"><h3>'+data.languageBlocks[i].en[j].name+'</h3></a></dt><dd class="provider_info"><span class="provider_label">Logo:</span><img class="image left" src="'+data.languageBlocks[i].en[j].image_url+'"><p> <span class="provider_label">Description: </span>'+data.languageBlocks[i].en[j].description+'</p><p><span class="provider_label">Country: </span>'+data.languageBlocks[i].en[j].country+'</p></dd>');                    
                     }
 
                    }
                }
+               
+               providersSlider();
            }
            })
 }
+
+/**
+* providersSlider() 
+*function for providers accordeons
+*/
+function providersSlider(){
+	$(document).ready(function (){
+			  var allPanels = $('.accordion > dd').hide();
+			    
+			  $('.accordion > dt > a').click(function() {
+			    allPanels.slideUp();
+			    
+			    if($(this).hasClass("closed"))
+			    {	
+			    	$(this).removeClass("closed");
+					$(this).addClass("opened");
+			    	$(this).parent().next().slideDown();
+			    }
+			    else if($(this).hasClass("opened"))
+			    {	
+			    	$(this).removeClass("opened");
+					$(this).addClass("closed");
+			    	$(this).parent().next().slideUp();
+			    }
+				
+				exit();
+				return false;		    
+			  });}
+);// end ready()
+}//end providersSlider()
+
+
 
 /**
  * getBenefits() : fetch and render benefits

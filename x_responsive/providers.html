@@ -10,6 +10,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+		
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
 		<script src="js/jquery.min.js"></script>
 		<script src="js/config.js"></script>
@@ -20,12 +21,13 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>
+		
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
 				
 	</head>
-	<body onload="appendFooter(), appendNav('providers'), getProviders()">
+	<body onload="getProviders(), appendFooter(), appendNav('providers')">
 
 		<!-- Header -->
 			<header id="header">
@@ -88,33 +90,8 @@
 		<!-- Page components import -->
 		<script type="text/javascript" src="js/pages_modules.js"></script>
 		<script type="text/javascript" src="js/page_components.js"></script>
-		
-			<!-- Script for providers accordeon -->
-		<script type="text/javascript">
-		$(document).ready(function(){
-		  var allPanels = $('.accordion > dd').hide();
-		    
-		  $('.accordion > dt > a').click(function() {
-		    allPanels.slideUp();
-		    
-		    if($(this).hasClass("closed"))
-		    {	
-		    	$(this).removeClass("closed");
-				$(this).addClass("opened");
-		    	$(this).parent().next().slideDown();
-		    }
-		    else if($(this).hasClass("opened"))
-		    {	
-		    	$(this).removeClass("opened");
-				$(this).addClass("closed");
-		    	$(this).parent().next().slideUp();
-		    }
-				
-				return false;		    
-		  });
-		
-		});
-		</script>
+
+
 
 	</body>
 </html>
