@@ -786,7 +786,7 @@ function initializeJamlTemplates()
 	{
 	
 	Jaml.register('active_facets', function(data){
-		div({cls:'active_facet'}, a({href:'#',data))/*NEEDS UPDATE*/
+		div({cls:"active_facet"}, a({href:'#'},data))/*NEEDS UPDATE*/
 	})
 	
 	
