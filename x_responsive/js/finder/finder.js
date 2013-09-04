@@ -95,7 +95,7 @@ var langName=[];
 
 /*PROVIDERS MAPPING*/
 jQuery.ajax({
-            url: "http://83.212.100.142/finders_files/providers-mapping.json",
+            url: "http://greenlearningnetwork.com/finders_files/providers-mapping.json",
             dataType: "json",
             success: function(data)
             {
@@ -107,7 +107,7 @@ jQuery.ajax({
 
  /*LANGUAGES MAPPING*/
 jQuery.ajax({
-            url: "http://83.212.100.142/finders_files/language-mapping.json",
+            url: "http://greenlearningnetwork.com/finders_files/language-mapping.json",
             dataType: "json",
             success: function(data)
             {
