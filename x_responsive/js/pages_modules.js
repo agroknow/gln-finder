@@ -32,33 +32,17 @@ function getTopics(){
  */
 function getProviders(){
     $.ajax({
-           url: "http://83.212.96.169:8080/REGFILES/OESources.json",
+           url: "http://greenlearningnetwork.com/finders_files/gln_providers.json",
            dataType: "json",
            success: function(data)
            {
-           		var providers = Object.keys(data);
-           		var name, description, country;
-           		
-           		for(var i=0,length = providers.length; i < length;i++)
-           		{
-           			var thisItem = data[providers[i]];
-           			
-           			if(thisItem.fullName!=undefined)
-           			{ name = thisItem.fullName;}
-           			else{name="";}
-           			
-           			if(thisItem.description!=undefined && thisItem.description.en!=undefined)
-           			{ description = thisItem.description.en;}
-           			else
-           			{description="no description is defined yet";}
-           			
-           			if(thisItem.fullName!=undefined)
-           			{ country = thisItem.country;}
-           			else
-           			{country="no country is defined yet";}
-           		
-                     $('#providers').append('<dt><a href="#" class="closed"> <h3>'+name+'</h3> </a></dt><dd class="provider_info"><span class="provider_label">Logo:</span><img class="image left" src="images/no_provider_image.jpeg"><p> <span class="provider_label">Description: </span>'+description+'</p><p><span class="provider_label">Country: </span>'+country+'</p></dd>');                    
+           		 for(var i=0, size=data.languageBlocks.length; i<size; i++){
+                   if(data.languageBlocks[i].hasOwnProperty("en")){
+                   	for(var j=0; j<data.languageBlocks[i].en.length;j++){//for every item of the language
+                     $('#providers').append('<dt><a href="#" class="closed"> <h3>'+data.languageBlocks[i].en[j].name+'</h3> </a></dt><dd class="provider_info"><span class="provider_label">Logo:</span><img class="image left" src="images/'+data.languageBlocks[i].en[j].image_url+'"><p> <span class="provider_label">Description: </span>'+data.languageBlocks[i].en[j].description+'</p><p><span class="provider_label">Country: </span>'+data.languageBlocks[i].en[j].country+'</p></dd>');                    
                     
+           		}
+           		}
            		}
                
                providersSlider();
