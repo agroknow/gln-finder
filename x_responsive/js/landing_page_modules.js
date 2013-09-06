@@ -50,7 +50,7 @@ function getFeaturedCollections(){
                   //console.log(JSON.stringify(data.languageBlocks[i].en));
                         
                     for(var j=0; j<data.languageBlocks[i].en.length;j++){//for every item of the language
-                          $('.featured_collections').append('<div class="12u"><!-- Feature --><section class="is-feature "><a href="#" class="image image-left"><img src="images/'+data.languageBlocks[i].en[j].collection_thumbUrl+'"/></a><h2><a href="#">'+data.languageBlocks[i].en[j].collection_title+'</a></h2><p>'+data.languageBlocks[i].en[j].collection_description+'</p><p>Provider:<a href="'+data.languageBlocks[i].en[j].collection_provider_url+'">'+data.languageBlocks[i].en[j].collection_provider_name+'</a></p></section><section class="12u is-feature"><a class="image image-left" href="#"><img src="images/'+data.languageBlocks[i].en[j].highlighted_thumbUrl+'"/></a><h3><a>'+data.languageBlocks[i].en[j].highlighted_title+'</a></h3><p>'+data.languageBlocks[i].en[j].highlighted_description+'</p></section><!-- /Feature --></div>');
+                          $('.featured_collections').append('<div class="12u"><!-- Feature --><section class="is-feature "><a href="#" class="image image-left"><img src="images/'+data.languageBlocks[i].en[j].collection_thumbUrl+'"/></a><h2><a href="'+data.languageBlocks[i].en[j].collection_resource_url+'">'+data.languageBlocks[i].en[j].collection_title+'</a></h2><p>'+data.languageBlocks[i].en[j].collection_description+'</p><p>Provider:<a href="'+data.languageBlocks[i].en[j].collection_provider_url+'">'+data.languageBlocks[i].en[j].collection_provider_name+'</a></p><h4>Highlighted resource</h4><a class="image image-left" href="'+data.languageBlocks[i].en[j].highlighted_thumbUrl+'"><img src="images/'+data.languageBlocks[i].en[j].highlighted_thumbUrl+'"/></a><h3><a>'+data.languageBlocks[i].en[j].highlighted_title+'</a></h3><p>'+data.languageBlocks[i].en[j].highlighted_description+'</p></section><!-- /Feature --></div>');
                       }
                   }
                 }
@@ -76,14 +76,14 @@ function getFeaturedMicrosites(){
 					//console.log(JSON.stringify(data.languageBlocks[i].en));
                     var featured_section="";
                     for(var j=0; j<data.languageBlocks[i].en.length;j++){//for every item of the language
-                          featured_section = featured_section + '<section class="is-feature"><a href="#" class="image image-left"><img src="images/'+data.languageBlocks[i].en[j].microsite_thumb+'" alt="" /></a><div class="microsite_main"><h2><a href="#">'+data.languageBlocks[i].en[j].microsite_title+'</a></h2><p>'+data.languageBlocks[i].en[j].microsite_description+'</p></div><div class="hot_themes"><h4>Hot Themes</h4>';
+                          featured_section = featured_section + '<section class="is-feature"><a href="#" class="image image-left"><img src="images/'+data.languageBlocks[i].en[j].microsite_thumb+'" alt="" /></a><div class="microsite_main"><h2><a href="'+data.languageBlocks[i].en[j].microsite_url+'" target="_blank"> '+data.languageBlocks[i].en[j].microsite_title+'</a></h2><p>'+data.languageBlocks[i].en[j].microsite_description+'</p></div><div class="hot_themes"><h4>Hot Themes</h4>';
                           
                           for(var k=0;k<data.languageBlocks[i].en[j].hot_themes.length;k++){
 	                       featured_section = featured_section + '<a href="'+data.languageBlocks[i].en[j].hot_themes[k].link+'"><img src="images/'+data.languageBlocks[i].en[j].hot_themes[k].link_thumb+'"/><h5>'+data.languageBlocks[i].en[j].hot_themes[k].title+'</h5></a>';
                           }
                           
                           
-                         featured_section = featured_section + '</div><div class="highlighted_microsite "><h4>Highlighted Resource</h4><h5>'+data.languageBlocks[i].en[j].highlighted_title+'</h5><p>'+data.languageBlocks[i].en[j].highlighted_description+'</p></div></section>';
+                         featured_section = featured_section + '</div><div class="highlighted_microsite "><h4>Highlighted Resource</h4><a href="'+data.languageBlocks[i].en[j].highlighted_url+'" target="_blank"><h5>'+data.languageBlocks[i].en[j].highlighted_title+'</h5></a><p>'+data.languageBlocks[i].en[j].highlighted_description+'</p></div></section>';
                       }
                       
                       $('.featured_microsites').append(featured_section);
