@@ -20,7 +20,6 @@ function getTopics(){
                     for(var j=0; j<data.languageBlocks[i].en.length;j++){//for every item of the language
                      $('#topics_links').append('<a href="'+data.languageBlocks[i].en[j].url+'"><img src="'+data.languageBlocks[i].en[j].image_location+'" /><h5>"'+data.languageBlocks[i].en[j].topic_title+'"</h5></a>');                    
                     }
-
                    }
                }
            }
@@ -36,75 +35,31 @@ function getProviders(){
            dataType: "json",
            success: function(data)
            {
-           		 for(var i=0, size=data.languageBlocks.length; i<size; i++){
-                   if(data.languageBlocks[i].hasOwnProperty("en")){
-                   	for(var j=0; j<data.languageBlocks[i].en.length;j++){//for every item of the language
-                     $('#providers').append('<dt><a href="#" class="closed"> <h3>'+data.languageBlocks[i].en[j].name+'</h3> </a></dt><dd class="provider_info"><span class="provider_label">Logo:</span><img class="image left" src="images/'+data.languageBlocks[i].en[j].image_url+'"><p> <span class="provider_label">Description: </span>'+data.languageBlocks[i].en[j].description+'</p><p><span class="provider_label">Country: </span>'+data.languageBlocks[i].en[j].country+'</p></dd>');                    
-                    
-           		}
-           		}
+           		 for(var i=0, size=data.languageBlocks.length; i<size; i++)
+           		 {
+                   if(data.languageBlocks[i].hasOwnProperty("en"))
+                   {
+	                   	for(var j=0; j<data.languageBlocks[i].en.length;j++)
+	                   	{//for every item of the language
+	                     $('#providers').append('<div><a href="javascript:;" id="toggle_provider"><h3>'+data.languageBlocks[i].en[j].name+'</h3> </a><div class="provider_info"><span class="provider_label">Logo:</span><img class="image left" src="images/'+data.languageBlocks[i].en[j].image_url+'"><p> <span class="provider_label">Description: </span>'+data.languageBlocks[i].en[j].description+'</p><p><span class="provider_label">Country: </span>'+data.languageBlocks[i].en[j].country+'</p></div></div>');                    
+	                    
+		           		}
+			   		}
            		}
                
-               providersSlider();
            }
            })
 }
 
 
 /**
- * getProviders_() : fetch and render providers from our providers.json
+ * toggle_provider() : fetch and render benefits
  */
-function getProviders_(){
-    $.ajax({
-           url: "http://greenlearningnetwork.com/finders_files/gln_providers.json",
-           dataType: "json",
-           success: function(data)
-           {
-               for(var i=0, size=data.languageBlocks.length; i<size; i++){
-                   if(data.languageBlocks[i].hasOwnProperty("en")){ //finds language
-                    for(var j=0; j<data.languageBlocks[i].en.length;j++){//for every item of the language
-                     $('#providers').append('<dt><a href="#" class="closed"><h3>'+data.languageBlocks[i].en[j].name+'</h3></a></dt><dd class="provider_info"><span class="provider_label">Logo:</span><img class="image left" src="'+data.languageBlocks[i].en[j].image_url+'"><p> <span class="provider_label">Description: </span>'+data.languageBlocks[i].en[j].description+'</p><p><span class="provider_label">Country: </span>'+data.languageBlocks[i].en[j].country+'</p></dd>');                    
-                    }
-
-                   }
-               }
-               
-               providersSlider();
-           }
-           })
-}
-
-
-/**
-* providersSlider() 
-*function for providers accordeons
-*/
-function providersSlider(){
-	$(document).ready(function (){
-			  var allPanels = $('.accordion > dd').hide();
-			    
-			  $('.accordion > dt > a').click(function() {
-			    allPanels.slideUp();
-			    
-			    if($(this).hasClass("closed"))
-			    {	
-			    	$(this).removeClass("closed");
-					$(this).addClass("opened");
-			    	$(this).parent().next().slideDown();
-			    }
-			    else if($(this).hasClass("opened"))
-			    {	
-			    	$(this).removeClass("opened");
-					$(this).addClass("closed");
-			    	$(this).parent().next().slideUp();
-			    }
-				
-				return false;		    
-			  });}
-);// end ready()
-}//end providersSlider()
-
-
+$(function(){
+	$('#toggle_provider').on('click',function(){
+		$(this).parent.find('div').slideToggle();
+	});
+});
 
 /**
  * getBenefits() : fetch and render benefits
@@ -126,4 +81,5 @@ function getBenefits(){
            }
            })
 }
+
 

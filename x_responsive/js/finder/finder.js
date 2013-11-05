@@ -717,8 +717,7 @@ function findMaterials(start,numberResults,needsUpdate,initUpdate)
 								  {
 									  checkLang(it2.val,it2.count);
 									  if (CHECK==0)
-									  {
-										element.insert(Jaml.render('rbcriteria_lang',it2));  
+									  {										element.insert(Jaml.render('rbcriteria_lang',it2));  
 									  }
 								  } 
 							 }
@@ -887,6 +886,7 @@ function initializeJamlTemplates()
                           aside({cls:'clearfix'},
                                 div({cls:'floatright'},
                                     div({cls:'line alignright'},a({href:"item.html?id="+data.identifier,cls:'moreinfo'},"More Info")))))))
+                                    
 	 }); //end resultwithoutkeywords
 	
 	
@@ -898,12 +898,14 @@ function initializeJamlTemplates()
 	{
 	   //alert(data.val);
 	   var label = data.val.toLowerCase();
-	   if(providerName[label] != undefined )
+	   //! NOTE: label 'map' creates a problem in jaml rendering. --- TO FIX
+	   if(providerName[label] != undefined && label!="map") 
 	   {
 	   		label = providerName[label];
 	   }
 	   
 	   a({href:'#', id: data.field + ':' + data.val, title: data.val, onclick:"toggleFacetValue('#{id}','#{parent}')".interpolate({id: data.field + ':' + data.val,parent: data.field})}, span(label), span({cls:'total'}, data.count));
+	
 	});//end rbcriteria
 	
 	

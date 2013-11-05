@@ -1,0 +1,1347 @@
+{
+  "result": {
+    "error": "",
+    "errorMessage": "",
+    "facets": [
+      {
+        "field": "iur",
+        "numbers": [
+          {
+            "count": 12921,
+            "val": "learner"
+          },
+          {
+            "count": 5023,
+            "val": "teacher"
+          },
+          {
+            "count": 3345,
+            "val": "other"
+          },
+          {
+            "count": 3192,
+            "val": "manager"
+          },
+          {
+            "count": 1340,
+            "val": "counsellor"
+          },
+          {
+            "count": 499,
+            "val": "parent"
+          },
+          {
+            "count": 221,
+            "val": "author"
+          },
+          {
+            "count": 55,
+            "val": "policy makers"
+          },
+          {
+            "count": 25,
+            "val": "counselor"
+          }
+        ]
+      },
+      {
+        "field": "il",
+        "numbers": [
+          {
+            "count": 1051,
+            "val": "medium"
+          },
+          {
+            "count": 1029,
+            "val": "low"
+          },
+          {
+            "count": 824,
+            "val": "very low"
+          },
+          {
+            "count": 326,
+            "val": "high"
+          },
+          {
+            "count": 38,
+            "val": "very high"
+          }
+        ]
+      },
+      {
+        "field": "it",
+        "numbers": [
+          {
+            "count": 2789,
+            "val": "expositive"
+          },
+          {
+            "count": 279,
+            "val": "mixed"
+          },
+          {
+            "count": 95,
+            "val": "undefined"
+          },
+          {
+            "count": 86,
+            "val": "active"
+          }
+        ]
+      },
+      {
+        "field": "provider",
+        "numbers": [
+          {
+            "count": 4178,
+            "val": "OEINTUTE"
+          },
+          {
+            "count": 2515,
+            "val": "DIGITALGREEN"
+          },
+          {
+            "count": 1897,
+            "val": "PRODINRAAGRO"
+          },
+          {
+            "count": 1792,
+            "val": "SERCMICRO"
+          },
+          {
+            "count": 1473,
+            "val": "EDUNHMC"
+          },
+          {
+            "count": 996,
+            "val": "OEENOAT"
+          },
+          {
+            "count": 993,
+            "val": "EDUMNHN"
+          },
+          {
+            "count": 778,
+            "val": "FAOCAPACITYPORTAL"
+          },
+          {
+            "count": 479,
+            "val": "NSDLBEYOND"
+          },
+          {
+            "count": 474,
+            "val": "GREENOER"
+          },
+          {
+            "count": 443,
+            "val": "OEORGANICEPRINTS"
+          },
+          {
+            "count": 416,
+            "val": "TRAGLOR"
+          },
+          {
+            "count": 410,
+            "val": "OEBMLFUWAUSTRIAN"
+          },
+          {
+            "count": 409,
+            "val": "RURINC"
+          },
+          {
+            "count": 326,
+            "val": "AGLRMIKSIKE"
+          },
+          {
+            "count": 319,
+            "val": "EDUELLINOGERMANIKI"
+          },
+          {
+            "count": 295,
+            "val": "OEECOLOGIGA"
+          },
+          {
+            "count": 257,
+            "val": "OPTUNESCO"
+          },
+          {
+            "count": 222,
+            "val": "EDUHNHM"
+          },
+          {
+            "count": 214,
+            "val": "EDUTNHM"
+          },
+          {
+            "count": 198,
+            "val": "EDUJURA"
+          },
+          {
+            "count": 169,
+            "val": "OEBIAGRO"
+          },
+          {
+            "count": 144,
+            "val": "OEAUA"
+          },
+          {
+            "count": 140,
+            "val": "UMINHO"
+          },
+          {
+            "count": 101,
+            "val": "OEAGROASIS"
+          },
+          {
+            "count": 100,
+            "val": "AGLRSEAE"
+          },
+          {
+            "count": 99,
+            "val": "OESPANISH"
+          },
+          {
+            "count": 89,
+            "val": "AGLRFAOCDX"
+          },
+          {
+            "count": 73,
+            "val": "OEELLINOGERMANIKI"
+          },
+          {
+            "count": 59,
+            "val": "EDUAC"
+          },
+          {
+            "count": 54,
+            "val": "AGLRSLIDESHARE"
+          },
+          {
+            "count": 52,
+            "val": "AGLREOL"
+          },
+          {
+            "count": 44,
+            "val": "AGLRAGRICOM"
+          },
+          {
+            "count": 44,
+            "val": "OEEULSESTHONIAN"
+          },
+          {
+            "count": 41,
+            "val": "AGLRSLOWFOOD"
+          },
+          {
+            "count": 40,
+            "val": "AGLRFOODSAFETY"
+          },
+          {
+            "count": 37,
+            "val": "OEFAO"
+          },
+          {
+            "count": 30,
+            "val": "AGLRCGIAR"
+          },
+          {
+            "count": 30,
+            "val": "AGLRIFAD"
+          },
+          {
+            "count": 25,
+            "val": "OERAFRICA"
+          },
+          {
+            "count": 20,
+            "val": "AGLRNB"
+          },
+          {
+            "count": 18,
+            "val": "AGLRFAOCAPACITYPORTAL"
+          },
+          {
+            "count": 15,
+            "val": "AGLRFSKN"
+          },
+          {
+            "count": 15,
+            "val": "AGLRGAMESNATURE"
+          },
+          {
+            "count": 15,
+            "val": "CGIAR"
+          },
+          {
+            "count": 13,
+            "val": "AGLRAIMS"
+          },
+          {
+            "count": 13,
+            "val": "RUFORUM"
+          },
+          {
+            "count": 12,
+            "val": "GFAR"
+          },
+          {
+            "count": 11,
+            "val": "AGLRGSG"
+          },
+          {
+            "count": 10,
+            "val": "AGLRAGRJOBS"
+          },
+          {
+            "count": 10,
+            "val": "AGLRFAOGOODPRACTICES"
+          },
+          {
+            "count": 9,
+            "val": "AGLRFAOIMARK"
+          },
+          {
+            "count": 8,
+            "val": "ACCESS"
+          },
+          {
+            "count": 8,
+            "val": "AGLRFUTUREFARM"
+          },
+          {
+            "count": 6,
+            "val": "AGLRFAOERPTOOLKITPRIMSEC"
+          },
+          {
+            "count": 6,
+            "val": "AGLRFAORIGHTTOFOOD"
+          },
+          {
+            "count": 6,
+            "val": "AGLRYOUTH"
+          },
+          {
+            "count": 4,
+            "val": "AGLRFAOERPTOOLKIT"
+          },
+          {
+            "count": 4,
+            "val": "AGLRFOODPOLITICS"
+          },
+          {
+            "count": 4,
+            "val": "AGLRLLB"
+          }
+        ]
+      },
+      {
+        "field": "context",
+        "numbers": [
+          {
+            "count": 7017,
+            "val": "higher education"
+          },
+          {
+            "count": 5896,
+            "val": "vocational education"
+          },
+          {
+            "count": 3645,
+            "val": "compulsory education"
+          },
+          {
+            "count": 2736,
+            "val": "professional development"
+          },
+          {
+            "count": 1882,
+            "val": "continuing education"
+          },
+          {
+            "count": 1013,
+            "val": "policy making"
+          },
+          {
+            "count": 610,
+            "val": "distance education"
+          },
+          {
+            "count": 580,
+            "val": "library"
+          },
+          {
+            "count": 310,
+            "val": "other"
+          },
+          {
+            "count": 71,
+            "val": "pre-school"
+          },
+          {
+            "count": 64,
+            "val": "vocational training"
+          },
+          {
+            "count": 63,
+            "val": "educational administration"
+          },
+          {
+            "count": 62,
+            "val": "secondary education"
+          },
+          {
+            "count": 44,
+            "val": "in the natural history museum/centre (physical visit)"
+          },
+          {
+            "count": 37,
+            "val": "school connected"
+          },
+          {
+            "count": 31,
+            "val": "special education"
+          },
+          {
+            "count": 19,
+            "val": "university second cycle"
+          },
+          {
+            "count": 17,
+            "val": "professional formation"
+          },
+          {
+            "count": 17,
+            "val": "university first cycle"
+          },
+          {
+            "count": 16,
+            "val": "university postgraduate"
+          },
+          {
+            "count": 10,
+            "val": "on the web (virtual visit)"
+          },
+          {
+            "count": 8,
+            "val": "continuous formation"
+          },
+          {
+            "count": 6,
+            "val": "primary education"
+          },
+          {
+            "count": 1,
+            "val": "technical school first cycle"
+          },
+          {
+            "count": 1,
+            "val": "technical school second cycle"
+          }
+        ]
+      },
+      {
+        "field": "lrt",
+        "numbers": [
+          {
+            "count": 3802,
+            "val": "enquiry-oriented activity"
+          },
+          {
+            "count": 2669,
+            "val": "broadcast"
+          },
+          {
+            "count": 1676,
+            "val": "image"
+          },
+          {
+            "count": 1457,
+            "val": "reference"
+          },
+          {
+            "count": 1430,
+            "val": "web page"
+          },
+          {
+            "count": 1070,
+            "val": "guide"
+          },
+          {
+            "count": 1036,
+            "val": "open activity"
+          },
+          {
+            "count": 981,
+            "val": "presentation"
+          },
+          {
+            "count": 791,
+            "val": "other"
+          },
+          {
+            "count": 782,
+            "val": "experiment"
+          },
+          {
+            "count": 756,
+            "val": "text"
+          },
+          {
+            "count": 618,
+            "val": "exploration"
+          },
+          {
+            "count": 504,
+            "val": "guide (advice sheets)"
+          },
+          {
+            "count": 371,
+            "val": "demonstration"
+          },
+          {
+            "count": 355,
+            "val": "drill and practice"
+          },
+          {
+            "count": 352,
+            "val": "video"
+          },
+          {
+            "count": 321,
+            "val": "course"
+          },
+          {
+            "count": 290,
+            "val": "case study"
+          },
+          {
+            "count": 262,
+            "val": "project"
+          },
+          {
+            "count": 240,
+            "val": "audio"
+          },
+          {
+            "count": 211,
+            "val": "lesson plan"
+          },
+          {
+            "count": 200,
+            "val": "educational game"
+          },
+          {
+            "count": 165,
+            "val": "assessment"
+          },
+          {
+            "count": 118,
+            "val": "data"
+          },
+          {
+            "count": 92,
+            "val": "guide(advice sheets)"
+          },
+          {
+            "count": 91,
+            "val": "other web resource"
+          },
+          {
+            "count": 78,
+            "val": "lesson"
+          },
+          {
+            "count": 73,
+            "val": "pathway"
+          },
+          {
+            "count": 61,
+            "val": "drawing"
+          },
+          {
+            "count": 58,
+            "val": "tool"
+          },
+          {
+            "count": 51,
+            "val": "farmer training"
+          },
+          {
+            "count": 47,
+            "val": "directory"
+          },
+          {
+            "count": 37,
+            "val": "glossary"
+          },
+          {
+            "count": 32,
+            "val": "application"
+          },
+          {
+            "count": 29,
+            "val": "research"
+          },
+          {
+            "count": 28,
+            "val": "simulation"
+          },
+          {
+            "count": 23,
+            "val": "learning asset"
+          },
+          {
+            "count": 19,
+            "val": "graphics"
+          },
+          {
+            "count": 17,
+            "val": "web resource"
+          },
+          {
+            "count": 10,
+            "val": "weblog"
+          },
+          {
+            "count": 9,
+            "val": "adaptation"
+          },
+          {
+            "count": 9,
+            "val": "proceedings"
+          },
+          {
+            "count": 9,
+            "val": "report"
+          },
+          {
+            "count": 8,
+            "val": "introduction"
+          },
+          {
+            "count": 8,
+            "val": "problem statement"
+          },
+          {
+            "count": 8,
+            "val": "slide"
+          },
+          {
+            "count": 8,
+            "val": "technical information"
+          },
+          {
+            "count": 5,
+            "val": "diagram"
+          },
+          {
+            "count": 5,
+            "val": "map"
+          },
+          {
+            "count": 5,
+            "val": "model"
+          },
+          {
+            "count": 5,
+            "val": "photo"
+          },
+          {
+            "count": 4,
+            "val": "assembly"
+          },
+          {
+            "count": 4,
+            "val": "summary of information"
+          },
+          {
+            "count": 4,
+            "val": "table"
+          },
+          {
+            "count": 3,
+            "val": "book"
+          },
+          {
+            "count": 3,
+            "val": "examination"
+          },
+          {
+            "count": 3,
+            "val": "trial/test"
+          },
+          {
+            "count": 2,
+            "val": "thesis"
+          },
+          {
+            "count": 2,
+            "val": "wiki"
+          },
+          {
+            "count": 1,
+            "val": "brochure"
+          },
+          {
+            "count": 1,
+            "val": "news"
+          }
+        ]
+      },
+      {
+        "field": "language",
+        "numbers": [
+          {
+            "count": 11823,
+            "val": "en"
+          },
+          {
+            "count": 1433,
+            "val": "fr"
+          },
+          {
+            "count": 772,
+            "val": "hin"
+          },
+          {
+            "count": 618,
+            "val": "et"
+          },
+          {
+            "count": 528,
+            "val": "de"
+          },
+          {
+            "count": 525,
+            "val": "ori"
+          },
+          {
+            "count": 435,
+            "val": "kan"
+          },
+          {
+            "count": 386,
+            "val": "es"
+          },
+          {
+            "count": 367,
+            "val": "hu"
+          },
+          {
+            "count": 254,
+            "val": "tr"
+          },
+          {
+            "count": 252,
+            "val": "el"
+          },
+          {
+            "count": 207,
+            "val": "noe"
+          },
+          {
+            "count": 205,
+            "val": "nl"
+          },
+          {
+            "count": 173,
+            "val": "ro"
+          },
+          {
+            "count": 163,
+            "val": "pt"
+          },
+          {
+            "count": 116,
+            "val": "none"
+          },
+          {
+            "count": 107,
+            "val": "hok"
+          },
+          {
+            "count": 91,
+            "val": "eng;"
+          },
+          {
+            "count": 88,
+            "val": "gr"
+          },
+          {
+            "count": 86,
+            "val": "it"
+          },
+          {
+            "count": 78,
+            "val": "unr"
+          },
+          {
+            "count": 76,
+            "val": "gon"
+          },
+          {
+            "count": 76,
+            "val": "mai"
+          },
+          {
+            "count": 72,
+            "val": "ru"
+          },
+          {
+            "count": 70,
+            "val": "bhb"
+          },
+          {
+            "count": 59,
+            "val": "lv"
+          },
+          {
+            "count": 58,
+            "val": "sv"
+          },
+          {
+            "count": 54,
+            "val": "bns"
+          },
+          {
+            "count": 45,
+            "val": "no"
+          },
+          {
+            "count": 39,
+            "val": "sck"
+          },
+          {
+            "count": 33,
+            "val": "da"
+          },
+          {
+            "count": 26,
+            "val": "fi"
+          },
+          {
+            "count": 25,
+            "val": "tel"
+          },
+          {
+            "count": 23,
+            "val": "sk"
+          },
+          {
+            "count": 19,
+            "val": "eng"
+          },
+          {
+            "count": 18,
+            "val": "pl"
+          },
+          {
+            "count": 17,
+            "val": "mup"
+          },
+          {
+            "count": 15,
+            "val": "sat"
+          },
+          {
+            "count": 14,
+            "val": "mt"
+          },
+          {
+            "count": 11,
+            "val": "sl"
+          },
+          {
+            "count": 8,
+            "val": "gaz"
+          },
+          {
+            "count": 8,
+            "val": "twi"
+          },
+          {
+            "count": 6,
+            "val": "is"
+          },
+          {
+            "count": 5,
+            "val": "cs"
+          },
+          {
+            "count": 5,
+            "val": "x-none"
+          },
+          {
+            "count": 4,
+            "val": "ar"
+          },
+          {
+            "count": 3,
+            "val": "inc"
+          },
+          {
+            "count": 2,
+            "val": "bgd"
+          },
+          {
+            "count": 2,
+            "val": "cy"
+          },
+          {
+            "count": 2,
+            "val": "eng; eng"
+          },
+          {
+            "count": 2,
+            "val": "hr"
+          },
+          {
+            "count": 2,
+            "val": "ja"
+          },
+          {
+            "count": 2,
+            "val": "la"
+          },
+          {
+            "count": 1,
+            "val": "lt"
+          },
+          {
+            "count": 1,
+            "val": "nor;"
+          },
+          {
+            "count": 1,
+            "val": "qaa"
+          },
+          {
+            "count": 1,
+            "val": "spa;"
+          },
+          {
+            "count": 1,
+            "val": "zh"
+          }
+        ]
+      }
+    ],
+    "id": [
+      "http://www.foodhaccp.com/1news/031513d.html",
+      "http://www.organicvalley.coop/about-us/employment/job-listings/details/job/quality-assurance-technician-export-specialist/",
+      "http://www.ehow.com/about_7218942_job-description-food-production-staff.html",
+      "http://www.foodhaccp.com/1news/010813c.html",
+      "http://www.tbbc.org/aboutus/jd-food-security-officer.pdf",
+      "http://www.foodhaccp.com/1news/032513a.html"
+    ],
+    "metadata": [
+      {
+        "catalog": [
+          "URI"
+        ],
+        "classification": [
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#food_safety",
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#educationalactivity"
+        ],
+        "classification purpose": [
+          "discipline",
+          "discipline"
+        ],
+        "dataProvider": [
+          "Organic_Edunet_Schema"
+        ],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Position duties include developing curriculum; piloting, evaluating, and revising courses; teaching in Food Science and Safety and developing practicum/internships agreements with area employers."
+          }
+        ],
+        "format": [
+          "text/html"
+        ],
+        "identifier": [
+          "http://www.foodhaccp.com/1news/031513d.html"
+        ],
+        "keywords": [
+          {
+            "lang": "en",
+            "value": "training skills"
+          },
+          {
+            "lang": "en",
+            "value": "food security"
+          },
+          {
+            "lang": "en",
+            "value": "job profiles"
+          },
+          {
+            "lang": "en",
+            "value": "food safety"
+          },
+          {
+            "lang": "en",
+            "value": "food quality"
+          }
+        ],
+        "language": [
+          "en"
+        ],
+        "location": [
+          "http://www.foodhaccp.com/1news/031513d.html"
+        ],
+        "mdPath": [
+          "/home/workflow/repository/LOM/AGLRAGRJOBS/23912.xml"
+        ],
+        "metaMetadataId": [
+          "organic_edunet_2659"
+        ],
+        "title": [
+          {
+            "lang": "en",
+            "value": "Food Science and Safety Program Specialist"
+          }
+        ]
+      },
+      {
+        "catalog": [
+          "URI"
+        ],
+        "classification": [
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#policy",
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#organicstandard"
+        ],
+        "classification purpose": [
+          "discipline",
+          "discipline"
+        ],
+        "dataProvider": [
+          "Organic_Edunet_Schema"
+        ],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Quality Assurance Technician-Export Specialist is responsible for maintaining information related to the exportation of Organic products. This person is responsible for the research, oversight of export documentation and support corresponding organisation."
+          }
+        ],
+        "format": [
+          "text/html"
+        ],
+        "identifier": [
+          "http://www.organicvalley.coop/about-us/employment/job-listings/details/job/quality-assurance-technician-export-specialist/"
+        ],
+        "keywords": [
+          {
+            "lang": "en",
+            "value": "job profiles"
+          },
+          {
+            "lang": "en",
+            "value": "quality assurance"
+          },
+          {
+            "lang": "en",
+            "value": "organic product"
+          }
+        ],
+        "language": [
+          "en"
+        ],
+        "location": [
+          "http://www.organicvalley.coop/about-us/employment/job-listings/details/job/quality-assurance-technician-export-specialist/"
+        ],
+        "mdPath": [
+          "/home/workflow/repository/LOM/AGLRAGRJOBS/23919.xml"
+        ],
+        "metaMetadataId": [
+          "organic_edunet_2655"
+        ],
+        "title": [
+          {
+            "lang": "en",
+            "value": "Quality Assurance Technician- Export Specialist"
+          }
+        ]
+      },
+      {
+        "catalog": [
+          "URI"
+        ],
+        "classification": [
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#foodprocessing",
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#foodquality"
+        ],
+        "classification purpose": [
+          "discipline",
+          "discipline"
+        ],
+        "dataProvider": [
+          "Organic_Edunet_Schema"
+        ],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Food production staff includes cooks and waitresses or other food preparation workers, preparing a variety of foods that may range from entrees to desserts."
+          }
+        ],
+        "format": [
+          "text/html"
+        ],
+        "identifier": [
+          "http://www.ehow.com/about_7218942_job-description-food-production-staff.html"
+        ],
+        "keywords": [
+          {
+            "lang": "en",
+            "value": "food manufacture"
+          },
+          {
+            "lang": "en",
+            "value": "job profiles"
+          },
+          {
+            "lang": "en",
+            "value": "food quality"
+          },
+          {
+            "lang": "en",
+            "value": "food producation"
+          }
+        ],
+        "language": [
+          "en"
+        ],
+        "location": [
+          "http://www.ehow.com/about_7218942_job-description-food-production-staff.html"
+        ],
+        "mdPath": [
+          "/home/workflow/repository/LOM/AGLRAGRJOBS/23917.xml"
+        ],
+        "metaMetadataId": [
+          "organic_edunet_2654"
+        ],
+        "title": [
+          {
+            "lang": "en",
+            "value": "Food Production Staff"
+          }
+        ]
+      },
+      {
+        "catalog": [
+          "URI"
+        ],
+        "classification": [
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#meatproduction",
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#educationalactivity",
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#foodsecurity"
+        ],
+        "classification purpose": [
+          "discipline",
+          "discipline",
+          "discipline"
+        ],
+        "dataProvider": [
+          "Organic_Edunet_Schema"
+        ],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "This position involves a 50% Research role, with 45% Teaching, and 5% Service, expecting to establish an extramurally-funded and nationally-recognized program of research in basic and/or applied meat science. Research areas includes mainly meat and muscle biochemistry, meat processing and meat safety, and muscle growth and development. Teaching responsibilities includes courses in the department's IFT-approved Food Science curriculum including Meat Science and another upper division course, and a graduate level course consistent with their research area of expertise."
+          }
+        ],
+        "format": [
+          "text/html"
+        ],
+        "identifier": [
+          "http://www.foodhaccp.com/1news/010813c.html"
+        ],
+        "keywords": [
+          {
+            "lang": "en",
+            "value": "job profiles"
+          },
+          {
+            "lang": "en",
+            "value": "training skills"
+          },
+          {
+            "lang": "en",
+            "value": "food manufacture"
+          },
+          {
+            "lang": "en",
+            "value": "research activity"
+          },
+          {
+            "lang": "en",
+            "value": "meat production"
+          }
+        ],
+        "language": [
+          "en"
+        ],
+        "location": [
+          "http://www.foodhaccp.com/1news/010813c.html"
+        ],
+        "mdPath": [
+          "/home/workflow/repository/LOM/AGLRAGRJOBS/23916.xml"
+        ],
+        "metaMetadataId": [
+          "organic_edunet_2662"
+        ],
+        "title": [
+          {
+            "lang": "en",
+            "value": "Assistant Professor of Meat Science"
+          }
+        ]
+      },
+      {
+        "catalog": [
+          "URI"
+        ],
+        "classification": [
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#foodsecurity",
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#foodquality",
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#standard"
+        ],
+        "classification purpose": [
+          "discipline",
+          "discipline",
+          "discipline"
+        ],
+        "dataProvider": [
+          "Organic_Edunet_Schema"
+        ],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Assist in the development, implementation, monitoring, and evaluation of food security programme activities and provide assistance to partners according to technical guidelines and standards in border camps."
+          }
+        ],
+        "format": [
+          "text/html"
+        ],
+        "identifier": [
+          "http://www.tbbc.org/aboutus/jd-food-security-officer.pdf"
+        ],
+        "keywords": [
+          {
+            "lang": "en",
+            "value": "food security"
+          },
+          {
+            "lang": "en",
+            "value": "border camps"
+          },
+          {
+            "lang": "en",
+            "value": "food security standards"
+          },
+          {
+            "lang": "en",
+            "value": "Thailand"
+          },
+          {
+            "lang": "en",
+            "value": "food quality"
+          },
+          {
+            "lang": "en",
+            "value": "job profiles"
+          }
+        ],
+        "language": [
+          "en"
+        ],
+        "location": [
+          "http://www.tbbc.org/aboutus/jd-food-security-officer.pdf"
+        ],
+        "mdPath": [
+          "/home/workflow/repository/LOM/AGLRAGRJOBS/23915.xml"
+        ],
+        "metaMetadataId": [
+          "organic_edunet_2653"
+        ],
+        "title": [
+          {
+            "lang": "en",
+            "value": "Food Security Officer"
+          }
+        ]
+      },
+      {
+        "catalog": [
+          "URI"
+        ],
+        "classification": [
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#food_safety",
+          "http://www.cc.uah.es/ie/ont/oe-predicates#supports :: http://www.cc.uah.es/ie/ont/oe-oaae#foodquality"
+        ],
+        "classification purpose": [
+          "discipline",
+          "discipline"
+        ],
+        "dataProvider": [
+          "Organic_Edunet_Schema"
+        ],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Responsible for ensuring our customers are provided with the highest quality product as well as excellent customer service. Responsible for ensuring and maintaining a food safe environment through compliance to all requirements of programs/policies for Food Safety, Good Manufacturing Practices, HACCP, Quality, Workplace Safety, IPM, OSHA, Environmental, and as may be required by Plant, Company, and Local, State and Federal mandates or programs."
+          }
+        ],
+        "format": [
+          "text/html"
+        ],
+        "identifier": [
+          "http://www.foodhaccp.com/1news/032513a.html"
+        ],
+        "keywords": [
+          {
+            "lang": "en",
+            "value": "food safety"
+          },
+          {
+            "lang": "en",
+            "value": "HACCP"
+          },
+          {
+            "lang": "en",
+            "value": "food manufacture"
+          },
+          {
+            "lang": "en",
+            "value": "food quality"
+          },
+          {
+            "lang": "en",
+            "value": "job profiles"
+          }
+        ],
+        "language": [
+          "en"
+        ],
+        "location": [
+          "http://www.foodhaccp.com/1news/032513a.html"
+        ],
+        "mdPath": [
+          "/home/workflow/repository/LOM/AGLRAGRJOBS/23918.xml"
+        ],
+        "metaMetadataId": [
+          "organic_edunet_2658"
+        ],
+        "title": [
+          {
+            "lang": "en",
+            "value": "Quality Food Safety Manager"
+          }
+        ]
+      }
+    ],
+    "nrOfResults": 20662,
+    "processingTime": 231
+  }
+}

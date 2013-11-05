@@ -27,15 +27,17 @@
 		</noscript>
 				
 		<!--external javascript-->
+<!--
         <script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.1/build/yahoo-dom-event/yahoo-dom-event.js&2.8.1/build/container/container_core-min.js&2.8.1/build/datasource/datasource-min.js&2.8.1/build/element/element-min.js&2.8.1/build/paginator/paginator-min.js&2.8.1/build/datatable/datatable-min.js&2.8.1/build/json/json-min.js&2.8.1/build/selector/selector-min.js&2.8.1/build/layout/layout-min.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         
+-->
         <!--finder javascript-->
         <script type="text/javascript" src="js/finder/prototype-1.7.1.js"></script>
 		<script type="text/javascript" src="js/finder/jsonp.js"></script>
         <script type="text/javascript" src="js/finder/sha1.js"></script>
         <script type="text/javascript" src="js/finder/jaml-all.js"></script>
-        <script type="text/javascript" src="js/finder/finder.js"></script>
+        <script type="text/javascript" src="js/finder/elastic-finder.js"></script>
 		
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
@@ -138,14 +140,14 @@
 			</footer>
 		<!-- /Footer -->
 
+<!--
 <script type="text/javascript">
-
     /*
      * function customizeFinder() is called at initialisation time
      * you need to change values repositoryName and serviceUrl
      * and also the same values inside the -finder.js- !
      */
-    $.noConflict();
+/*     $.noConflict(); */
     function customizeFinder() {
         return {
             
@@ -163,7 +165,21 @@
     }
     
     </script>
+-->
 
+	       <script type="text/javascript">
+
+            function customizeFinder() 
+            {
+                return {
+                    "loadmore":"active", //active || inactive
+                    "pageSize": 10,
+                    "pageContainers": ["bottom","top"],
+                    "facets": ["set","language","learningResourceType","endUserRole"],
+                }
+            }
+            
+            </script>
 
 	</body>
 </html>

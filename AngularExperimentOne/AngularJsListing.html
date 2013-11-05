@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<!--
+	
+-->
+<html>
+	<head>
+		<title>Angular Experiment 1</title>	
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+		<script src="app.js" type="text/javascript"></script>
+		<script src="expOneController.js" type="text/javascript"></script>
+		
+	</head>
+	
+	<body>
+	
+	<div id="content" ng-app="Experiment_One" ng-controller="expOneController">
+<!--
+		<select ng-model='selectedPerson' ng-options='obj.name for obj in people'></select>
+		<select ng-model='selectedGenre'>
+			<option ng-repeat='label in people[selectedPerson.id].music'>{{label}}</option>
+		</select>	
+-->
+		<br>
+		<input type='text' ng-model='searchText' />	
+		<ul>
+			<li ng-repeat='person in people | filter:searchText' ng-show='person.live == true'>Id:{{person.id}} -- Name:{{person.name}}</li>
+		</ul>
+		<input type='text' ng-model='newPerson' />
+		<button ng-click='addNew()'>Add</button>
+		
+	</div>
+	
+	
+	</body>
+</html>
