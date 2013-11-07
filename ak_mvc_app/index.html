@@ -3,76 +3,88 @@
 <head>
 	<title> ^ Agro Know</title>
 	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
-	<script type="text/javascript" src="js/angular.min.js"></script>
-	
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet/less" type="text/css" media="screen" href="css/style.less" />
-	<script src="js/less-1.5.0.min.js" type="text/javascript"></script>
+	<script src="lib/less-1.5.0.min.js" type="text/javascript"></script>
 
 	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
-	<script type="text/javascript" src="js/ng-ak-app/app.js"></script>
-	<script type="text/javascript" src="js/ng-ak-app/controllers/mainController.js"></script>
-	<script type="text/javascript" src="js/ng-ak-app/controllers/listingController.js"></script>
-	<script type="text/javascript" src="js/ng-ak-app/controllers/paginationController.js"></script>
-	<script type="text/javascript" src="js/ng-ak-app/controllers/facetsController.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers/mainController.js"></script>
+	<script type="text/javascript" src="js/controllers/listingControllerURL.js"></script>
+	<script type="text/javascript" src="js/controllers/paginationController.js"></script>
+	<script type="text/javascript" src="js/controllers/facetsController.js"></script>
 </head>
 
 <body>
         <div ng-app="akListing" ng-controller="mainController">
             <h1>Agro-Know goes Angular ;)</h1>
-            
+
             <form ng-submit="submit()" >
 		      What? Search something:
-		      <input type="text" ng-model="search_query" name="search_query" />
+		      <input type="text" ng-model="search_query" name="search_query"/>
 		      <input type="submit" id="submit" value="Submit" />
 		    </form>
-            
-            <p>Total:{{total}}</p>
-            
+
             <!-- Top Pagination -->
+            <hr>
             <div ng-controller="paginationController" ng-show="enablePaginationTop" ng-init="initPagination()" class="pagination row">
 	            <p ng-repeat="links in pages" ><a href="javascript:;" ng-click="goToPage(links)" >{{links}}</a></p>
             </div>
-            
+
+						<!-- facets -->
+						<hr>
+
             <div ng-show="enableFacets" ng-controller="facetsController">
+            	<!-- active facets -->
 	            <div class="facets row">
-		            <span class="labels">Available Facets:</span> 
+		            <span class="labels">Available Facets:</span>
 		            <p ng-repeat="links in inactiveFacets" >
-		            	<a href="javascript:;" ng-click="selectFacet(links)">{{links}}</a>
+		            	<a href="javascript:;" ng-click="selectFacet(links)">{{links.facet}}:{{links.term}}({{links.count}})</a>
 	            	</p>
 	            </div>
-	            
+
+							<!-- inactive facets -->
 	             <div ng-show="enableFacets" class="facets row">
-		            <span class="labels">Active facets:</span> 
+		            <span class="labels">Active facets:</span>
 		            	<p ng-repeat="links in activeFacets" >
-		            		<a href="javascript:;" ng-click="deselectFacet(links)">{{links}}</a>
+		            		<a href="javascript:;" ng-click="deselectFacet(links)">{{links.term}}</a>
 	            		</p>
 	            </div>
             </div>
-             
-            <div ng-controller="listingController" ng-init="findElements(true)" class="row"> 
-            <div ng-show="loading" class="loading" style="margin:0px auto; padding:0px;">
-            	<img src="images/loading.gif" height="150px" >
-            </div> 
-            <div ng-show="error" class="error_message">
-            	WOW! That's great!<br>An awesome error happened!<br> Try again later :p
-            </div> 
-                     
+
+						<!-- listing -->
+						<hr>
+            <div ng-controller="listingController" ng-init="findElements(true)" class="row">
+
+            <h3>Results</h3>
+            <h4>Search for "{{query.split("=")[1]}}" returned total: {{total}} results</h4>
 	            <ul class="results">
-	            <input ng-model="filterResults" placeholder="Filter results by title..." />  Filtered total: {{filtered.length}}
+	            <input ng-model="filterResults" placeholder="Filter results by title..." /> <b>Page '{{currentPage}}'</b> filtered with <b>'{{filterResults}}'</b> gives total: <b>{{filtered.length}} results</b>
 	            <hr>
+
+	          <!-- loading and message -->
+		          <div ng-show="loading" class="loading" style="margin:0px auto; padding:0px;">
+	            	<img src="images/loading.gif" height="150px" >
+	            </div>
+	            <div ng-show="error" class="error_message">
+	            	WOW! That's great!<br>An awesome error happened!<br> Try again later :p
+	            </div>
+
+            <!-- results -->
 	            	<li ng-repeat="result in filtered = (results | filter:filterResults) ">
-			            <b>Title:</b>{{result.title}} 
+			            <b>Title:</b>{{result.title}}
 						<br> <b>Description:</b> {{result.description}}
 		            </li>
 	            </ul>
 			</div>
-			
+
 			<!-- Bottom Pagination -->
 			<div ng-controller="paginationController" ng-show="enablePaginationBottom" class="pagination row">
 	         <p ng-repeat="links in pages" ><a href="javascript:;" ng-click="goToPage(links)" >{{links}}</a></p>
       </div>
-            
+
     </div>
 
 </body>
