@@ -7,9 +7,15 @@
 /* GENERAL & LANDING PAGE */
 
 body{
-	width:950px;
+	width:100%;
 	margin:20px auto;
-	font: lighter 1em Open Sans,Arial,Helvetica,sans-serif;
+	font: 1.1em Open Sans,Arial,Helvetica,sans-serif; /* lighter */
+	background: url(../images/waves.png) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
 
 	.row{
 		display: inline-block;
@@ -21,6 +27,15 @@ body{
 		font-size: 1.2em;
 		font-weight: bold;
 	}
+}
+
+#akListing{
+	width:1010px;
+	margin:30px auto;
+	background-color: rgba(200,200,200, 0.6);
+	padding:50px;
+	.rounded-corners(10px);
+
 }
 
 .pagination{
@@ -62,3 +77,15 @@ body{
 	text-align: center;
 	font:1.3em;
 }
+
+/*Functions*/
+
+/*rounded corners function : 5px is default radius*/
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+

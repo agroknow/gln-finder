@@ -18,8 +18,8 @@
 </head>
 
 <body>
-        <div ng-app="akListing" ng-controller="mainController">
-            <h1>Agro-Know goes Angular ;)</h1>
+        <div id="akListing" ng-app="akListing" ng-controller="mainController">
+            <h1>Agro-Know MVC Experiment <a href="javascript:;" ng-click="resetLocation()">reset</a></h1>
 
             <form ng-submit="submit()" >
 		      What? Search something:
@@ -41,11 +41,11 @@
 	            <div class="facets row">
 		            <span class="labels">Available Facets:</span>
 		            <p ng-repeat="links in inactiveFacets" >
-		            	<a href="javascript:;" ng-click="selectFacet(links)">{{links.facet}}:{{links.term}}({{links.count}})</a>
+		            	<a href="javascript:;" ng-click="selectFacet(links)">{{links.facet}}:{{links.term}}({{links.count}})</a>
 	            	</p>
 	            </div>
 
-							<!-- inactive facets -->
+				 <!-- active facets -->
 	             <div ng-show="enableFacets" class="facets row">
 		            <span class="labels">Active facets:</span>
 		            	<p ng-repeat="links in activeFacets" >

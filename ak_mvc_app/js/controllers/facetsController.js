@@ -1,4 +1,4 @@
-listing.controller("facetsController", function($rootScope, $scope, $http, sharedProperties){
+listing.controller("facetsController", function($rootScope, $scope, $http, $location, sharedProperties){
 
 // selectFacet() function
 // creates jsons {"term":"xxx","facet":"xxx","count":"xxx"}
@@ -27,14 +27,19 @@ $scope.selectFacet = function(facet)
 /*deselect facet function*/
 $scope.deselectFacet = function(facet)
 {
+	console.log(facet.term +" "+ facet.facet);
 	var index = $scope.activeFacets.indexOf(facet);
 	if (index > -1){
 	    $scope.activeFacets.splice(index, 1);
 	}
 
-    $scope.findElements(false);
+	if($location.search()[facet.facet]) {
+		$location.search(facet.facet,null);
+	}
 
+    $scope.findElements(false);
 }
+
 
 
 });

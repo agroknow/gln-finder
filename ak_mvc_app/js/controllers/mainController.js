@@ -17,45 +17,46 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	//Enables bottom pagination : true/false
 	$scope.enablePaginationBottom = false;
 	//Limit Number of Pages in Pagination
-  $scope.limitPagination = 10;
+	$scope.limitPagination = 10;
 
 	//Page Size defines the number of results per page
 	$scope.pageSize = 10;
 	$rootScope.currentPage = 1;
 
-  //Selected Language
-  $scope.selectedLanguage='en';
+	//Selected Language
+	$scope.selectedLanguage='en';
 
-  //FACETS
-  //Enables the facets : true/false
-  $scope.enableFacets = true;
-  //Defines which facets we want to add
-  $scope.facets = ['set','language','learningResourceType','endUserRole','contexts','coverage'];
+	//FACETS
+	//Enables the facets : true/false
+	$scope.enableFacets = true;
+	//Defines which facets we want to add
+	$scope.facets = ['set','language','learningResourceType','endUserRole','contexts','coverage'];
 
-  //SNIPPETS
-  //Components inside snippet
-  $scope.snippetElements = ['title','description'];
-
-
-  /*-----------------------------------VARIOUS VARIABLES in the scope-----------------------------------*/
-
-  //this is the variable that created in the search box.
-  //at Initialization searches '*' see:listingController > if(init)
-  $rootScope.query = "";
+	//SNIPPETS
+	//Components inside snippet
+	$scope.snippetElements = ['title','description'];
 
 
-  //Holds the results each time
-  $scope.results = [];
-  //Holds the pages for pagination
-  $scope.pages = [];
+	/*-----------------------------------VARIOUS VARIABLES in the scope-----------------------------------*/
 
-  //Inactive facets
-  $scope.inactiveFacets = [];
-  //Active facets
-  $scope.activeFacets = [];
+	//this is the variable that created in the search box.
+	//at Initialization searches '*' see:listingController > if(init)
+	$rootScope.query = "";
 
-  //Total results
-  $scope.total = 0;
+
+	//Holds the results each time
+	$scope.results = [];
+	//Holds the pages for pagination
+	$scope.pages = [];
+
+	//Inactive facets
+	$scope.inactiveFacets = [];
+	//Active facets
+	$scope.activeFacets = [];
+	$scope.activeUrlFacets = [];
+
+	//Total results
+	$scope.total = 0;
 
 
 	/*-----------------------------------FUNCTIONS-----------------------------------*/
@@ -80,20 +81,24 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 
 	};
 
-  //Function for general update
-  $scope.update = function()
-  {
-    $scope.total = sharedProperties.getTotal();
-  }
-
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	$scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-	   console.log('start', evt, absNewUrl, absOldUrl);
-	});
+	//Function for general update
+	$scope.update = function()
+	{
+		$scope.total = sharedProperties.getTotal();
+	}
 
 	$scope.$on('$locationChangeSuccess',function(evt, absNewUrl, absOldUrl) {
-	   console.log('success', evt, absNewUrl, absOldUrl);
+	  //console.log('success', evt, absNewUrl, absOldUrl);
+	  $scope.findElements(false);
 	});
+
+	//reset $location
+
+	$scope.resetLocation = function() {
+		//console.log("reset");
+		$location.search('set',null);
+		$scope.activeFacets = [];
+	}
 
 
 });
