@@ -58,7 +58,7 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		//add parameters to URL
 		//$location.search($rootScope.query + query_facets + query_active_facets + query_pagination);
 
-		$http.get(query).success(function(data)
+	$http.get(query).success(function(data)
     {
     	console.log(data.total+" findElements : " + query);
 

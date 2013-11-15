@@ -4,10 +4,10 @@
 */
 
 /*Define ng-app module*/
-var listing = angular.module('akListing',[])
+var listing = angular.module('akListing',[]);
 
 
-	.service('sharedProperties', function (){
+	listing.service('sharedProperties', function (){
 
 	    var total = 0;
 	    var activeFacets = [];
@@ -41,7 +41,9 @@ var listing = angular.module('akListing',[])
 	    };
 	})
 
-	.config(['$locationProvider', function($locationProvider) {
-     $locationProvider.html5Mode(true)}])
+	listing.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.html5Mode(true)}]);
 
-	;
+    listing.config(function($httpProvider){
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];});
+

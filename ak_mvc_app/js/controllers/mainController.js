@@ -30,7 +30,7 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	//Enables the facets : true/false
 	$scope.enableFacets = true;
 	//Defines which facets we want to add
-	$scope.facets = ['set','language','learningResourceType','endUserRole','contexts','coverage'];
+	$scope.facets = ['set','language','contexts'];
 
 	//SNIPPETS
 	//Components inside snippet
@@ -87,18 +87,23 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 		$scope.total = sharedProperties.getTotal();
 	}
 
+	//reset $location
+	$scope.resetLocation = function() {
+		console.log("--reset--");
+		for(i in $scope.facets) {
+			console.log($scope.facets[i]);
+			$location.search($scope.facets[i],null);
+		}
+
+		$scope.activeFacets = [];
+		$scope.findElements(true);
+	}
+
+	//on locationChangeSuccess findElements used for
 	$scope.$on('$locationChangeSuccess',function(evt, absNewUrl, absOldUrl) {
-	  //console.log('success', evt, absNewUrl, absOldUrl);
+	  console.log('success', evt, absNewUrl, absOldUrl);
 	  $scope.findElements(false);
 	});
-
-	//reset $location
-
-	$scope.resetLocation = function() {
-		//console.log("reset");
-		$location.search('set',null);
-		$scope.activeFacets = [];
-	}
 
 
 });

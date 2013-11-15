@@ -5,20 +5,20 @@ listing.controller("facetsController", function($rootScope, $scope, $http, $loca
 // in active facets and calls findElements() from listingController in order to use the new
 $scope.selectFacet = function(facet)
 {
-		var flag = false;
-		/*check if facet is in active ones*/
-		for(active in $scope.activeFacets){
-			if(facet.term == $scope.activeFacets[active].term){
-				flag=true
-			}
+	var flag = false;
+	/*check if facet is in active ones*/
+	for(active in $scope.activeFacets){
+		if(facet.term == $scope.activeFacets[active].term){
+			flag=true
 		}
+	}
 
-		/*push item in active facets if it's not in array*/
-		if(!flag){
-			$scope.activeFacets.push(facet);
-		}
+	/*push item in active facets if it's not in array*/
+	if(!flag){
+		$scope.activeFacets.push(facet);
+	}
 
-		$rootScope.currentPage = 1;
+	$rootScope.currentPage = 1;
     $scope.findElements(false);
     $scope.update();
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> ^ Agro Know</title>
+	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet/less" type="text/css" media="screen" href="css/style.less" />
+	<script src="lib/less-1.5.0.min.js" type="text/javascript"></script>
+	<script src="lib/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers/viewItemController.js"></script>
+</head>
+
+<body>
+        <div id="akListing" ng-app="akListing" >
+            <h1>Angular Experiment - View Item</h1>
+
+			<!-- item -->
+			<hr>
+            <div ng-controller="viewItemController" ng-init="getItem()" class="row">
+
+				<article class="is-page-content">
+	                <header>
+	                    <h2 id="itemTitle"></h2>
+	                    <!--<img src="style/images/copyright_sample.png" alt="image" />-->
+	                </header>
+
+	                <div>
+                        <p class="itemDescription" id="itemDescription"></p>
+	                </div>
+
+					<hr>
+
+	                <div class="rating">
+	                	<p> <b>{{item_number_of_visitors}}</b> visitors have rate this item.</p>
+	                	<p>Average rating : <b>{{item_average_rating}}</b></p>
+	                	<p>Rate this item</p>
+						<span><a href="javascript:;" ng-click="rateItem(1)">1</a></span>
+						<span><a href="javascript:;" ng-click="rateItem(2)">2</a></span>
+						<span><a href="javascript:;" ng-click="rateItem(3)">3</a></span>
+						<span><a href="javascript:;" ng-click="rateItem(4)">4</a></span>
+						<span><a href="javascript:;" ng-click="rateItem(5)">5</a></span>
+					</div>
+
+					<hr>
+
+	                <div class="tagging">
+	                	<p>Tags: <b>{{item_tags}}</b> </p>
+        	            <form ng-submit="submit_new_tag()" >
+					      Add new tag for this item:
+					      <input type="text" ng-model="new_tag" name="new_tag"/>
+					      <input type="submit" id="submit_tag" value="Add" />
+					    </form>
+					</div>
+
+
+
+				</article>
+
+
+			</div>
+
+
+    </div>
+
+</body>
+</html>

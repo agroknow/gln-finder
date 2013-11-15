@@ -1,1 +1,0 @@
-http://www.revillwebdesign.com/angularjs-tutorial/

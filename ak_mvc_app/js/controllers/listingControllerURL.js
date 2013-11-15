@@ -16,12 +16,12 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 
 		// 'green' will be replaced by '*' @ initial search
 		if(init){
+			if(!$rootScope.query) {
+				$rootScope.query = 'q=green';
+			}
 
-			// !! WE NEED ALSO TO TAKE IT FROM URL!! DON'T FORGET TO IMPLEMENT IT
-			$rootScope.query = 'q=green';
-
-			console.log('--init--');
 			//flag to check if there are selected facets in url
+/*
 			var facetsInUrlFlag = false;
 			//-check url
 			for(temp in $scope.facets) {
@@ -46,6 +46,7 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 					console.log($scope.activeUrlFacets);
 		    	}
 			}
+*/
 
 		}
 
@@ -105,36 +106,36 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 
 		$http.get(query).success(function(data)
 		{
-			console.log(data.total+" findElements : " + query);
+		console.log(data.total+" findElements : " + query);
 
-			/*Add facets*/
-			if($scope.enableFacets){
-		  	$scope.inactiveFacets.length = 0;/*clear results*/
-		      angular.forEach(data.facets, function(facet, index){
-		      	var length = facet.terms.length;
-		      	if(length != 0){
-		      		for(var i=0; i<length;i++){
-		      		  //format:term@facet#count
-		      		  $scope.inactiveFacets.push({"term":facet.terms[i].term,"facet": index, "count":facet.terms[i].count});
-		      		}
+		/*Add facets*/
+		if($scope.enableFacets){
+			$scope.inactiveFacets.length = 0;/*clear results*/
+		  angular.forEach(data.facets, function(facet, index) {
+		  	var length = facet.terms.length;
+		  	if(length != 0){
+		  		for(var i=0; i<length;i++){
+		  		  //format:term@facet#count
+		  		  $scope.inactiveFacets.push({"term":facet.terms[i].term,"facet": index, "count":facet.terms[i].count});
+		  		}
 
-		      	}
-		      });
+		  	}
+		  });
 
-			}
+		}
 
-			//Something dummy to print
-			$scope.results.length = 0;//clear results
-		  angular.forEach(data.results, function(result, index){
+		//Something dummy to print
+		$scope.results.length = 0;//clear results
+		angular.forEach(data.results, function(result, index){
 		  	//Listing Results
 		  	$scope.results.push($scope.getSnippet(result, $scope.snippetElements));
 		  });
 
 
-		  $scope.loading = false;
-		  sharedProperties.setTotal(data.total);
-		    $rootScope.updatePagination();
-		  $scope.update();
+		$scope.loading = false;
+		sharedProperties.setTotal(data.total);
+	    $rootScope.updatePagination();
+		$scope.update();
 
 		})
 		.error(function(error) {
@@ -145,31 +146,36 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 	}
 
 	/*
-	* gets the json and create a new one based on the specs of the active_elements
+	* gets the json and create a new one based on the specs of the snippet_elements
 	* @param element : json from result
-	* @param active_elements : array with selected elements we want to show in listing (i.e. title, description...)
+	* @param snippet_elements : array with selected elements we want to show in listing (i.e. title, description...)
 	*/
-	$scope.getSnippet = function(element, active_elements)
+	$scope.getSnippet = function(element, snippet_elements)
 	{
+		//console.log(element);
 		var temp = "";
 		if(element.languageBlocks[$scope.selectedLanguage]!=undefined && element.languageBlocks[$scope.selectedLanguage].title!=undefined)
 		{
 			var equals = "";
-			for(index in active_elements)
+			for(index in snippet_elements)
 			{
-				if(active_elements[index] in element.languageBlocks[$scope.selectedLanguage])
+				if(snippet_elements[index] in element.languageBlocks[$scope.selectedLanguage])
 				{
-					if(element.languageBlocks[$scope.selectedLanguage][active_elements[index]]!=null)
+					if(element.languageBlocks[$scope.selectedLanguage][snippet_elements[index]]!=null)
 					{
 						if(index!=0)
 						{
 							equals+= ",";
 						}
-						equals += "\"" + active_elements[index] + "\" : \"" + element.languageBlocks[$scope.selectedLanguage][active_elements[index]].replace(/\"/g, "\\\"") + "\"";
+						equals += "\"" + snippet_elements[index] + "\" : \"" + element.languageBlocks[$scope.selectedLanguage][snippet_elements[index]].replace(/\"/g, "\\\"") + "\"";
 					}
 				}
 
 
+			}
+
+			if(element.identifier) {
+				equals += '\ , "id\" : \"' + element.identifier + '\"';
 			}
 
 			temp = '{' + equals + '}';
