@@ -5,11 +5,11 @@
 */
 
 /*Define viewItemController controller in 'app' */
-listing.controller("viewItemController", function($rootScope, $scope, $http, $location, sharedProperties){
+listing.controller("viewItemController", function($rootScope, $scope, $http, $location, sharedProperties) {
 
-/*****************************************************************************************************************/
-/*							  	GENERAL												  						     */
-/*****************************************************************************************************************/
+	/*****************************************************************************************************************/
+	/*							  	GENERAL												  						     */
+	/*****************************************************************************************************************/
 	/*AKIF URL*/
 	$scope.akif = 'http://54.228.180.124:8080/search-api/v1/akif/';
 
@@ -26,11 +26,11 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	//for using CORS (Cross-Origin Resource Sharing)
 	$http.defaults.useXDomain = true;
 
-/*****************************************************************************************************************/
-/*							  	FUNCTIONS												  						 */
-/*****************************************************************************************************************/
+	/*****************************************************************************************************************/
+	/*							  	FUNCTIONS												  						 */
+	/*****************************************************************************************************************/
 
-/****************************************************************************************** GET ITEM *****************************/
+	/****************************************************************************************** GET ITEM *****************************/
 	$scope.getItem = function() {
 
 
@@ -41,6 +41,11 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 
 		var xhr = createCORSRequest('GET', $scope.akif + item_identifier);
+
+		xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+		xhr.setRequestHeader('Content-Type','application/json');
+		xhr.setRequestHeader('Accept','application/json;charset=utf-8');
+		xhr.setRequestHeader('Access-Control-Allow-Headers','*');
 
 		if (!xhr) {
 			console.log('CORS not supported');
@@ -81,12 +86,9 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 			};
 		}
 
-		//,{headers:{'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json', 'Accept':'application/json;charset=utf-8', 'Access-Control-Allow-Headers':'*'}}
-
-
 	};
 
-/****************************************************************************************** GET ITEM RATINGS *********************/
+	/****************************************************************************************** GET ITEM RATINGS *********************/
 	$scope.getItemRatings = function() {
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/ratings?itemResourceUri='+$scope.item_resource_url+'&max=100';
 		var headers = {'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
@@ -116,7 +118,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 	};
 
-/****************************************************************************************** RATE ITEM ****************************/
+	/****************************************************************************************** RATE ITEM ****************************/
 	$scope.rateItem = function(value) {
 
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/ratings';
@@ -179,7 +181,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 		console.log(value);
 	}
 
-/****************************************************************************************** GET ITEM TAGS ************************/
+	/****************************************************************************************** GET ITEM TAGS ************************/
 	$scope.getItemTags = function() {
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings?itemResourceUri='+$scope.item_resource_url+'&max=10';
 		var headers = {'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
@@ -214,7 +216,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 	};
 
-/****************************************************************************************** ADD TAG TO ITEM **********************/
+	/****************************************************************************************** ADD TAG TO ITEM **********************/
 	$scope.submit_new_tag = function() {
 
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings';
@@ -249,31 +251,31 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	}
 
 
-/****************************************************************************************** Helper Method for CORS Request *****************************/
-function createCORSRequest(method, url) {
-	var xhr = new XMLHttpRequest();
-	if ("withCredentials" in xhr) {
-		// Check if the XMLHttpRequest object has a "withCredentials" property.
-		// "withCredentials" only exists on XMLHTTPRequest2 objects.
-		xhr.open(method, url, true);
-	}
-	else if (typeof XDomainRequest != "undefined") {
-		// Otherwise, check if XDomainRequest.
-		// XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-		xhr = new XDomainRequest();
-		xhr.open(method, url);
-	}
-	else {
-		// Otherwise, CORS is not supported by the browser.
-		xhr = null;
-	}
+	/****************************************************************************************** Helper Method for CORS Request *****************************/
+	function createCORSRequest(method, url) {
+		var xhr = new XMLHttpRequest();
+		if ("withCredentials" in xhr) {
+			// Check if the XMLHttpRequest object has a "withCredentials" property.
+			// "withCredentials" only exists on XMLHTTPRequest2 objects.
+			xhr.open(method, url, true);
+		}
+		else if (typeof XDomainRequest != "undefined") {
+			// Otherwise, check if XDomainRequest.
+			// XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+			xhr = new XDomainRequest();
+			xhr.open(method, url);
+		}
+		else {
+			// Otherwise, CORS is not supported by the browser.
+			xhr = null;
+		}
 
-	xhr.onerror = function() {
-		console.log('XHR error!');
-	};
+		xhr.onerror = function() {
+			console.log('XHR error!');
+		};
 
-	return xhr;
-}
+		return xhr;
+	}
 
 });
 
