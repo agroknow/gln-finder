@@ -74,7 +74,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 /****************************************************************************************** GET ITEM RATINGS *****************************/
 	$scope.getItemRatings = function() {
-		var path = 'http://62.217.125.104:8080/socnav-gln/api/ratings?itemResourceUri='+$scope.item_resource_url;
+		var path = 'http://62.217.125.104:8080/socnav-gln/api/ratings?itemResourceUri='+$scope.item_resource_url+'&max=100';
 		var headers = {'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
 
 		console.log("getItemRatings: "+path);
@@ -87,6 +87,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 		})
 		.success(function(data) {
 			var sum = 0, ctr=0;
+			console.log(data);
 			for(i in data) {
 				ctr++;
 				sum += data[i].preference_avg;
@@ -166,11 +167,11 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 /****************************************************************************************** GET ITEM TAGS *****************************/
 	$scope.getItemTags = function() {
-		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings?itemResourceUri='+$scope.item_resource_url;
+		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings?itemResourceUri='+$scope.item_resource_url+'&max=10';
 		var headers = {'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
 
 		console.log("getItemTags: "+path);
-
+		$scope.item_tags = '';
 		$http({
 			method : 'GET',
 			url : path,
@@ -181,9 +182,11 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 			var sum = 0, ctr=0;
 
 			if(data[0]!=undefined && data[0].tags!=undefined){
-				for(i in data[0].tags) {
-					ctr++;
-					$scope.item_tags += data[0].tags[i].value + ', ';
+				for(j in data) {
+					for(i in data[j].tags) {
+						ctr++;
+						$scope.item_tags += data[j].tags[i].value + ', ';
+					}
 				}
 			}
 			else {
@@ -212,7 +215,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 			var thisJson = '{"domain":"'+$scope.domain+'","ip_address":"0.0.0.0","session_id":"b3258f85j","sharing_level":"Public","item":{"metadata_uri":"'+$scope.item_resource_url+'","resource_uri":"'+$scope.item_resource_url+'"},"user":{"metadata_uri":null,"remote_id":"'+$scope.user_id+'"},"tags":[{"value":"'+new_tag+'","lang":"en"}]}';
 
 			$http({
-			method : 'PUT',
+			method : 'POST',
 			url : path,
 			data : thisJson,
 			headers : headers
@@ -224,6 +227,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 				console.error(err);
 			});
 
+			$scope.getItem(); //need to refresh page
 		}
 		else{
 			 alert('Empty tag? Seriously now? WRITE SOMETHING!!!');
