@@ -43,7 +43,3 @@ var listing = angular.module('akListing',[]);
 
 	listing.config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(true)}]);
-
-    listing.config(function($httpProvider){
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];});
-

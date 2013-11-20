@@ -23,56 +23,70 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	$scope.item_average_rating = 'no rating available yet';
 	$scope.item_tags = '';
 
+	//for using CORS (Cross-Origin Resource Sharing)
+	$http.defaults.useXDomain = true;
+
 /*****************************************************************************************************************/
-/*							  	FUNCTIONS												  						     */
+/*							  	FUNCTIONS												  						 */
 /*****************************************************************************************************************/
 
 /****************************************************************************************** GET ITEM *****************************/
 	$scope.getItem = function() {
+
 
 		var item_identifier = $location.search().id; //10708 || 12552
 		$scope.item_resource_url = '';
 		$scope.item_number_of_visitors = 0;
 		$scope.item_average_rating = 'no rating available yet';
 
-		$http.get($scope.akif + item_identifier, {headers:{'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json', 'Accept':'application/json;charset=utf-8'}}).success(function(data)
-	    {
 
-			//parse array and create an JS Object Array
-			//every item is a JSON
-			var results = JSON.parse(JSON.stringify(data));
-			var thisJson = results.results[0];
+		var xhr = createCORSRequest('GET', $scope.akif + item_identifier);
 
-			//WE USE ONLY 'EN' FOR NOW
-			if (thisJson.languageBlocks.en !== undefined) {
+		if (!xhr) {
+			console.log('CORS not supported');
+		}
+		else {
+			xhr.send();
+			xhr.onload = function() {
+				var data = xhr.responseText;
 
-				languageBlock = thisJson.languageBlocks['en'];
+				//parse array and create an JS Object Array
+				//every item is a JSON
+				console.log(data);
+				var results = JSON.parse(data);
+				var thisJson = results.results[0];
 
-				if (languageBlock.title !== undefined) {
-				document.getElementById('itemTitle').innerHTML = languageBlock.title;
+				//WE USE ONLY 'EN' FOR NOW
+				if (thisJson.languageBlocks.en !== undefined) {
+
+					languageBlock = thisJson.languageBlocks['en'];
+
+					if (languageBlock.title !== undefined) {
+					document.getElementById('itemTitle').innerHTML = languageBlock.title;
+					}
+
+					if (languageBlock.description !== undefined) {
+					document.getElementById('itemDescription').innerHTML = languageBlock.description;
+					}
 				}
 
-				if (languageBlock.description !== undefined) {
-				document.getElementById('itemDescription').innerHTML = languageBlock.description;
+				if(thisJson.expressions[0].manifestations[0].items[0].url!=undefined) {
+					//replace is temporarelly for testing reasons.
+					$scope.item_resource_url = thisJson.expressions[0].manifestations[0].items[0].url.replace("http://confolio.vm.grnet.gr/scam/", "_").replace("http://www.fao.org/docrep/X0185E/",".");
+
 				}
-			}
+				$scope.getItemRatings();
+				$scope.getItemTags();
 
-			if(thisJson.expressions[0].manifestations[0].items[0].url!=undefined) {
-				//replace is temporarelly for testing reasons.
-				$scope.item_resource_url = thisJson.expressions[0].manifestations[0].items[0].url.replace("http://confolio.vm.grnet.gr/scam/", "_").replace("http://www.fao.org/docrep/X0185E/",".");
+			};
+		}
 
-			}
-			$scope.getItemRatings();
-			$scope.getItemTags();
+		//,{headers:{'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json', 'Accept':'application/json;charset=utf-8', 'Access-Control-Allow-Headers':'*'}}
 
 
-	    })
-	    .error(function(error) {
-			    console.log("--F@ck!n' error on $http.get : " + $scope.akif + item_identifier);
-		});
 	};
 
-/****************************************************************************************** GET ITEM RATINGS *****************************/
+/****************************************************************************************** GET ITEM RATINGS *********************/
 	$scope.getItemRatings = function() {
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/ratings?itemResourceUri='+$scope.item_resource_url+'&max=100';
 		var headers = {'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
@@ -102,7 +116,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 	};
 
-/****************************************************************************************** RATE ITEM *****************************/
+/****************************************************************************************** RATE ITEM ****************************/
 	$scope.rateItem = function(value) {
 
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/ratings';
@@ -165,7 +179,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 		console.log(value);
 	}
 
-/****************************************************************************************** GET ITEM TAGS *****************************/
+/****************************************************************************************** GET ITEM TAGS ************************/
 	$scope.getItemTags = function() {
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings?itemResourceUri='+$scope.item_resource_url+'&max=10';
 		var headers = {'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
@@ -200,7 +214,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 	};
 
-/****************************************************************************************** ADD TAG TO ITEM *****************************/
+/****************************************************************************************** ADD TAG TO ITEM **********************/
 	$scope.submit_new_tag = function() {
 
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings';
@@ -233,6 +247,33 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 			 alert('Empty tag? Seriously now? WRITE SOMETHING!!!');
 		}
 	}
+
+
+/****************************************************************************************** Helper Method for CORS Request *****************************/
+function createCORSRequest(method, url) {
+	var xhr = new XMLHttpRequest();
+	if ("withCredentials" in xhr) {
+		// Check if the XMLHttpRequest object has a "withCredentials" property.
+		// "withCredentials" only exists on XMLHTTPRequest2 objects.
+		xhr.open(method, url, true);
+	}
+	else if (typeof XDomainRequest != "undefined") {
+		// Otherwise, check if XDomainRequest.
+		// XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+		xhr = new XDomainRequest();
+		xhr.open(method, url);
+	}
+	else {
+		// Otherwise, CORS is not supported by the browser.
+		xhr = null;
+	}
+
+	xhr.onerror = function() {
+		console.log('XHR error!');
+	};
+
+	return xhr;
+}
 
 });
 
