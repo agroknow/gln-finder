@@ -1,5 +1,9 @@
 listing.controller("listingController", function($rootScope, $scope, $http, $location, sharedProperties){
+
+
 	/*
+	* creates the request for Search API and makes the call
+	*
 	* @param init : true if function called in initialization.
 	*/
 	$rootScope.findElements = function(init)
@@ -9,46 +13,36 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		//enable error message : true/false
 		$scope.error = false;
 
-	//If query defined in URL
+		//If query defined in URL
 		if($location.search().q){
 			$rootScope.query = 'q='+$location.search().q;
 		}
 
-		// 'green' will be replaced by '*' @ initial search
+		//Search '*' @ initial search
 		if(init){
 			if(!$rootScope.query) {
-				$rootScope.query = 'q=green';
+				$rootScope.query = 'q=*';
 			}
-
-			//flag to check if there are selected facets in url
-/*
-			var facetsInUrlFlag = false;
-			//-check url
-			for(temp in $scope.facets) {
-		    	if($scope.facets[temp] in $location.search()) {
-		    		facetsInUrlFlag=true;
-
-					// creates jsons {"term":"xxx","facet":"xxx"}
-					// in active facets and calls findElements() from listingController in order to use the new
-		    		var flag = false;
-					var facet = { 'facet' : $scope.facets[temp].toString() , 'term' : $location.search()[$scope.facets[temp].toString()]} ;
-
-		    		for(active in $scope.activeUrlFacets){
-						if(facet.term == $scope.activeUrlFacets[active].term){
-							flag=true
-						}
-					}
-					//push item in active url facets if it's not in array
-					if(!flag){
-						$scope.activeUrlFacets.push(facet);
-					}
-
-					console.log($scope.activeUrlFacets);
-		    	}
-			}
-*/
-
 		}
+
+		//URL facets
+		var flg = true; //needed for clearing the activeFacets at first time
+		//-check url
+		for(i in $scope.facets) {
+	    	if($scope.facets[i] in $location.search()) {
+				if(flg) {
+		    		$scope.activeFacets = [];
+		    		console.log('_cleared_' + $scope.activeFacets);
+		    		flg = false;
+	    		}
+
+				var facet = { 'facet' : $scope.facets[i].toString() , 'term' : $location.search()[$scope.facets[i].toString()]} ;
+
+				//push item in activeFacets, if it's not in the array
+				$scope.activeFacets.push(facet);
+	    	}
+		}
+
 
 		//If there are facets defined in settings add them in query
 		var query_facets = '';
@@ -106,36 +100,36 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 
 		$http.get(query).success(function(data)
 		{
-		console.log(data.total+" findElements : " + query);
+			console.log(data.total+" findElements : " + query);
 
-		/*Add facets*/
-		if($scope.enableFacets){
-			$scope.inactiveFacets.length = 0;/*clear results*/
-		  angular.forEach(data.facets, function(facet, index) {
-		  	var length = facet.terms.length;
-		  	if(length != 0){
-		  		for(var i=0; i<length;i++){
-		  		  //format:term@facet#count
-		  		  $scope.inactiveFacets.push({"term":facet.terms[i].term,"facet": index, "count":facet.terms[i].count});
-		  		}
+			/*Add facets*/
+			if($scope.enableFacets){
+				$scope.inactiveFacets.length = 0;/*clear results*/
+			  angular.forEach(data.facets, function(facet, index) {
+			  	var length = facet.terms.length;
+			  	if(length != 0){
+			  		for(var i=0; i<length;i++){
+			  		  //format:term@facet#count
+			  		  $scope.inactiveFacets.push({"term":facet.terms[i].term,"facet": index, "count":facet.terms[i].count});
+			  		}
 
-		  	}
-		  });
+			  	}
+			  });
 
-		}
+			}
 
-		//Something dummy to print
-		$scope.results.length = 0;//clear results
-		angular.forEach(data.results, function(result, index){
-		  	//Listing Results
-		  	$scope.results.push($scope.getSnippet(result, $scope.snippetElements));
-		  });
+			//Something dummy to print
+			$scope.results.length = 0;//clear results
+			angular.forEach(data.results, function(result, index){
+			  	//Listing Results
+			  	$scope.results.push($scope.getSnippet(result, $scope.snippetElements));
+			  });
 
 
-		$scope.loading = false;
-		sharedProperties.setTotal(data.total);
-	    $rootScope.updatePagination();
-		$scope.update();
+			$scope.loading = false;
+			sharedProperties.setTotal(data.total);
+		    $rootScope.updatePagination();
+			$scope.update();
 
 		})
 		.error(function(error) {
@@ -152,7 +146,6 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 	*/
 	$scope.getSnippet = function(element, snippet_elements)
 	{
-		//console.log(element);
 		var temp = "";
 		if(element.languageBlocks[$scope.selectedLanguage]!=undefined && element.languageBlocks[$scope.selectedLanguage].title!=undefined)
 		{
@@ -167,15 +160,18 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 						{
 							equals+= ",";
 						}
-						equals += "\"" + snippet_elements[index] + "\" : \"" + element.languageBlocks[$scope.selectedLanguage][snippet_elements[index]].replace(/\"/g, "\\\"") + "\"";
+						equals += "\"" + snippet_elements[index] + "\" : \"" + $scope.truncate(element.languageBlocks[$scope.selectedLanguage][snippet_elements[index]], $scope.maxTextLength, ' ...').replace(/\"/g, "\\\"") + "\"";
 					}
 				}
-
-
 			}
 
+			//WE MUST HAVE ID & SET IN ORDER TO VIEW ITEM
 			if(element.identifier) {
 				equals += '\ , "id\" : \"' + element.identifier + '\"';
+			}
+
+			if(element.set) {
+				equals += '\ , "set\" : \"' + element.set + '\"';
 			}
 
 			temp = '{' + equals + '}';
@@ -187,8 +183,8 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		}
 
 		//return every snippet as JSON
-		//console.log(temp);
-		return JSON.parse(temp);
+		console.log(temp);
+		return JSON.parse($scope.sanitize(temp));
 	}
 
 

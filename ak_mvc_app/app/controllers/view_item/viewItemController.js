@@ -34,18 +34,17 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	$scope.getItem = function() {
 
 
-		var item_identifier = $location.search().id; //10708 || 12552
+		var item_identifier = $location.search().id.split('_')[0]; //SET-ID  ****10708 || 12552
+		var item_set = $location.search().id.split('_')[1];
 		$scope.item_resource_url = '';
 		$scope.item_number_of_visitors = 0;
 		$scope.item_average_rating = 'no rating available yet';
 
 
-		var xhr = createCORSRequest('GET', $scope.akif + item_identifier);
+		var xhr = createCORSRequest('GET', $scope.akif + item_set + '/' + item_identifier);
 
-		xhr.setRequestHeader('Access-Control-Allow-Origin','*');
 		xhr.setRequestHeader('Content-Type','application/json');
 		xhr.setRequestHeader('Accept','application/json;charset=utf-8');
-		xhr.setRequestHeader('Access-Control-Allow-Headers','*');
 
 		if (!xhr) {
 			console.log('CORS not supported');
@@ -57,7 +56,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 				//parse array and create an JS Object Array
 				//every item is a JSON
-				console.log(data);
+				//console.log(data);
 				var results = JSON.parse(data);
 				var thisJson = results.results[0];
 
@@ -67,11 +66,11 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 					languageBlock = thisJson.languageBlocks['en'];
 
 					if (languageBlock.title !== undefined) {
-					document.getElementById('itemTitle').innerHTML = languageBlock.title;
+						document.getElementById('itemTitle').innerHTML = languageBlock.title;
 					}
 
 					if (languageBlock.description !== undefined) {
-					document.getElementById('itemDescription').innerHTML = languageBlock.description;
+						document.getElementById('itemDescription').innerHTML = languageBlock.description;
 					}
 				}
 
@@ -217,7 +216,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	};
 
 	/****************************************************************************************** ADD TAG TO ITEM **********************/
-	$scope.submit_new_tag = function() {
+	$scope.submitNewTag = function() {
 
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings';
 		var headers = {'Access-Control-Allow-Origin':'*', 'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
@@ -251,7 +250,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	}
 
 
-	/****************************************************************************************** Helper Method for CORS Request *****************************/
+	/****************************************************************************************** Helper Method for CORS Request *******/
 	function createCORSRequest(method, url) {
 		var xhr = new XMLHttpRequest();
 		if ("withCredentials" in xhr) {

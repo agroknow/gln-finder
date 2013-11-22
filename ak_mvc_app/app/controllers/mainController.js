@@ -35,6 +35,7 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	//SNIPPETS
 	//Components inside snippet
 	$scope.snippetElements = ['title','description'];
+	$scope.maxTextLength = 500;
 
 
 	/*-----------------------------------VARIOUS VARIABLES in the scope-----------------------------------*/
@@ -61,10 +62,8 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 
 	/*-----------------------------------FUNCTIONS-----------------------------------*/
 	//Function for query submission
-	$scope.submit = function()
-	{
-		if (this.search_query)
-		{
+	$scope.submit = function() {
+		if (this.search_query) {
 		  $rootScope.query = "q=" + this.search_query;
 		  $location.search('q',this.search_query);
 		  this.search_query = '';
@@ -82,8 +81,7 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	};
 
 	//Function for general update
-	$scope.update = function()
-	{
+	$scope.update = function() {
 		$scope.total = sharedProperties.getTotal();
 	}
 
@@ -91,17 +89,43 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	$scope.resetLocation = function() {
 		console.log("--reset--");
 		for(i in $scope.facets) {
-			console.log($scope.facets[i]);
 			$location.search($scope.facets[i],null);
 		}
 
+		$location.search('q',null);
 		$scope.activeFacets = [];
+		$location.search('set',null);
 		$scope.findElements(true);
 	}
 
+	//function for line break removal
+	//@text : text to sanitize
+	$scope.sanitize = function(text) {
+		text = text.replace(/(\r\n|\n|\r)/gm," ");
+		return text;
+	}
+
+	//function for truncate long texts (i.e. description in listing)
+	$scope.truncate = function(str, maxLength, suffix)
+	{
+	    if(str.length > maxLength)
+	    {
+	        str = str.substring(0, maxLength + 1);
+	        str = str.substring(0, Math.min(str.length, str.lastIndexOf(" ")));
+	        str = str + suffix;
+	    }
+	    return str;
+	}
+
 	//on locationChangeSuccess findElements used for
-	$scope.$on('$locationChangeSuccess',function(evt, absNewUrl, absOldUrl) {
-	  console.log('success', evt, absNewUrl, absOldUrl);
+	//! FIX --- WHEN GO BACK WE NEED TO REMOVE SELECTED FACETS FROM PREVIOUS SEARCHES || CLEAN THE $location.search()
+	//replace $locationChangeSuccess with $locationChangeStart.
+	$scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+		console.log('$locationChangeStart success', '\n new:'+absNewUrl, '\n old:'+absOldUrl);
+		for(i in $scope.facets) {
+			$location.search($scope.facets[i],null);
+		}
+
 	  $scope.findElements(false);
 	});
 
