@@ -30,7 +30,15 @@
 	                </header>
 
 	                <div>
-                        <p class="itemDescription" id="itemDescription"></p>
+                        <p class="itemDescription" id="itemDescription">{{item_title}}</p>
+	                </div>
+
+					 <div>
+                        <p class="itemDescription" id="itemDescription">{{item_description}}</p>
+	                </div>
+
+					<div>
+                        <a href="{{item_resource_url}}" target=_blank >Access the resource</a>
 	                </div>
 
 					<hr>
@@ -38,12 +46,15 @@
 	                <div class="rating">
 	                	<p> <b>{{item_number_of_visitors}}</b> visitors have rate this item.</p>
 	                	<p>Average rating : <b>{{item_average_rating}}</b></p>
-	                	<p>Rate this item</p>
-						<span><a href="javascript:;" ng-click="rateItem(1)">1</a></span>
-						<span><a href="javascript:;" ng-click="rateItem(2)">2</a></span>
-						<span><a href="javascript:;" ng-click="rateItem(3)">3</a></span>
-						<span><a href="javascript:;" ng-click="rateItem(4)">4</a></span>
-						<span><a href="javascript:;" ng-click="rateItem(5)">5</a></span>
+						<div ng-show="enable_rating">
+		                	<p>Rate this item</p>
+							<span><a href="javascript:;" ng-click="rateItem(1)">1</a></span>
+							<span><a href="javascript:;" ng-click="rateItem(2)">2</a></span>
+							<span><a href="javascript:;" ng-click="rateItem(3)">3</a></span>
+							<span><a href="javascript:;" ng-click="rateItem(4)">4</a></span>
+							<span><a href="javascript:;" ng-click="rateItem(5)">5</a></span>
+						</div>
+
 					</div>
 
 					<hr>
@@ -55,9 +66,9 @@
 					      <input type="text" ng-model="new_tag" name="new_tag"/>
 					      <input type="submit" id="submit_tag" value="Add" />
 					    </form>
-					</div>
-				</article>
-			</div>
+				   </div>
+			</article>
+		</div>
     </div>
 
 </body>

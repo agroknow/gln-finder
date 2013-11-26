@@ -11,20 +11,23 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	/*							  	GENERAL												  						     */
 	/*****************************************************************************************************************/
 	/*AKIF URL*/
-	$scope.akif = 'http://54.228.180.124:8080/search-api/v1/akif/';
+	$scope.akif = 'http://54.228.180.124:8080/search-api-v1/v1/akif/';
 
 	//$scope.item_resource_id = '';
 	$scope.item_resource_url = '';
 	$scope.user_id = 23;
 	$scope.domain = 'http://greenlearningnetwork.org';
+	$scope.ip = '83.212.100.142';
 
 
 	$scope.item_number_of_visitors = 0;
 	$scope.item_average_rating = 'no rating available yet';
 	$scope.item_tags = '';
+	$scope.enable_rating = true;
 
-	//for using CORS (Cross-Origin Resource Sharing)
-	$http.defaults.useXDomain = true;
+	//Elements default values
+	$scope.item_title = "No title available for this language";
+	$scope.item_description = "No description available for language";
 
 	/*****************************************************************************************************************/
 	/*							  	FUNCTIONS												  						 */
@@ -66,17 +69,16 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 					languageBlock = thisJson.languageBlocks['en'];
 
 					if (languageBlock.title !== undefined) {
-						document.getElementById('itemTitle').innerHTML = languageBlock.title;
+						$scope.item_title = languageBlock.title;
 					}
 
 					if (languageBlock.description !== undefined) {
-						document.getElementById('itemDescription').innerHTML = languageBlock.description;
+						$scope.item_description = languageBlock.description;
 					}
 				}
 
 				if(thisJson.expressions[0].manifestations[0].items[0].url!=undefined) {
-					//replace is temporarelly for testing reasons.
-					$scope.item_resource_url = thisJson.expressions[0].manifestations[0].items[0].url.replace("http://confolio.vm.grnet.gr/scam/", "_").replace("http://www.fao.org/docrep/X0185E/",".");
+					$scope.item_resource_url = thisJson.expressions[0].manifestations[0].items[0].url;
 
 				}
 				$scope.getItemRatings();
@@ -130,54 +132,24 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 		console.log(headers);
 
 
-		//Choose POST version
-		// 1:Angular | 2:jQuery
-		var version = 1;
+		//POST rate
+		console.log('Angular Version');
+		$http({
+			method : 'POST',
+			url : path,
+			data : thisJson,
+			headers : headers
+		})
+		.success(function(data) {
+			$scope.getItemRatings();
+			$scope.enable_rating = false;
+			alert('Thank you for rating :)');
 
-		//angular version
-		if(version == 1) {
-			console.log('Angular Version');
-			$http({
-				method : 'POST',
-				url : path,
-				data : thisJson,
-				headers : headers
-			})
-			.success(function(data) {
-				alert("Thank you for rating this item. You rate : " + value);
-			})
-			.error(function(err){
-				console.error(err);
-			});
-		}
+		})
+		.error(function(err){
+			console.error(err);
+		});
 
-		//jQuery version
-		if(version == 2) {
-			console.log('jQuery Version');
-			jQuery.ajax({
-				type:"POST",
-				beforeSend: function (request)
-			    {
-			    	request.withCredentials = true;
-			        request.setRequestHeader("Authorization", "Basic YWRtaW46YWRtaW4==");
-			    },
-				data: thisJson,
-				contentType: "application/json; charset=utf-8",
-				accept: "application/json",
-			    url: path,
-			    dataType: "json",
-			    success: function(data) {
-					alert("Thanks for rating this item. Rate : " + value);
-			    },
-			    error: function (request, status, error) {
-			    	console.error(error);
-				  }
-		    });
-		}
-
-		$scope.getItemRatings();
-
-		console.log(value);
 	}
 
 	/****************************************************************************************** GET ITEM TAGS ************************/
