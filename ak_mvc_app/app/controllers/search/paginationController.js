@@ -18,7 +18,7 @@ listing.controller("paginationController", function($rootScope, $scope, sharedPr
 
 	/*calculate and add pages in pages[] for viewing in front end
     	only if top or bottom pagination is visible */
-  $scope.initPagination = function(){
+	$scope.initPagination = function(){
 		if($scope.enablePaginationTop || $scope.enablePaginationBottom){
 			  $scope.numOfPages = sharedProperties.getTotal()/$scope.pageSize;
 
@@ -33,7 +33,8 @@ listing.controller("paginationController", function($rootScope, $scope, sharedPr
 	};
 
 
-  $rootScope.updatePagination = function(){
+	//Updates pagination, after search
+	$rootScope.updatePagination = function(){
 
 		  $scope.numOfPages = sharedProperties.getTotal()/$scope.pageSize;
 
@@ -54,5 +55,6 @@ listing.controller("paginationController", function($rootScope, $scope, sharedPr
 			$rootScope.currentPage = pageNum;
 	    $scope.findElements(false);
 	};
+
 });
 

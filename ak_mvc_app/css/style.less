@@ -1,6 +1,7 @@
-/*main colors*/
-@primary_color_1:#5b5220;
-@primary_color_2:#21A148;
+/*colors*/
+@mustard_yellow:#E3AE57;/* RGB 227 174 87 */
+@coke_red:#DC3D24; /* RGB 220 61 36 */
+@space_gray:#232B2B; /* RGB 35 43 43 */
 
 
 /******************************************************/
@@ -11,6 +12,7 @@ body{
 	width:100%;
 	margin:20px auto;
 	font: 1.1em Open Sans,Arial,Helvetica,sans-serif; /* lighter */
+	color:@mustard_yellow ;
 	background: url(../assets/images/graphy.png) repeat;
 
 	.row{
@@ -33,12 +35,17 @@ body{
 #akListing{
 	width:1010px;
 	margin:30px auto;
-	background-color: rgba(200,200,200, 0.7);
-	padding:50px;
+	background-color: rgba(35, 43, 43, 0.9);
+	padding:20px;
+	display:table;
 	.rounded-corners(10px);
 
 }
 
+.active
+{
+	color:@coke_red;
+}
 .pagination{
 
 	display: inline-block;
@@ -48,21 +55,59 @@ body{
 	}
 }
 
-.facets{
-	display: inline-block;
-	p{
+#facets_sidebar
+{
+	width:200px;
+	float:left;
+
+	.facets
+	{
+		display: block;
+
+		a{
+			color: white;
+		}
+
+
+		p{
+			margin-right: 10px;
+		}
+	}
+}
+
+#active_facets
+{
+	float:right;
+	width:780px;
+
+	a
+	{
 		float:left;
-		margin-right: 10px;
+		margin: 10px;
+		color: @coke_red;
+
+	}
+
+}
+
+#listing
+{
+	width:780px;
+	float:right;
+
+	.results
+	{
+		padding-left: 10px;
+
+		li
+		{
+			margin-top:10px;
+			list-style: none;
+		}
+
 	}
 }
 
-.results{
-
-	li{
-		margin-top:10px;
-		list-style: none;
-	}
-}
 
 .loading{
 	margin: 100px auto;

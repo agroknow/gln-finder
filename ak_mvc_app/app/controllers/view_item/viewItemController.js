@@ -30,7 +30,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	/*							  	FUNCTIONS												  						 */
 	/*****************************************************************************************************************/
 
-	/****************************************************************************************** GET ITEM *****************************/
+	/************************************************** GET ITEM *****************************/
 	$scope.getItem = function() {
 
 
@@ -225,6 +225,9 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 		console.log(headers);
 
 		var new_tag = this.new_tag;
+		//clean the search field
+		$scope.new_tag = "";
+
 		if (new_tag) {
 
 			var thisJson = '{"domain":"'+$scope.domain+'","ip_address":"0.0.0.0","session_id":"b3258f85j","sharing_level":"Public","item":{"metadata_uri":"'+$scope.item_resource_url+'","resource_uri":"'+$scope.item_resource_url+'"},"user":{"metadata_uri":null,"remote_id":"'+$scope.user_id+'"},"tags":[{"value":"'+new_tag+'","lang":"en"}]}';

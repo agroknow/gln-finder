@@ -3,7 +3,6 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 
 	/*
 	* creates the request for Search API and makes the call
-	*
 	* @param init : true if function called in initialization.
 	*/
 	$rootScope.findElements = function(init)
@@ -23,25 +22,26 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			if(!$rootScope.query) {
 				$rootScope.query = 'q=*';
 			}
+
+			//URL facets
+			var flg = true; //needed for clearing the activeFacets at first time
+			//-check url
+			for(i in $scope.facets) {
+		    	if($scope.facets[i] in $location.search()) {
+
+					var terms = $location.search()[$scope.facets[i].toString()].split(',');
+
+					//separate different terms of same facet
+					for(j in terms) {
+						var facet = { 'facet' : $scope.facets[i].toString() , 'term' : terms[j]} ;
+						//push item in activeFacets, if it's not in the array
+						$scope.activeFacets.push(facet);
+					}
+		    	}
+			}
 		}
 
-		//URL facets
-		var flg = true; //needed for clearing the activeFacets at first time
-		//-check url
-		for(i in $scope.facets) {
-	    	if($scope.facets[i] in $location.search()) {
-				if(flg) {
-		    		$scope.activeFacets = [];
-		    		console.log('_cleared_' + $scope.activeFacets);
-		    		flg = false;
-	    		}
 
-				var facet = { 'facet' : $scope.facets[i].toString() , 'term' : $location.search()[$scope.facets[i].toString()]} ;
-
-				//push item in activeFacets, if it's not in the array
-				$scope.activeFacets.push(facet);
-	    	}
-		}
 
 
 		//If there are facets defined in settings add them in query
@@ -95,34 +95,25 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			}
 		}
 
-		//console.log($location.search());
-
-
 		$http.get(query).success(function(data)
 		{
-			console.log(data.total+" findElements : " + query);
-
 			/*Add facets*/
-			if($scope.enableFacets){
-				$scope.inactiveFacets.length = 0;/*clear results*/
-			  angular.forEach(data.facets, function(facet, index) {
-			  	var length = facet.terms.length;
-			  	if(length != 0){
-			  		for(var i=0; i<length;i++){
-			  		  //format:term@facet#count
-			  		  $scope.inactiveFacets.push({"term":facet.terms[i].term,"facet": index, "count":facet.terms[i].count});
-			  		}
+			if($scope.enableFacets) {
 
-			  	}
-			  });
+				$scope.inactiveFacets.length = 0;/*clear results*/
+
+				$scope.inactiveFacets.push(data.facets);
 
 			}
 
-			//Something dummy to print
+			//Print snippets
 			$scope.results.length = 0;//clear results
 			angular.forEach(data.results, function(result, index){
 			  	//Listing Results
-			  	$scope.results.push($scope.getSnippet(result, $scope.snippetElements));
+			  	var json = $scope.getSnippet(result, $scope.snippetElements);
+			  	if(json!=null) {
+			  		$scope.results.push(json);
+			  	}
 			  });
 
 
@@ -141,50 +132,50 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 
 	/*
 	* gets the json and create a new one based on the specs of the snippet_elements
-	* @param element : json from result
+	* @param thisJson : json from result
 	* @param snippet_elements : array with selected elements we want to show in listing (i.e. title, description...)
 	*/
-	$scope.getSnippet = function(element, snippet_elements)
+	$scope.getSnippet = function(thisJson, snippet_elements)
 	{
 		var temp = "";
-		if(element.languageBlocks[$scope.selectedLanguage]!=undefined && element.languageBlocks[$scope.selectedLanguage].title!=undefined)
+		if(thisJson.languageBlocks[$scope.selectedLanguage]!=undefined && thisJson.languageBlocks[$scope.selectedLanguage].title!=undefined)
 		{
 			var equals = "";
 			for(index in snippet_elements)
 			{
-				if(snippet_elements[index] in element.languageBlocks[$scope.selectedLanguage])
+				if(snippet_elements[index] in thisJson.languageBlocks[$scope.selectedLanguage])
 				{
-					if(element.languageBlocks[$scope.selectedLanguage][snippet_elements[index]]!=null)
+					if(thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]]!=null)
 					{
 						if(index!=0)
 						{
 							equals+= ",";
 						}
-						equals += "\"" + snippet_elements[index] + "\" : \"" + $scope.truncate(element.languageBlocks[$scope.selectedLanguage][snippet_elements[index]], $scope.maxTextLength, ' ...').replace(/\"/g, "\\\"") + "\"";
+						equals += "\"" + snippet_elements[index] + "\" : \"" + $scope.truncate(thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]], $scope.maxTextLength, ' ...').replace(/\"/g, "\\\"") + "\"";
 					}
 				}
 			}
 
 			//WE MUST HAVE ID & SET IN ORDER TO VIEW ITEM
-			if(element.identifier) {
-				equals += '\ , "id\" : \"' + element.identifier + '\"';
+			if(thisJson.identifier) {
+				equals += '\ , "id\" : \"' + thisJson.identifier + '\"';
 			}
 
-			if(element.set) {
-				equals += '\ , "set\" : \"' + element.set + '\"';
+			if(thisJson.set) {
+				equals += '\ , "set\" : \"' + thisJson.set + '\"';
 			}
 
 			temp = '{' + equals + '}';
 
+			//return every snippet as JSON
+			//console.log(temp);
+			return JSON.parse($scope.sanitize(temp));
 		}
 		else
 		{
-			temp = '{"id":' + element.identifier + '}';
+			//console.log('Element with id: ' + element.identifier + ' doesn\'t support \"' + $scope.selectedLanguage + '\" language');
+			return null;
 		}
-
-		//return every snippet as JSON
-		console.log(temp);
-		return JSON.parse($scope.sanitize(temp));
 	}
 
 

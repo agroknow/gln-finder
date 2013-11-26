@@ -1,10 +1,17 @@
 listing.controller("facetsController", function($rootScope, $scope, $http, $location, sharedProperties){
 
 // selectFacet() function
+//@param term : the term we selected
+//@param parent : the parent facet
+//@param count : count of the term
+//
 // creates jsons {"term":"xxx","facet":"xxx","count":"xxx"}
 // in active facets and calls findElements() from listingController in order to use the new
-$scope.selectFacet = function(facet)
+$scope.selectFacet = function(term, parent, count)
 {
+
+	var facet = {"term":term,"facet":parent,"count":count};
+
 	var flag = false;
 	/*check if facet is in active ones*/
 	for(active in $scope.activeFacets){
