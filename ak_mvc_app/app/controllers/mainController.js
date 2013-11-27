@@ -9,8 +9,8 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 
 	/*-----------------------------------FINDER SETTINGS-----------------------------------*/
 	/*AKIF URL*/
-	/* $scope.akif = 'http://54.228.180.124:8080/search-api-v1/v1/akif?'; */
-	$scope.akif = 'http://keevosh.ath.forthnet.gr:8088/v1/akif?';
+	$scope.akif = 'http://54.228.180.124:8080/search-api-v1/v1/akif?';
+	/* $scope.akif = 'http://keevosh.ath.forthnet.gr:8088/v1/akif?'; */
 
 	//--PAGINATION
 	//Enables top pagination : true/false
@@ -76,9 +76,9 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 		//store the mapping for human reading languages
 		$http.get('../config/facets_mappings.json').success(function(data) {
 		        for(i in data) { // i = providers, languages, etc...
-
+					$scope.mapping[i] = [];
 		        	for(j in data[i]) {
-		        		$scope.mapping[i,data[i][j].machine] = data[i][j].human;
+		        		$scope.mapping[i][data[i][j].machine] = data[i][j].human;
 			        	//$scope.mapping[i][data[i][j].machine] = data[i][j].human;
 						//console.log($scope.languages_map[data['languages'][i].machine]);
 		        	}
