@@ -48,7 +48,7 @@
 		            <div ng-repeat="facet in facets" >
 		            	<span>{{facet}}</span>
 		            	<div ng-repeat="term in inactiveFacets[0][facet.toString()].terms">
-			            	<a href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)">{{mapping[facet].[term.term]}} {{facet}}/{{term.term}} ({{term.count}})</a>
+			            	<a href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)">{{facet}}/{{term.term}} ({{term.count}})</a>
 		            	</div>
 		            </div>
 
