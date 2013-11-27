@@ -9,7 +9,8 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 
 	/*-----------------------------------FINDER SETTINGS-----------------------------------*/
 	/*AKIF URL*/
-	$scope.akif = 'http://54.228.180.124:8080/search-api-v1/v1/akif?';
+	/* $scope.akif = 'http://54.228.180.124:8080/search-api-v1/v1/akif?'; */
+	$scope.akif = 'http://54.228.180.124:8080/search-api-V2/v1/akif?';
 
 	//--PAGINATION
 	//Enables top pagination : true/false
@@ -65,8 +66,29 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	//Total results
 	$scope.total = 0;
 
+	//Mappings
+	$scope.mapping = {};
 
 	/*-----------------------------------FUNCTIONS-----------------------------------*/
+	//Initialize Finder's mappings
+	$scope.init_finder = function() {
+
+		//store the mapping for human reading languages
+		$http.get('../config/facets_mappings.json').success(function(data) {
+		        for(i in data) { // i = providers, languages, etc...
+		        	for(j in data[i]) {
+		        		$scope.mapping[i,data[i][j].machine] = data[i][j].human;
+			        	//$scope.mapping[i][data[i][j].machine] = data[i][j].human;
+			        	console.log(i + " - " + data[i][j].machine + "  - " + $scope.mapping[i,data[i][j].machine]);
+						//console.log($scope.languages_map[data['languages'][i].machine]);
+		        	}
+
+		        }
+		    });
+
+
+	};
+
 	//Function for query submission
 	$scope.submit = function() {
 		if (this.search_query) {

@@ -27,7 +27,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 	//Elements default values
 	$scope.item_title = "No title available for this language";
-	$scope.item_description = "No description available for language";
+	$scope.item_description = "No description available for this language";
 
 	/*****************************************************************************************************************/
 	/*							  	FUNCTIONS												  						 */
@@ -37,7 +37,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	$scope.getItem = function() {
 
 
-		var item_identifier = $location.search().id.split('_')[0]; //SET-ID  ****10708 || 12552
+		var item_identifier = $location.search().id.split('_')[0]; //SET_ID
 		var item_set = $location.search().id.split('_')[1];
 		$scope.item_resource_url = '';
 		$scope.item_number_of_visitors = 0;
