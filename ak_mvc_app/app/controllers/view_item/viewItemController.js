@@ -12,6 +12,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	/*****************************************************************************************************************/
 	/*AKIF URL*/
 	$scope.akif = 'http://54.228.180.124:8080/search-api-v1/v1/akif/';
+	/* $scope.akif = 'http://keevosh.ath.forthnet.gr:8088/v1/akif/'; */
 
 	//$scope.item_resource_id = '';
 	$scope.item_resource_url = '';

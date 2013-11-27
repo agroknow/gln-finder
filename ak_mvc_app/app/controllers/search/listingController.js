@@ -28,9 +28,7 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			//-check url
 			for(i in $scope.facets) {
 		    	if($scope.facets[i] in $location.search()) {
-
 					var terms = $location.search()[$scope.facets[i].toString()].split(',');
-
 					//separate different terms of same facet
 					for(j in terms) {
 						var facet = { 'facet' : $scope.facets[i].toString() , 'term' : terms[j]} ;
@@ -40,8 +38,6 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		    	}
 			}
 		}
-
-
 
 
 		//If there are facets defined in settings add them in query
@@ -60,7 +56,6 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			//-check activeFacets
 			if($scope.activeFacets.length>0) {
 		    	for(facet in $scope.activeFacets) {
-
 		    		//if exists facet with same parent we split() and add in same parent
 		    		if(query_active_facets.indexOf($scope.activeFacets[facet].facet)>-1){
 		    			//i.e &contexts=education&language=noe&set=digitalgreen&page_size=10&page=1
@@ -69,7 +64,6 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		    			//i.e add new facet+',' and connect -> &contexts=| vocational, |education -> &contexts=vocational,education
 		    			query_active_facets = parts[0]+$scope.activeFacets[facet].facet+'='+$scope.activeFacets[facet].term+','+parts[1];
 		    		}
-
 		    		//else we create a new parent
 		    		else{
 			    		query_active_facets +='&'+$scope.activeFacets[facet].facet+'='+$scope.activeFacets[facet].term;
@@ -81,12 +75,31 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		//add PAGINATION in query
 		var query_pagination = '&page_size='+$scope.pageSize+'&page='+$scope.currentPage;
 
-		//create the FINAL QUERY
-		var query = $scope.akif + $rootScope.query + query_facets + query_active_facets + query_pagination; //+ "&callback=JSON_CALLBACK"
+		//FACETS LIMITATION
+		//!! FIX TO CHANGE FROM conf.json
+		var limitFacets = '';
+		for(i in $scope.limit_facets) {
+			limitFacets += '&' + i + "=";
+			for(j in $scope.limit_facets[i]) {
+				if(j!=$scope.limit_facets[i].length-1) {
+					limitFacets += $scope.limit_facets[i][j]+',';
+				}
+				else {
+					limitFacets += $scope.limit_facets[i][j];
+				}
+			}
+		}
+
+		/*create the FINAL QUERY
+		* the  followings DOESN'T shown in URL
+		* i.e
+		* query_facets : '&facets=set,language,contexts'
+		* query_pagination : '&page_size=15&page=1'
+		* limitFacets : '&set=oeintute&language=en,fr'
+		*/
+		var query = $scope.akif + $rootScope.query + query_facets + query_active_facets + query_pagination + limitFacets;
 
 		//add parameters to URL
-		//predefined facets
-		$location.search('facets',query_facets.split('&facets=')[1] );
 		//active facets
 		var activeFacetSplit = query_active_facets.split('&');
 		for(tempfacet in activeFacetSplit){
@@ -95,13 +108,18 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			}
 		}
 
-		$http.get(query).success(function(data)
-		{
+		$scope.search(query);
+
+	}
+
+	$scope.search = function(query) {
+
+		$http.get(query).success(function(data) {
+			//console.log(query);
+
 			/*Add facets*/
 			if($scope.enableFacets) {
-
 				$scope.inactiveFacets.length = 0;/*clear results*/
-
 				$scope.inactiveFacets.push(data.facets);
 
 			}
@@ -127,7 +145,7 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			    $scope.loading = false;
 			    $scope.error = true;
 			    console.log("--F@ck!n' error on $http.get : " + query);
-			});
+		});
 	}
 
 	/*

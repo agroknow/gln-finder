@@ -34,7 +34,6 @@ $scope.selectFacet = function(term, parent, count)
 /*deselect facet function*/
 $scope.deselectFacet = function(facet)
 {
-	console.log(facet.term +" "+ facet.facet);
 	var index = $scope.activeFacets.indexOf(facet);
 	if (index > -1){
 	    $scope.activeFacets.splice(index, 1);
@@ -43,7 +42,6 @@ $scope.deselectFacet = function(facet)
 	if($location.search()[facet.facet]) {
 		$location.search(facet.facet,null);
 	}
-
     $scope.findElements(false);
 }
 
