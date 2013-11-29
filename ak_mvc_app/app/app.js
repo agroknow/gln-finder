@@ -8,7 +8,10 @@ var listing = angular.module('akListing',[]);
 /* var listing = angular.module('akListing',['ngRoute','mainController','listingController']); */
 
 /* $locationProvider Configuration */
-
+listing.config(['$locationProvider',
+	function($locationProvider) {
+		$locationProvider.html5Mode(true)
+	}]);
 
 /* Shared Properties Service */
 listing.service('sharedProperties',

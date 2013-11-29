@@ -116,7 +116,7 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 	$scope.search = function(query) {
 
 		$http.get(query).success(function(data) {
-			//console.log(query);
+			console.log(data);
 
 			/*Add facets*/
 			if($scope.enableFacets) {

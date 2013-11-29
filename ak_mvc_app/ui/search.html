@@ -39,7 +39,7 @@
 		            	<span>{{mapping['facets'][facet]}}</span> <!-- 'facet' is the actual facet name -->
 		            	<div ng-repeat="term in inactiveFacets[0][facet.toString()].terms">
 		            		<!-- 'facet' is the actual facet name and term.term is the machine name for the term -->
-			            	<a href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)">{{mapping[facet][term.term]}} ({{term.count}})</a>
+			            	<a href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)">{{ mapping[facet][term.term] }} ({{ term.count }})</a>
 		            	</div>
 		            </div>
 
