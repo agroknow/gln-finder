@@ -13,8 +13,7 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	var mappings_file = '../config/facets_mappings.json';
 
 	/*AKIF URL*/
-	$scope.akif = 'http://54.228.180.124:8080/search-api-v1/v1/akif?';
-	/* $scope.akif = 'http://keevosh.ath.forthnet.gr:8088/v1/akif?'; */
+	$scope.akif = 'http://54.228.180.124:8080/search-api/v1/akif?';
 
 	//--PAGINATION
 	//Enables top pagination : true/false
@@ -36,7 +35,7 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	$scope.enableFacets = true;
 	//Defines which facets we want to add
 	$scope.facets = ['set','language','contexts'];
-	$scope.limit_facets = {"set":["oeintute","prodinraagro"], "language":["en","fr"]};
+	$scope.limit_facets = {}; //{"set":["oeintute","prodinraagro"], "language":["en","fr"]}; // limit facets
 
 	//SNIPPETS
 	//Components inside snippet
@@ -85,10 +84,12 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	//Initialize Finder's mappings
 	$scope.init_finder = function() {
 
+/*
 		//get properties from conf.json
 		$http.get($scope.conf_file).success(function(data) {
-				$scope.akif = data.baseUrl;
+
 				$scope.limit_facets = data.limit_facets;
+				$scope.akif = data.baseUrl;
 				$scope.enablePaginationTop = data.enablePaginationTop;
 				$scope.enablePaginationBottom = data.enablePaginationBottom;
 				$scope.limitPagination = data.limitPagination;
@@ -99,6 +100,10 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 				$scope.snippetElements = data.snippetElements;
 				$scope.maxTextLength = data.maxTextLength;
 		    });
+*/
+
+
+
 
 
 		//store the mapping for human reading languages

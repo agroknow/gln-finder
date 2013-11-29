@@ -7,6 +7,7 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 	*/
 	$rootScope.findElements = function(init)
 	{
+		console.log('find_elements');
 		//enable loading indicator : true/false
 		$scope.loading = true;
 		//enable error message : true/false
