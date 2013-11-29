@@ -77,7 +77,7 @@
 					<hr>
 
 	                <div class="tagging">
-	                	<p>Tags: <b>{{item_tags}}</b> </p>
+	                	<p>Tags: <span ng-repeat="tags in item_tags">{{tags}}</span> </p>
         	            <form ng-submit="submitNewTag()" >
 					      Add new tag for this item:
 					      <input type="text" ng-model="new_tag" name="new_tag"/>

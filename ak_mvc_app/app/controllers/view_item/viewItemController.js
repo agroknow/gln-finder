@@ -21,7 +21,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 
 	$scope.item_number_of_visitors = 0;
 	$scope.item_average_rating = 'no rating available yet';
-	$scope.item_tags = '';
+	$scope.item_tags = ['No tags available yet.'];
 	$scope.enable_rating_1 = true;
 	$scope.enable_rating_2 = true;
 	$scope.enable_rating_3 = true;
@@ -37,56 +37,47 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 	/************************************************** GET ITEM *****************************/
 	$scope.getItem = function() {
 
-
 		var item_identifier = $location.search().id.split('_')[0]; //SET_ID
 		var item_set = $location.search().id.split('_')[1];
 		$scope.item_resource_url = '';
 		$scope.item_number_of_visitors = 0;
 		$scope.item_average_rating = 'no rating available yet';
 
+		var headers = {'Content-Type':'application/json','Accept':'application/json;charset=utf-8'};
 
-		var xhr = createCORSRequest('GET', $scope.akif + item_set + '/' + item_identifier);
+		$http({
+			method : 'GET',
+			url : $scope.akif + item_set + '/' + item_identifier, //..akif/ILUMINA/18169
+			type: 'json',
+			headers : headers
+		})
+		.success(function(data) {
+			//parse array and create an JS Object Array
+			//every item is a JSON
+			//console.log(data);
+			var thisJson = data.results[0];
 
-		xhr.setRequestHeader('Content-Type','application/json');
-		xhr.setRequestHeader('Accept','application/json;charset=utf-8');
+			//WE USE ONLY 'EN' FOR NOW
+			if (thisJson.languageBlocks.en !== undefined) {
 
-		if (!xhr) {
-			console.log('CORS not supported');
-		}
-		else {
-			xhr.send();
-			xhr.onload = function() {
-				var data = xhr.responseText;
+				languageBlock = thisJson.languageBlocks['en'];
 
-				//parse array and create an JS Object Array
-				//every item is a JSON
-				//console.log(data);
-				var results = JSON.parse(data);
-				var thisJson = results.results[0];
-
-				//WE USE ONLY 'EN' FOR NOW
-				if (thisJson.languageBlocks.en !== undefined) {
-
-					languageBlock = thisJson.languageBlocks['en'];
-
-					if (languageBlock.title !== undefined) {
-						$scope.item_title = languageBlock.title;
-					}
-
-					if (languageBlock.description !== undefined) {
-						$scope.item_description = languageBlock.description;
-					}
+				if (languageBlock.title !== undefined) {
+					$scope.item_title = languageBlock.title;
 				}
 
-				if(thisJson.expressions[0].manifestations[0].items[0].url!=undefined) {
-					$scope.item_resource_url = thisJson.expressions[0].manifestations[0].items[0].url;
-
+				if (languageBlock.description !== undefined) {
+					$scope.item_description = languageBlock.description;
 				}
-				$scope.getItemRatings();
-				$scope.getItemTags();
+			}
 
-			};
-		}
+			if(thisJson.expressions[0].manifestations[0].items[0].url!=undefined) {
+				$scope.item_resource_url = thisJson.expressions[0].manifestations[0].items[0].url;
+
+			}
+			$scope.getItemRatings();
+			$scope.getItemTags();
+		})
 
 	};
 
@@ -112,7 +103,7 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 			$scope.item_number_of_visitors = ctr;
 		})
 		.error(function(err){
-			console.error(err);
+			console.log('No available ratings');
 		});
 
 	};
@@ -168,7 +159,6 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings?itemResourceUri='+$scope.item_resource_url+'&max=10';
 		var headers = {'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
 
-		$scope.item_tags = '';
 		$http({
 			method : 'GET',
 			url : path,
@@ -179,20 +169,17 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 			var sum = 0, ctr=0;
 
 			if(data[0]!=undefined && data[0].tags!=undefined){
+				$scope.item_tags = [];
 				for(j in data) {
 					for(i in data[j].tags) {
 						ctr++;
-						$scope.item_tags += data[j].tags[i].value + ', ';
+						$scope.item_tags.push('#'+data[j].tags[i].value + ' ');
 					}
 				}
 			}
-			else {
-				$scope.item_tags = "no tags yet!";
-			}
-
 		})
 		.error(function(err){
-			console.error(err);
+			console.log('No available tags');
 		});
 
 	};
