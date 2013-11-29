@@ -7,42 +7,60 @@
 /*Define mainController controller in 'app' */
 listing.controller("mainController", function($rootScope, $scope, $http, $location, sharedProperties){
 
-	/*-----------------------------------DEFAULT FINDER SETTINGS-----------------------------------*/
-
 	$scope.conf_file = '../config/conf.json';
 	var mappings_file = '../config/facets_mappings.json';
 
-	/*AKIF URL*/
-	$scope.akif = 'http://54.228.180.124:8080/search-api/v1/akif?';
-
-	//--PAGINATION
-	//Enables top pagination : true/false
-	$scope.enablePaginationTop = true;
-	//Enables bottom pagination : true/false
-	$scope.enablePaginationBottom = false;
-	//Limit Number of Pages in Pagination
-	$scope.limitPagination = 10;
-
-	//Page Size defines the number of results per page
-	$scope.pageSize = 15;
 	$rootScope.currentPage = 1;
 
-	//Selected Language
-	$scope.selectedLanguage='en';
+	//get properties from conf.json
+	$http.get($scope.conf_file)
+	.success(function(data) {
+	console.log('success me');
+	/*-----------------------------------FINDER SETTINGS FROM CONFIG FILE-----------------------------------*/
+		$scope.limit_facets = data.limit_facets;
+		$scope.akif = data.baseUrl;
+		$scope.enablePaginationTop = data.enablePaginationTop;
+		$scope.enablePaginationBottom = data.enablePaginationBottom;
+		$scope.limitPagination = data.limitPagination;
+		$scope.pageSize = data.pageSize;
+		$scope.selectedLanguage = data.selectedLanguage;
+		$scope.enableFacets = data.enableFacets;
+		$scope.facets = data.facets;
+		$scope.snippetElements = data.snippetElements;
+		$scope.maxTextLength = data.maxTextLength;
+		$scope.findElements(true);
+    })
+	.error(function(err){
+		//console.log(err);
+	/*-----------------------------------DEFAULT FINDER SETTINGS-----------------------------------*/
+		//AKIF URL
+		console.log('error me');
+		$scope.akif = 'http://54.228.180.124:8080/search-api/v1/akif?';
 
-	//FACETS
-	//Enables the facets : true/false
-	$scope.enableFacets = true;
-	//Defines which facets we want to add
-	$scope.facets = ['set','language','contexts'];
-	$scope.limit_facets = {}; //{"set":["oeintute","prodinraagro"], "language":["en","fr"]}; // limit facets
+		//--PAGINATION
+		//Enables top pagination : true/false
+		$scope.enablePaginationTop = true;
+		//Enables bottom pagination : true/false
+		$scope.enablePaginationBottom = false;
+		//Limit Number of Pages in Pagination
+		$scope.limitPagination = 10;
+		//Page Size defines the number of results per page
+		$scope.pageSize = 15;
+		//Selected Language
+		$scope.selectedLanguage='en';
+		//FACETS
+		//Enables the facets : true/false
+		$scope.enableFacets = true;
+		//Defines which facets we want to add
+		$scope.facets = ['set','language','contexts'];
+		$scope.limit_facets = {}; //{"set":["oeintute","prodinraagro"], "language":["en","fr"]}; // limit facets
 
-	//SNIPPETS
-	//Components inside snippet
-	$scope.snippetElements = ['title','description'];
-	$scope.maxTextLength = 500;
+		//SNIPPETS
+		//Components inside snippet
+		$scope.snippetElements = ['title','description'];
+		$scope.maxTextLength = 500;
 
-
+	});
 	//----ADD SOME AWESOMENESS ;)----//
 
 	//!! *INFINITE SCROLL* TO BE ADDED !!
@@ -83,29 +101,6 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	/*-----------------------------------FUNCTIONS-----------------------------------*/
 	//Initialize Finder's mappings
 	$scope.init_finder = function() {
-
-/*
-		//get properties from conf.json
-		$http.get($scope.conf_file).success(function(data) {
-
-				$scope.limit_facets = data.limit_facets;
-				$scope.akif = data.baseUrl;
-				$scope.enablePaginationTop = data.enablePaginationTop;
-				$scope.enablePaginationBottom = data.enablePaginationBottom;
-				$scope.limitPagination = data.limitPagination;
-				$scope.pageSize = data.pageSize;
-				$scope.selectedLanguage = data.selectedLanguage;
-				$scope.enableFacets = data.enableFacets;
-				$scope.facets = data.facets;
-				$scope.snippetElements = data.snippetElements;
-				$scope.maxTextLength = data.maxTextLength;
-		    });
-*/
-
-
-
-
-
 		//store the mapping for human reading languages
 		$http.get(mappings_file).success(function(data) {
 		        for(i in data) { // i = providers, languages, etc...
@@ -175,17 +170,14 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	//on locationChangeSuccess findElements used for
 	//! FIX --- WHEN GO BACK WE NEED TO REMOVE SELECTED FACETS FROM PREVIOUS SEARCHES || CLEAN THE $location.search()
 	//replace $locationChangeSuccess with $locationChangeStart.
-	/*
+/*
 	$scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-		//console.log('$locationChangeStart success', '\n new:'+absNewUrl, '\n old:'+absOldUrl);
-
-		for(i in $scope.facets) {
-			$location.search($scope.facets[i],null);
-		}
+		console.log('$locationChangeStart success', '\n new:'+absNewUrl, '\n old:'+absOldUrl);
 
 		$scope.findElements(true);
 	});
-	*/
+*/
+
 
 
 

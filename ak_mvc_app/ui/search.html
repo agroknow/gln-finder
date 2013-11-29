@@ -3,13 +3,8 @@
 <head>
 	<title> ^ Agro Know</title>
 	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
-	<script type="text/javascript" src="../lib/angular.min.js"></script>
-
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet/less" type="text/css" media="screen" href="../css/style.less" />
-	<script src="../lib/less-1.5.0.min.js" type="text/javascript"></script>
-
-
 </head>
 
 <body>
@@ -66,7 +61,7 @@
             </div>
 
 			<!-- listing -->
-            <div id="listing" ng-controller="listingController" ng-init="findElements(true)" class="row">
+            <div id="listing" ng-controller="listingController" class="row">
 	            <h4>Search for "<span class="active">{{query.split("=")[1]}}</span>" returned total: {{total}} results</h4>
 		            <ul class="results">
 			            <input ng-model="filterResults" placeholder="Filter results by title..." />
@@ -98,6 +93,8 @@
     </div>
 
 <!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
+<script type="text/javascript" src="../lib/angular.min.js"></script>
+<script src="../lib/less-1.5.0.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="../app/app.js"></script>
 <script type="text/javascript" src="../app/controllers/mainController.js"></script>
 <script type="text/javascript" src="../app/controllers/search/listingController.js"></script>

@@ -5,7 +5,7 @@
 */
 
 /*Define viewItemController controller in 'app' */
-listing.controller("viewItemController", function($rootScope, $scope, $http, $location, sharedProperties) {
+listing.controller("viewItemController", function($scope, $http, $location) {
 
 	/*****************************************************************************************************************/
 	/*							  	GENERAL												  						     */
@@ -75,8 +75,8 @@ listing.controller("viewItemController", function($rootScope, $scope, $http, $lo
 				$scope.item_resource_url = thisJson.expressions[0].manifestations[0].items[0].url;
 
 			}
-			$scope.getItemRatings();
 			$scope.getItemTags();
+			$scope.getItemRatings();
 		})
 
 	};
