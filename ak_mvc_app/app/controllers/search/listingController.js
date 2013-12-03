@@ -76,6 +76,9 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		//add PAGINATION in query
 		var query_pagination = '&page_size='+$scope.pageSize+'&page='+$scope.currentPage;
 
+		//limit facets number per facet
+		var limitFacetsNumber = '&facet_size='+$scope.limit_facets_number;
+
 		//FACETS LIMITATION
 		//!! FIX TO CHANGE FROM conf.json
 		var limitFacets = '';
@@ -97,8 +100,9 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		* query_facets : '&facets=set,language,contexts'
 		* query_pagination : '&page_size=15&page=1'
 		* limitFacets : '&set=oeintute&language=en,fr'
+		* limitFacetsNumber : '&limitFacetsNumber'
 		*/
-		var query = $scope.akif + $rootScope.query + query_facets + query_active_facets + query_pagination + limitFacets;
+		var query = $scope.akif + $rootScope.query + query_facets + query_active_facets + query_pagination + limitFacets + limitFacetsNumber;
 
 		//add parameters to URL
 		//active facets

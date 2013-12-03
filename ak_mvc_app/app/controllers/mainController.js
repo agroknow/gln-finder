@@ -28,6 +28,7 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 		$scope.facets = data.facets;
 		$scope.snippetElements = data.snippetElements;
 		$scope.maxTextLength = data.maxTextLength;
+		$scope.limit_facets_number = data.limit_facets_number;
 		$scope.findElements(true);
     })
 	.error(function(err){
@@ -54,6 +55,7 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 		//Defines which facets we want to add
 		$scope.facets = ['set','language','contexts'];
 		$scope.limit_facets = {}; //{"set":["oeintute","prodinraagro"], "language":["en","fr"]}; // limit facets
+		$scope.limit_facets_number = 10; // limits the number of the facets in facets list
 
 		//SNIPPETS
 		//Components inside snippet
