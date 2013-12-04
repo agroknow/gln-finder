@@ -22,15 +22,15 @@
 		        <button type="submit">Search</button>
 		    </form>
 
-			<h4>Search for "<span class="active">{{query.split("=")[1]}}</span>" returned total: {{total}} results</h4>
+			<a href="#" class="show_facets" ng-click="enableFacets = !enableFacets">{{show_hide[enableFacets]}} facets</a>
 
 			<!-- facets (left sidebar)-->
 			<div>
 				<!-- <a ng-click="enableFacets=!enableFacets">Facets</a> -->
 	            <div id="facets" ng-show="enableFacets" ng-controller="facetsController">
 	            	<!-- active facets -->
-	            	<div>Available facets</div>
-	            	<div ng-repeat="facet in facets" >
+	            	<div class="facet_title">Available facets</div>
+	            	<div class="row" ng-repeat="facet in facets" >
 		            	<div class="parent">{{mapping['facets'][facet]}}</div> <!-- 'facet' is the actual facet name -->
 
 		            		<!-- 'facet' is the actual facet name and term.term is the machine name for the term -->
@@ -51,12 +51,14 @@
 				<div id="active_facets" ng-show="enableFacets" ng-controller="facetsController">
 					 <!-- active facets -->
 		             <div ng-show="enableFacets" class="facets row">
-		            	<div>Active facets</div>
+		            	<div class="facet_title" >Active facets</div>
 		            	<div ng-repeat="links in activeFacets" >
 		            		<a href="javascript:;" ng-click="deselectFacet(links)">{{links.term}} <span class="remove_facet"> x </span></a>
 	            		</div>
 		            </div>
 	            </div>
+
+	           <h3 class="result_inform" >Search for "<span class="active">{{query.split("=")[1]}}</span>" returned total: <span class="active">{{total}} results</span></h3>
 
 	            <!-- Top Pagination -->
 	            <div class="pagination" ng-controller="paginationController" ng-show="enablePaginationTop" ng-init="initPagination()" >
@@ -74,23 +76,25 @@
 	            <div id="listing" ng-controller="listingController" class="row">
 
 		            <ul class="results">
-			            <input ng-model="filterResults" placeholder="Filter results by title..." />
-			            <b>Page '{{currentPage}}'</b> filtered with '<span class="active">{{filterResults}}</span>'</b> gives total: <b>{{filtered.length}} results</b>
-			            <hr>
+
+			            <!--<input ng-model="filterResults" placeholder="Filter results by title..." />
+			            <b>Page '{{currentPage}}'</b> filtered with '<span class="active">{{filterResults}}</span>'</b> gives total: <b>{{filtered.length}} results</b>-->
 
 			          <!-- loading and message -->
 				          <div ng-show="loading" class="loading" style="margin:0px auto; padding:0px;">
-			            	<img src="../assets/images/loading_2.gif" >
+			            	<img src="../assets/images/loading_circ_2.gif" >
 			            </div>
 			            <div ng-show="error" class="error_message">
-			            	WOW! That's great!<br>An awesome error happened!<br> Try again later :p
+			            	WOW!<br>An awesome error happened!
+			            	<br> Don't worry! Our ninja's are going to fix it!
+			            	<br> Just try again later :p
 			            </div>
 
 	            <!-- results -->
-		            	<li ng-repeat="result in filtered = (results | filter:filterResults) ">
+		            	<li class="snippet" ng-repeat="result in filtered = (results | filter:filterResults) ">
 				            <b>Title:</b>{{result.title}}
 							<br> <b>Description:</b> {{result.description}}
-							<br> <a class="view_more" target="_blank" href="item.html?id={{result.id}}_{{result.set}}"> <b>View More</b> </a>
+							<br> <a class="view_more" target="_blank" href="item.html?id={{result.id}}_{{result.set}}"> View More </a>
 			            </li>
 		            </ul>
 			</div>

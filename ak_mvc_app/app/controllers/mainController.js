@@ -10,6 +10,11 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	$scope.conf_file = '../config/conf.json';
 	var mappings_file = '../config/facets_mappings.json';
 
+	//variable to show and hide elements in ui
+	$scope.show_hide = [];
+	$scope.show_hide[true]="hide";
+	$scope.show_hide[false]="show";
+
 	$rootScope.currentPage = 1;
 
 	//get properties from conf.json

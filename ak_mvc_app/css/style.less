@@ -42,9 +42,9 @@ body{
 #akListing {
 
 	display:table;
-	margin:2em auto;
+	margin:0px auto;
 	.rounded-corners(10px);
-	padding:2em 0;
+	padding:1em 0;
 
 	/* screen */
 	@media all {
@@ -62,6 +62,7 @@ body{
 	@media all and (max-width: 480px) {
 		width:100%;
 		background-color: none; // rgba(35, 43, 43, 0.5); //@background
+		font-size: medium;
 	}
 }
 
@@ -106,7 +107,7 @@ body{
 .form-wrapper {
     width: 450px;
     padding: 10px;
-    margin: 50px auto 50px auto;
+    margin: 1em auto;
     background: #444;
     background: rgba(0,0,0,.2);
     border-radius: 10px;
@@ -115,6 +116,7 @@ body{
 	/* mobile */
 	@media all and (max-width: 480px) {
 		 width: 95%;
+		 padding: 5px;
 	}
 
     /* Form text input */
@@ -256,6 +258,29 @@ body{
 /******************************************************/
 /*					FACETS	(left-sidebar)			  */
 /******************************************************/
+
+/* icon to show_hide facets */
+.show_facets {
+	width:130px;
+	display: block;
+	margin: 0px auto;
+	padding: 3px;
+	text-align: center;
+	background: @warning_orange;
+	text-decoration: none;
+	color: white;
+	.rounded-corners(3px);
+
+	/* mobile */
+	@media all and (min-width: 768px) {
+		display:none;
+	}
+}
+
+.facet_title {
+	text-align: center;
+}
+
 #facets {
 	width:200px;
 	float:left;
@@ -334,11 +359,6 @@ body{
 	border-top: 1px solid @light_raf;
 	border-bottom: 1px solid @light_raf;
 
-	/* mobile */
-	@media all and (max-width: 480px) {
-		/* display: none; */
-	}
-
 	a {
 		padding:1px 3px;
 		float:left;
@@ -391,7 +411,7 @@ body{
 				background:none;
 
 				&:hover{
-					background: @navy_blue_dark;
+					background: none;
 				}
 
 			}
@@ -406,17 +426,18 @@ body{
 }
 
 
-
-.toggle_facets {
-	float:right;
-}
-
-
-
 /******************************************************/
 /*					LISTING	 				 		  */
 /******************************************************/
-
+.result_inform {
+	display: inline-block;
+	margin:5px auto;
+	padding-top: 5px;
+	font-weight: normal;
+	width:100%;
+	text-align: center;
+	border-top: solid 1px @light_raf;
+}
 #listing_container {
 
 	/* screen */
@@ -427,13 +448,13 @@ body{
 
 	/* tablet */
 	@media all and (min-width: 480px) and (max-width: 768px) {
-		 width: 95%;
+		 width: 100%;
 		 float:none;
 	}
 
 	/* mobile */
 	@media all and (max-width: 480px) {
-		width: 95%;
+		width: 100%;
 		float:none;
 	}
 
@@ -459,17 +480,25 @@ body{
 	}
 
 
-	.view_more{
-		text-decoration: none;
-		margin:0px 3px;
-		padding:2px;
-		border: none;
-		color: @text_color_2;
+	.snippet {
+		width: 100%;
+		display: inline-block;
+		border-top:1px solid @light_raf;
 
-		&:hover{
-			font-weight: bold;
-			color: @active_text_color_1;
+		.view_more{
+			text-decoration: none;
+			margin:0px 3px;
+			padding:1px 3px;
+			border: none;
+			color: @text_color_2;
+			background-color: @light_raf;
+			.rounded-corners(3px);
+
+			&:hover{
+				color: @active_text_color_1;
+			}
 		}
+
 	}
 
 }
