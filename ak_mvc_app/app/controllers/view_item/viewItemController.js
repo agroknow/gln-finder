@@ -149,7 +149,7 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 
 		})
 		.error(function(err){
-			console.error(err);
+			console.log(err);
 		});
 
 	}
