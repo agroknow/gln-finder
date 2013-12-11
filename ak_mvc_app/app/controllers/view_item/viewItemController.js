@@ -122,7 +122,6 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 
 
 		//POST rate
-		console.log('Angular Version');
 		$http({
 			method : 'POST',
 			url : path,
@@ -149,7 +148,7 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 
 		})
 		.error(function(err){
-			console.log(err);
+			console.log("error on rating:" + err);
 		});
 
 	}
