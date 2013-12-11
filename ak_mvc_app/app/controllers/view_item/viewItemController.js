@@ -210,7 +210,7 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 				alert("Tag " + new_tag + " added!");
 			})
 			.error(function(err){
-				console.error(err);
+				console.log("new tag error : " +err);
 			});
 
 			$scope.getItem(); //need to refresh page
@@ -244,7 +244,7 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 			console.log("Access stored to SocialNav. Thank You.");
 		})
 		.error(function(err){
-			console.error(err);
+			console.log("accessing error:" + err);
 		});
 	}
 

@@ -94,7 +94,7 @@
 		            	<li class="snippet" ng-repeat="result in filtered = (results | filter:filterResults) ">
 				            <b>Title:</b>{{result.title}}
 							<br> <b>Description:</b> {{result.description}}
-							<br> <a class="view_more" target="_blank" href="item.html?id={{result.id}}_{{result.set}}"> View More </a>
+							<br> <a class="view_more" target="_self" href="item.html?id={{result.id}}_{{result.set}}"> View More </a>
 			            </li>
 		            </ul>
 			</div>
