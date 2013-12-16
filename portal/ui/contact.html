@@ -11,15 +11,8 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
-		<script src="js/jquery.min.js"></script>
-		<script src="js/config.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-panels.min.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-desktop.css" />
-		</noscript>
+
+
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
@@ -42,29 +35,29 @@
 			<nav id="nav" class="skel-panels-fixed">
 			</nav>
 		<!-- /Nav -->
-		
+
 		<!-- Main -->
 			<div id="main-wrapper">
 				<div id="main" class="container">
 					<div class="row">
 						<div class="12u skel-cell-mainContent">
 							<div class="content">
-							
+
 								<!-- Content -->
-						
-						
+
+
 									<article class="is-page-content">
 
 										<header>
 											<h2>Contact</h2>
 											<span class="byline">something to say maybe...?<span>
 										</header>
-										
-										
+
+
 								<!-- Contact Form -->
 										<section>
 											<form id="contact-form" action="/" method="post">
-												
+
 												<div>
 													<label>
 													<span>About (required)</span>
@@ -108,7 +101,7 @@
 									</article>
 
 								<!-- /Content -->
-								
+
 							</div>
 						</div>
 					</div>
@@ -125,34 +118,38 @@
 		<script type="text/javascript">
 		(function($){
 		  var allPanels = $('.accordion > dd').hide();
-		    
+
 		  $('.accordion > dt > a').click(function() {
 		    allPanels.slideUp();
-		    
-		    
-		    
+
+
+
 		    if($(this).hasClass("closed"))
-		    {	
+		    {
 		    	$(this).removeClass("closed");
 				$(this).addClass("opened");
 		    	$(this).parent().next().slideDown();
 		    }
 		    else if($(this).hasClass("opened"))
-		    {	
+		    {
 		    	$(this).removeClass("opened");
 				$(this).addClass("closed");
 		    	$(this).parent().next().slideUp();
 		    }
-				
-				return false;		    
+
+				return false;
 		  });
-		
+
 		})(jQuery);
 		</script>
 		<!-- /providers accordeon script -->
-		
+
 		<!-- Page components import -->
-		<script type="text/javascript" src="js/page_components.js"></script>
+				<script src="../js/jquery.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/skel.min.js"></script>
+		<script src="../js/skel-panels.min.js"></script>
+		<script type="text/javascript" src="../ js/page_components.js"></script>
 
 	</body>
 </html>

@@ -1,5 +1,5 @@
 /*
-* Responsive Design HTML5 + CSS3 
+* Responsive Design HTML5 + CSS3
 * Mathioudakis Theodore / Agro-Know Technologies (2013)
 */
 
@@ -43,14 +43,14 @@
 			{
 				margin: 0 0 1em 0;
 			}
-			
+
 			.sidebar h2.major
 			{
 				text-align: left;
 				/* margin: 0 0 1em 0; */
 				margin:0px;
 			}
-			
+
 				.sidebar h2.major span
 				{
 					padding-left: 0;
@@ -77,13 +77,13 @@
 		font-size: 1.65em;
 		padding: 0.85em 1.85em 0.85em 1.85em;
 	}
-	
+
 	.actions
 	{
 		text-align: center;
 		margin: 2em 0 0 0;
 	}
-	
+
 		.actions .button
 		{
 			margin: 0 0.5em 0 0.5em;
@@ -96,7 +96,7 @@
 	.is-highlight
 	{
 	}
-	
+
 		.is-highlight .special
 		{
 			margin: 0 0 4em 0;
@@ -119,7 +119,7 @@
 		text-align: left;
 		display:block;
 	}
-	
+
 	.is-post
 	{
 	}
@@ -145,11 +145,11 @@
 		{
 			margin: 0 0 0.5em 0;
 		}
-	
+
 	.is-post-summary
 	{
 	}
-	
+
 		.is-post-summary h3
 		{
 			line-height: 1em;
@@ -196,7 +196,7 @@
 	{
 		padding-top: 0.5em;
 	}
-	
+
 		.homepage .sidebar
 		{
 			padding-top: 0;
@@ -210,7 +210,7 @@
 		{
 			padding-right: 2em;
 		}
-	
+
 		.content-right
 		{
 			padding-left: 2em;
@@ -224,13 +224,13 @@
 	{
 		padding: 8em 0 8em 0;
 	}
-	
+
 	#main-wrapper
 	{
 		border-top-width: 35px;
 		border-bottom-width: 10px;
 	}
-	
+
 /*********************************************************************************/
 /* Header                                                                        */
 /*********************************************************************************/
@@ -262,7 +262,7 @@
 				padding: 0 1.5em 0 1.5em;
 				top: -0.65em;
 			}
-		
+
 			#header .logo h1,
 			#header .logo .byline
 			{
@@ -306,7 +306,7 @@
 			position: relative;
 			z-index: 1001;
 		}
-	
+
 		#nav li
 		{
 			display: inline-block;
@@ -367,13 +367,13 @@
 	{
 		padding: 5em 0 5em 0;
 	}
-	
+
 		#banner h2
 		{
 			font-size: 2.75em;
 			margin: 0 0 0.75em 0;
 		}
-		
+
 		#banner .byline
 		{
 			font-size: 1.35em;
@@ -408,12 +408,12 @@
 		text-align: center;
 		padding: 8em 0 8em 0;
 	}
-	
+
 		#footer > .row
 		{
 			padding: 2em 0 2em 0;
 		}
-	
+
 /*********************************************************************************/
 /* Copyright                                                                     */
 /*********************************************************************************/
@@ -422,7 +422,7 @@
 	{
 		margin: 4em 0 0 0;
 	}
-	
+
 /*********************************************************************************/
 /* Search Box                                                                    */
 /*********************************************************************************/

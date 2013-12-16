@@ -10,32 +10,14 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
-		<script src="js/jquery.min.js"></script>
-		<script src="js/config.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-panels.min.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-desktop.css" />
-		</noscript>
-		
-		
-        <script type="text/javascript" src="js/finder/view_item.js"></script>
-            
-        <script type="text/javascript">
-            function getItem()
-            {
-               getItemFromURL('http://54.228.180.124:8080/search-api/v1/akif/'+location.search.split("=")[1]);
-            }
-        </script>
-		
+
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
 	</head>
-	<body onload="getItem(), appendFooter(), appendNav()">
+	<body onload="appendFooter(), appendNav()" ng-app="akListing">
 
 		<!-- Header -->
 			<header id="header">
@@ -52,7 +34,7 @@
 			<nav id="nav" class="skel-panels-fixed">
 			</nav>
 		<!-- /Nav -->
-		
+
 				<!-- Search box -->
 		           <div id="search">
 			            <div>
@@ -63,17 +45,17 @@
 			                            </div>
 			                    <!--<input type="submit" value="submit" />-->
 			                </form>
-			                
+
 			            </div>
 			        </div>
 		         <!-- / Search box -->
 		<!-- Main -->
-			<div id="main-wrapper">
+			<div id="main-wrapper" ng-controller="viewItemController" ng-init="getItem()" >
 				<div id="main" class="container">
 					<div class="row">
 						<div class="3u">
 							<div class="sidebar">
-							
+
 								<!-- Sidebar -->
 								<!-- More Info -->
 										<section>
@@ -82,90 +64,135 @@
 		                                    <li >
 		                                        <h3 class="sidebar_titles">Language:</h3>
 		                                        <nav id="itemLanguage">
+		                                        	{{item_language}}
 		                                        </nav>
 		                                    </li>
 		                                    <li >
 		                                        <h3 class="sidebar_titles">Educational Context:</h3>
 		                                        <nav id="itemEducationalContext">
-		
+
 		                                        </nav>
 		                                    </li>
 		                                    <li >
 		                                        <h3 class="sidebar_titles">Resource Type:</h3>
 		                                        <nav id="itemResourceType">
-		
+
 		                                        </nav>
 		                                    </li>
 		                                    <li >
 		                                        <h3 class="sidebar_titles">Intended Audience:</h3>
 		                                        <nav id="itemIntendedAudience">
-		
+													<span ng-repeat="roles in item_roles"> {{roles}} </span>
 		                                        </nav>
 		                                    </li>
 		                                    <li >
 		                                        <h3 class="sidebar_titles">Typical Age Range:</h3>
 		                                        <nav id="itemAgeRange">
-		
+
 		                                        </nav>
 		                                    </li>
 		                                    <li >
 		                                        <h3 class="sidebar_titles">Collection:</h3>
 		                                        <nav  id="itemCollection">
-		
+													{{item_organization}}
 		                                        </nav>
 		                                    </li>
 		                                    <li >
 		                                        <h3 class="sidebar_titles">Media Format:</h3>
 		                                        <nav id="itemMediaFormat">
-		
+
 		                                        </nav>
 		                                    </li>
 		                                </ul>
 										</section>
 									<!-- /More Info -->
 								<!-- /Sidebar -->
-							
+
 							</div>
 						</div>
-						
-						
+
+
 						<div class="9u skel-cell-mainContent">
 							<div class="content content-right">
-							
+
 								<!-- Content -->
-						
+
 									<article class="is-page-content">
-		                                <header>
-		                                    <h2 id="itemTitle"></h2>
-		                                    <!--<img src="style/images/copyright_sample.png" alt="image" />-->
-		                                </header>
+
+										<header>
+						                    <h2 id="itemTitle"><a href="{{item_resource_url}}" target="_blank">{{item_title}}</a></h2>
+						                    <!--<img src="style/images/copyright_sample.png" alt="image" />-->
+						                </header>
 		                                <div class="item-content">
-		                                    <div>
-		                                        <p class="itemDescription" id="itemDescription"></p>
-		                                        
-		                                    </div>
-		                                    <div id="itemThumb"></div>
-		
-		                                    <div class="clearfix">
-		                                        <!--<div id="keywords"></div>-->
-		                                        <div><ul class="itemKeywords"><li><span>Keywords:</span><nav id="itemKeywords" class="inline-nav clearfix"> <!--auto-generated--></nav></li></ul></div>
-		                                        <div style="position: relative; top: 7px;">
-		                                            <ul>
-		                                                <li id="itemRights">
-		                                                </li>
-		                                            </ul>
-		                                        </div>
-		                                        
-		                                        <div class="floatright"><a href="mailto:info@agroknow.gr?Subject=Green%20Learning%20Network" class="reportaproblem">Report a problem</a></div>
-		                                        <div class="floatright" style="margin-right: 15px;" id="itemAccess"></div>
-		                                    </div>
-		
-		                                </div>
-		                                
+											<ul>
+												 <li><span class="label">Description : </span>
+												 	<span ng-repeat="desc in item_description"><br>{{desc}}</span>
+												 </li>
+												 <li><span class="label">Keywords : </span> <br>
+												 	<a ng-repeat="keys in item_keywords" target="_self" href="search.html?q={{keys}}" >{{keys}}&nbsp;</a>
+												 </li>
+												 <li><span class="label">Classification : </span> <br>
+													 <a ng-repeat="keys in item_classification" target="_self" href="search.html?q={{keys}}" >{{keys}}</a>
+												 </li>
+											 </ul>
+
+							                <div class="floatright">
+							                	<a href="mailto:info@agroknow.gr?Subject=Green%20Learning%20Network" class="reportaproblem">Report a problem</a>
+							                </div>
+	                                        <div class="floatright" style="margin-right: 15px;" id="itemAccess">
+	                                        	<a target="_blank" href="{{item_resource_url}}" class="access"> Access the resource</a>
+	                                        </div>
+										</div>
+
+
+<!--
+						                <div class="rating">
+						                	<p> <b>{{item_number_of_visitors}}</b> visitors have rate this item.</p>
+						                	<p>Average rating : <b>{{item_average_rating}}</b></p>
+											<div ng-show="enable_rating_1">
+												<p>Rate this item</p>
+							                	<span>Dimension 1 : </span>
+												<span><a href="javascript:;" ng-click="rateItem(1,1)">1</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(2,1)">2</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(3,1)">3</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(4,1)">4</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(5,1)">5</a></span>
+											</div>
+											<div ng-show="enable_rating_2">
+							                	<span>Dimension 2 : </span>
+												<span><a href="javascript:;" ng-click="rateItem(1,2)">1</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(2,2)">2</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(3,2)">3</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(4,2)">4</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(5,2)">5</a></span>
+											</div>
+											<div ng-show="enable_rating_3">
+							                	<span>Dimension 3 : </span>
+												<span><a href="javascript:;" ng-click="rateItem(1,3)">1</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(2,3)">2</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(3,3)">3</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(4,3)">4</a></span>
+												<span><a href="javascript:;" ng-click="rateItem(5,3)">5</a></span>
+											</div>
+
+										</div>
+
+										<hr>
+
+						                <div class="tagging">
+						                	<p>Tags: <span ng-repeat="tags in item_tags">{{tags}}</span> </p>
+					        	            <form ng-submit="submitNewTag()" >
+										      Add new tag for this item:
+										      <input type="text" ng-model="new_tag" name="new_tag"/>
+										      <input type="submit" id="submit_tag" value="Add" />
+										    </form>
+									   </div>
+-->
+
 									</article>
 
 								<!-- /Content -->
-								
+
 							</div>
 						</div>
 					</div>
@@ -178,9 +205,20 @@
 			</footer>
 		<!-- /Footer -->
 
-		<!-- Page components import -->
-		<script type="text/javascript" src="js/page_components.js"></script>
-		
-		
+
+	<!-- Page components import -->
+	<script type="text/javascript" src="../js/page_components.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/skel.min.js"></script>
+	<script src="../js/skel-panels.min.js"></script>
+
+	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
+	<script type="text/javascript" src="../lib/angular.min.js"></script>
+	<script src="../lib/less-1.5.0.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../app/app.js"></script>
+	<script type="text/javascript" src="../app/controllers/view_item/viewItemController.js"></script>
+
+
 	</body>
 </html>

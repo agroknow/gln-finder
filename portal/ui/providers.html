@@ -6,33 +6,26 @@
 -->
 <html>
 	<head>
-		<title>GLN - Topics</title>
+		<title>GLN - providers</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
-		<script src="js/jquery.min.js"></script>
-		<script src="js/config.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-panels.min.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-desktop.css" />
-		</noscript>
+
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
 		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
 
 	</head>
-	<body onload="appendFooter(), appendNav('topics'), getTopics()">
+	<body onload="getProviders(), appendFooter(), appendNav('providers')">
 
 		<!-- Header -->
 			<header id="header">
 				<div class="logo">
 					<div>
 						<h1><a href="#" id="logo">Green learning Network</a></h1>
-						<span class="byline">/ Topics</span>
+						<span class="byline">/ Providers</span>
 					</div>
 				</div>
 			</header>
@@ -42,30 +35,35 @@
 			<nav id="nav" class="skel-panels-fixed">
 			</nav>
 		<!-- /Nav -->
-		
+
 		<!-- Main -->
 			<div id="main-wrapper">
 				<div id="main" class="container">
 					<div class="row">
 						<div class="12u skel-cell-mainContent">
 							<div class="content">
-							
+
 								<!-- Content -->
-						
-						
+
 									<article class="is-page-content">
 
 										<header>
-											<h2>Topics</h2>
-											<span class="byline">Green Learning Network aims to provide learners, educators, researchers, professionals and develop- ers with access to a broad spectrum of open access, high quality agricultural, environmental and sus- tainability related content. We are interested to offer users easy access to relevant content of their interest<span>
+											<h2>Providers</h2>
+											<span class="byline">A growing number of organisations around the globe are promoting their collections through the Green Learning Network. This includes agriculture research organisations and institutes, biodiversity centres, Natural History museums, universities, European projects and more.<span>
 										</header>
-										
-										
-								<!-- topics links -->
-										<div id="topics_links"></div>
 
-								<!-- /topics links -->
-								
+
+								<!-- Providers List -->
+										<section>
+											<div id="providers" class="accordion">
+											</div>
+										</section>
+
+
+									</article>
+
+								<!-- /Content -->
+
 							</div>
 						</div>
 					</div>
@@ -78,10 +76,17 @@
 			</footer>
 		<!-- /Footer -->
 
-		
+
+
 		<!-- Page components import -->
-		<script type="text/javascript" src="js/pages_modules.js"></script>
-		<script type="text/javascript" src="js/page_components.js"></script>
+		<script type="text/javascript" src="../js/pages_modules.js"></script>
+		<script type="text/javascript" src="../js/page_components.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/skel.min.js"></script>
+		<script src="../js/skel-panels.min.js"></script>
+
+
 
 	</body>
 </html>
