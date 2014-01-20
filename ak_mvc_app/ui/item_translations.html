@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> ^ Agro Know</title>
+	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet/less" type="text/css" media="screen" href="../css/style.less" />
+
+</head>
+
+<body>
+        <div id="akListing" ng-app="akListing" >
+
+            <div ng-controller="viewTranslationsController" ng-init="getItem()" class="row">
+
+
+            <h3>View Translations for : {{item_id}}</h3>
+            <label for="user_id">Give a user id (required for rating):</label>
+		    <input ng-model="user_id" name="user_id" type="text" placeholder="choose size" required>
+
+            <h4>Choose language and click 'translate'</h4>
+
+            <form ng-submit="translate_item()">
+				<label for="trans_to">Translate from {{language_mappings[translate_from] || translate_from }} to:
+	            <select id="trans_to" ng-model="translate_to">
+					<option value="ar">Arabic</option>
+					<option value="bg">Bulgarian</option>
+					<option value="ca">Catalan</option>
+					<option value="zh-CHS">Chinese</option>
+					<option value="zh-CHT">Chinese(Taiwan)</option>
+					<option value="cs">Czech</option>
+					<option value="da">Danish</option>
+					<option value="nl">Dutch</option>
+					<option value="en">English</option>
+					<option value="et">Estonian</option>
+					<option value="fi">Finnish</option>
+					<option value="fr">French</option>
+					<option value="de">German</option>
+					<option value="el">Greek</option>
+					<option value="ht">Haitian</option>
+					<option value="he">Hebrew</option>
+					<option value="hi">Hindi</option>
+					<!-- <option value="mww"> </option> -->
+					<option value="hu">Hungarian</option>
+					<option value="id">Indonesian</option>
+					<option value="it">Italian</option>
+					<option value="ja">Japanese</option>
+					<option value="tlh">Klingon</option>
+					<!-- <option value="tlh-Qaak"> </option> -->
+					<option value="ko">Korean</option>
+					<option value="lv">Latvian</option>
+					<option value="lt">Lithuanian</option>
+					<option value="ms">Malaysian</option>
+					<option value="mt">Maltese</option>
+					<option value="no">Norwegian</option>
+					<option value="fa">Farsi</option>
+					<option value="pl">Polish</option>
+					<option value="pt">Portuguese</option>
+					<option value="ro">Romanian</option>
+					<option value="ru">Russian</option>
+					<option value="sk">Slovak</option>
+					<option value="sl">Slovenian</option>
+					<option value="es">Spanish</option>
+					<option value="sv">Swedish</option>
+					<option value="th">Thai</option>
+					<option value="tr">Turkish</option>
+					<option value="uk">Ukrainian</option>
+					<option value="ur">Urdu</option>
+					<option value="vi">Vietnamese</option>
+				</select>
+
+		        <button type="submit">Translate</button>
+		    </form>
+
+		        <!-- loading and message -->
+		        <div ng-show="loading" class="loading" style="margin:0px auto; padding:0px;">
+	            	<img src="../assets/images/loading_horizontal.gif" >
+	            	<p>Services are running. Please wait.</p>
+	            </div>
+	            <div ng-show="error" class="error_message">
+	            	<br>An error happened!
+	            	<br>Don't worry! We are going to fix it!
+	            	<br>Just try again later :p
+	            </div>
+
+
+			<article class="origin_document_container">
+			<h4>Original Document. </h4>
+                <header>
+                    <h2 id="itemTitle"></h2>
+                    <!--<img src="style/images/copyright_sample.png" alt="image" />-->
+                </header>
+
+                <div>
+                    <p class="itemDescription" id="itemDescription"><b>Title:</b> {{item_title}}</p>
+                </div>
+
+				 <div>
+                    <p class="itemDescription" id="itemDescription"><b>Description:</b> {{item_description}}</p>
+                </div>
+			</article>
+
+
+
+			<article class="microsoft_translate_container">
+			    <h4>Microsoft Service Translation</h4>
+                <header>
+                    <h2 id="itemTitle"></h2>
+                    <!--<img src="style/images/copyright_sample.png" alt="image" />-->
+                </header>
+
+                <div>
+                    <p class="itemDescription" id="itemDescription"><b>Title:</b> {{microsoft_title || 'Choose language for translation.'}}</p>
+                </div>
+
+				 <div>
+                    <p class="itemDescription" id="itemDescription"><b>Description:</b> {{microsoft_description || '-'}}</p>
+                </div>
+
+                <!-- rating data -->
+                <div>Rating: {{microsoft_avg_rating || '-'}}
+	                	<br>
+					 Votes: {{microsoft_votes || '-'}}
+                </div>
+
+                <fieldset ng-show="microsoft_rating_on" class="rating">
+				  <legend>
+				    Rate translation:
+				  </legend>
+
+				  <input id="star0_micro" name="rating_micro" ng-click="rateItem(5, 'microsoft')" type="radio" value="5" />
+				  <label for="star0_micro" title="5">
+				    0 stars
+				  </label>
+				  <input id="star1_micro" name="rating_micro" ng-click="rateItem(4, 'microsoft')" type="radio" value="4" />
+				  <label for="star1_micro" title="4">
+				    1 stars
+				  </label>
+				  <input id="star2_micro" name="rating_micro" ng-click="rateItem(3, 'microsoft')" type="radio" value="3" />
+				  <label for="star2_micro" title="3">
+				    2 stars
+				  </label>
+				  <input id="star3_micro" name="rating_micro" ng-click="rateItem(2, 'microsoft')" type="radio" value="2" />
+				  <label for="star3_micro" title="2">
+				    3 stars
+				  </label>
+				  <input id="star4_micro" name="rating_micro" ng-click="rateItem(1, 'microsoft')" type="radio" value="1" />
+				  <label  for="star4_micro" title="1">
+				    4 stars
+				  </label>
+
+				</fieldset>
+				  <p class="thanks" ng-show="microsoft_rating_thanks">Thank you for rating.</p>
+
+
+			</article>
+
+
+
+			<article class="xerox_translate_container">
+                <h4>Xerox Service Translation</h4>
+                <header>
+                    <h2 id="itemTitle"></h2>
+                    <!--<img src="style/images/copyright_sample.png" alt="image" />-->
+                </header>
+
+                <div>
+                    <p class="itemDescription" id="itemDescription"><b>Title:</b> {{xerox_title || 'Choose language for translation.'}}</p>
+                </div>
+
+				 <div>
+                    <p class="itemDescription" id="itemDescription"><b>Description:</b> {{xerox_description || '-'}}</p>
+                </div>
+
+				<!-- rating data -->
+                <div>Rating: {{xerox_avg_rating || '-'}}
+	                	<br>
+					 Votes: {{xerox_votes || '-'}}
+                </div>
+
+			     <fieldset ng-show="xerox_rating_on" class="rating">
+				  <legend>
+				     Rate translation:
+				  </legend>
+				  <input id="star0_xerox" name="rating_xerox" ng-click="rateItem(5, 'xerox')" type="radio" value="5" />
+				  <label  for="star0_xerox" title="5">
+				    0 stars
+				  </label>
+				  <input id="star1_xerox" name="rating_xerox" ng-click="rateItem(4, 'xerox')" type="radio" value="4" />
+				  <label for="star1_xerox" title="4">
+				    1 stars
+				  </label>
+				  <input id="star2_xerox" name="rating_xerox" ng-click="rateItem(3, 'xerox')" type="radio" value="3" />
+				  <label for="star2_xerox" title="3">
+				    2 stars
+				  </label>
+				  <input id="star3_xerox" name="rating_xerox" ng-click="rateItem(2, 'xerox')" type="radio" value="2" />
+				  <label for="star3_xerox" title="2">
+				    3 stars
+				  </label>
+				  <input id="star4_xerox" name="rating_xerox" ng-click="rateItem(1, 'xerox')" type="radio" value="1" />
+				  <label for="star4_xerox" title="1">
+				    4 stars
+				  </label>
+				</fieldset>
+
+				<p class="thanks" ng-show="xerox_rating_thanks">Thank you for rating.</p>
+
+			</article>
+
+		</div>
+    </div>
+
+
+	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
+	<script type="text/javascript" src="../lib/angular.min.js"></script>
+	<script src="../lib/less-1.5.0.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../app/app.js"></script>
+	<script type="text/javascript" src="../app/controllers/view_translations/viewTranslationsController.js"></script>
+
+</body>
+</html>

@@ -1,1 +1,23 @@
-{"baseUrl":"http://54.228.180.124:8080/search-api/v1/akif?","enableFacets":true,"enablePaginationBottom":true,"enablePaginationTop":true,"facets":["set","language","contexts"],"limitPagination":10,"limit_facets":{},"limit_facets_number":5,"mappings_file":"../config/facets_mappings.json","maxTextLength":300,"pageSize":10,"selectedLanguage":"en","snippetElements":["title","description"]}
+{
+  "baseUrl": "http://54.228.180.124:8080/search-api/v1/akif?",
+  "enableFacets": true,
+  "enablePaginationBottom": true,
+  "enablePaginationTop": true,
+  "facets": [
+    "set",
+    "language",
+    "contexts"
+  ],
+  "limitPagination": 10,
+  "limit_facets": {
+  },
+  "limit_facets_number": 5,
+  "mappings_file": "../config/facets_mappings.json",
+  "maxTextLength": 300,
+  "pageSize": 10,
+  "selectedLanguage": "en",
+  "snippetElements": [
+    "title",
+    "description"
+  ]
+}

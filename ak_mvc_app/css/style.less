@@ -489,6 +489,22 @@ body{
 			text-decoration: none;
 			margin:0px 3px;
 			padding:1px 3px;
+			float:left;
+			border: none;
+			color: @text_color_2;
+			background-color: @light_raf;
+			.rounded-corners(3px);
+
+			&:hover{
+				color: @active_text_color_1;
+			}
+		}
+
+		.view_translations{
+			text-decoration: none;
+			margin:0px 3px;
+			padding:1px 3px;
+			float:right;
 			border: none;
 			color: @text_color_2;
 			background-color: @light_raf;
@@ -501,6 +517,86 @@ body{
 
 	}
 
+}
+
+
+/******************************************************/
+/*					TRANSLATION PAGE				  */
+/******************************************************/
+.origin_document_container {
+	width:100%;
+	display: inline-block;
+	padding: 10px;
+	border-top: solid 5px  rgba(1,1,1,0.1);
+}
+
+.microsoft_translate_container {
+	width:100%;
+	padding: 10px;
+	display: inline-block;
+	border-top: solid 5px rgba(1,1,1,0.3);
+}
+
+.xerox_translate_container {
+	width:100%;
+	padding: 10px;
+	display: inline-block;
+	border-top: solid 5px rgba(1,1,1,0.2);
+}
+
+.thanks {
+	float:right;
+	margin-right: 10px;
+}
+
+/******************************************************/
+/*			OE TRANSLATIONS RATING	 				  */
+/******************************************************/
+.rating {
+  float: left;
+}
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.rating:not(:checked) > label {
+  float: right;
+  width: 1em;
+  padding: 0 0.1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  line-height: 1.2;
+  color: #dddddd;
+}
+.rating:not(:checked) > label:before {
+  content: "★ ";
+}
+.rating > label:hover {
+  color: gold;
+}
+.rating > label:hover ~ label {
+  color: gold;
+}
+.rating > input:checked ~ label {
+  color: #ff7700;
+}
+/*
+.rating > + label:hover, .rating > ~ label:hover {
+  color: #eeaa00;
+}
+.rating > + label:hover ~ label, .rating > ~ label:hover ~ label {
+  color: #eeaa00;
+}
+.rating > label:hover ~ input:checked ~ label {
+  color: #eeaa00;
+}
+*/
+.rating > label:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
 }
 
 /******************************************************/

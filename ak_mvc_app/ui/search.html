@@ -35,7 +35,7 @@
 
 		            		<!-- 'facet' is the actual facet name and term.term is the machine name for the term -->
 			            	<a ng-repeat="term in inactiveFacets[0][facet.toString()].terms" class="child" href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)">
-			            		<span class="value">{{ mapping[facet][term.term] }}</span>
+			            		<span class="value">{{ mapping[facet][term.term] || term.term }}</span>
 			            		<span class="count">{{ term.count }}</span>
 			            	</a>
 
@@ -85,9 +85,9 @@
 			            	<img src="../assets/images/loading_circ_2.gif" >
 			            </div>
 			            <div ng-show="error" class="error_message">
-			            	WOW!<br>An awesome error happened!
-			            	<br> Don't worry! Our ninja's are going to fix it!
-			            	<br> Just try again later :p
+			            	<br>An error happened!
+			            	<br>Don't worry! We are going to fix it!
+			            	<br>Just try again later :p
 			            </div>
 
 	            <!-- results -->
@@ -95,6 +95,7 @@
 				            <b>Title:</b>{{result.title}}
 							<br> <b>Description:</b> {{result.description}}
 							<br> <a class="view_more" target="_self" href="item.html?id={{result.id}}_{{result.set}}"> View More </a>
+							<br> <a class="view_translations" target="_self" href="item_translations.html?id={{result.id}}_{{result.set}}"> View Translations </a>
 			            </li>
 		            </ul>
 			</div>
