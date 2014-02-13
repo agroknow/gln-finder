@@ -31,10 +31,11 @@
 	            	<!-- active facets -->
 	            	<div class="facet_title">Available facets</div>
 	            	<div class="row" ng-repeat="facet in facets" >
-		            	<div class="parent">{{mapping['facets'][facet]}}</div> <!-- 'facet' is the actual facet name -->
+		            	<div class="parent"> <a href="#" ng-click="showChild = !showChild">{{mapping['facets'][facet] || facet}}</a> </div> <!-- 'facet' is the actual facet name -->
+		            	<!-- filter facets -->
+							<input ng-show="showChild" ng-model="facetFilter" placeholder="Filter {{facet}}" />		            		<!-- 'facet' is the actual facet name and term.term is the machine name for the term -->
 
-		            		<!-- 'facet' is the actual facet name and term.term is the machine name for the term -->
-			            	<a ng-repeat="term in inactiveFacets[0][facet.toString()].terms" class="child" href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)">
+			            	<a ng-repeat="term in inactiveFacets[0][facet.toString()].terms | filter:facetFilter" class="child" href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)" ng-show="showChild" >
 			            		<span class="value">{{ mapping[facet][term.term] || term.term }}</span>
 			            		<span class="count">{{ term.count }}</span>
 			            	</a>
@@ -94,6 +95,8 @@
 		            	<li class="snippet" ng-repeat="result in filtered = (results | filter:filterResults) ">
 				            <b>Title:</b>{{result.title}}
 							<br> <b>Description:</b> {{result.description}}
+							<br> <b>Keywords:</b>
+								 <a ng-repeat="keys in result.keywords" target="_self" href="search.html?query={{keys}}" >{{keys}}, </a>
 							<br> <a class="view_more" target="_self" href="item.html?id={{result.id}}_{{result.set}}"> View More </a>
 							<br> <a class="view_translations" target="_self" href="item_translations.html?id={{result.id}}_{{result.set}}"> View Translations </a>
 			            </li>

@@ -12,31 +12,55 @@
         <div id="akListing" ng-app="akListing" >
             <h1>Angular Experiment - View Item</h1>
 
-			<!-- item -->
+			<!-- VIEW ITEM -->
 			<hr>
             <div ng-controller="viewItemController" ng-init="getItem()" class="row">
+			<form class="form-wrapper cf" action="search.html">
+		        <input name="q" type="text" placeholder="Search here..." required>
+		        <button type="submit">Search</button>
+		    </form>
 
-				<article class="is-page-content">
-	                <header>
-	                    <h2 id="itemTitle"></h2>
-	                    <!--<img src="style/images/copyright_sample.png" alt="image" />-->
-	                </header>
 
-	                <div>
-                        <p class="itemDescription" id="itemDescription">{{item_title}}</p>
-	                </div>
 
-					 <div>
-                        <p class="itemDescription" id="itemDescription">{{item_description}}</p>
-	                </div>
+        <div id="akListing" ng-app="akListing" >
+            <div id="view_item" ng-controller="viewItemController" ng-init="getItem()" class="row">
+
+				<article id="main_content">
+	                    <h3 id="itemTitle">{{item_title}}</h3>
+	                <ul>
+						 <li><span class="label">Description : </span> <br> {{item_description}}</li>
+						 <li><span class="label">Keywords : </span> <br>
+						 	<a ng-repeat="keys in item_keywords" target="_self" href="search.html?query={{keys}}" >{{keys}}, </a>
+						 </li>
+						 <li><span class="label">Classification : </span> <br>
+							 <a ng-repeat="keys in item_classification" target="_self" href="search.html?query={{keys}}" >{{keys}}, </a>
+						 </li>
+					 </ul>
 
 					<div>
-                        <a href="{{item_resource_url}}" ng-click="newAccessing()" target=_blank >Access the resource</a>
+                        <a href="{{item_resource_url}}" class="access_the_resource" target=_blank >Access the resource</a>
 	                </div>
+				</article>
 
-					<hr>
+	             <article id="left_sidebar" >
+					 <h4 id="more_info">More Info</h4>
+					 <ul>
+						 <li><span class="label">Organization: </span> {{item_organization}} </li>
+						 <li><span class="label">Language: </span> {{item_language}} </li>
+						 <li><span class="label">Location: </span> {{item_coverage}}</li>
+						 <li><span class="label">Learning Resource Types: </span> <span ng-repeat="types in item_resource_types"> {{types}}, </span></li>
+						 <li><span class="label">Key Audience: </span> <span ng-repeat="roles in item_roles"> {{roles}}, </span></li>
+						 <li><span class="label">Context: </span> <span ng-repeat="context in item_context"> {{context}}, </span></li>
+						 <li><span class="label">Age Range: </span> {{item_age_range}}</li>
+					 </ul>
+				</article>
 
-	                <div class="rating">
+		</div>
+    </div>
+
+
+			<!-- SOC NAV RATINGS-->
+			<!--		 <div class="rating">
 	                	<p> <b>{{item_number_of_visitors}}</b> visitors have rate this item.</p>
 	                	<p>Average rating : <b>{{item_average_rating}}</b></p>
 						<div ng-show="enable_rating_1">
@@ -66,9 +90,7 @@
 						</div>
 
 					</div>
-
 					<hr>
-
 	                <div class="tagging">
 	                	<p>Tags: <span ng-repeat="tags in item_tags">{{tags}}</span> </p>
         	            <form ng-submit="submitNewTag()" >
@@ -77,6 +99,8 @@
 					      <input type="submit" id="submit_tag" value="Add" />
 					    </form>
 				   </div>
+				   -->
+
 			</article>
 		</div>
     </div>

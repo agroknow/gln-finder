@@ -161,6 +161,9 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 	$scope.getSnippet = function(thisJson, snippet_elements)
 	{
 		var temp = "";
+		var keys = [];
+		for(var k in thisJson.languageBlocks) keys.push(k);
+
 		if(thisJson.languageBlocks[$scope.selectedLanguage]!=undefined && thisJson.languageBlocks[$scope.selectedLanguage].title!=undefined)
 		{
 			var equals = "";
@@ -168,7 +171,9 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			{
 				if(snippet_elements[index] in thisJson.languageBlocks[$scope.selectedLanguage])
 				{
-					if(thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]]!=null)
+
+					/* Element in snippet that IS NOT AN ARRAY */
+					if(thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]]!=null && !(thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]] instanceof Array))
 					{
 						if(index!=0)
 						{
@@ -176,8 +181,30 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 						}
 						equals += "\"" + snippet_elements[index] + "\" : \"" + $scope.truncate(thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]], $scope.maxTextLength, ' ...').replace(/\"/g, "\\\"") + "\"";
 					}
+
+					/* Element in snippet that IS ARRAY */
+					if(thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]]!=null && (thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]] instanceof Array))
+					{
+						if(index!=0) {
+							equals+= ",";
+						}
+
+						var keywords='';
+						for( i in thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]] ) {
+							if( i != 0 ) {
+								keywords += ",\""+thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]][i]+"\"";
+							} else {
+								keywords += "\""+thisJson.languageBlocks[$scope.selectedLanguage][snippet_elements[index]][i]+"\"";
+							}
+						}
+						equals += "\"" + snippet_elements[index] + "\" : [" + keywords + "]";
+
+					}
+
+
 				}
 			}
+
 
 			//WE MUST HAVE ID & SET IN ORDER TO VIEW ITEM
 			if(thisJson.identifier) {
@@ -200,6 +227,5 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			return null;
 		}
 	}
-
 
 });

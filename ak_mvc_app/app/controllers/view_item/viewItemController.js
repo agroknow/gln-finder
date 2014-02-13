@@ -39,9 +39,6 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 
 		var item_identifier = $location.search().id.split('_')[0]; //SET_ID
 		var item_set = $location.search().id.split('_')[1];
-		$scope.item_resource_url = '';
-		$scope.item_number_of_visitors = 0;
-		$scope.item_average_rating = 'no rating available yet';
 
 		var headers = {'Content-Type':'application/json','Accept':'application/json;charset=utf-8'};
 
@@ -54,7 +51,7 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 		.success(function(data) {
 			//parse array and create an JS Object Array
 			//every item is a JSON
-			//console.log(data);
+			console.log(data.results[0]);
 			var thisJson = data.results[0];
 
 			//WE USE ONLY 'EN' FOR NOW
@@ -62,21 +59,78 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 
 				languageBlock = thisJson.languageBlocks['en'];
 
-				if (languageBlock.title !== undefined) {
-					$scope.item_title = languageBlock.title;
-				}
+				languageBlock.title !== undefined ? $scope.item_title = languageBlock.title : $scope.item_title = '-';
 
-				if (languageBlock.description !== undefined) {
-					$scope.item_description = languageBlock.description;
-				}
+				languageBlock.description !== undefined ? $scope.item_description = languageBlock.description : $scope.item_description ='-';
+
+				languageBlock.keywords !== undefined ? $scope.item_keywords = languageBlock.keywords : $scope.item_keywords = '-';
+
+				languageBlock.coverage !== undefined ? $scope.item_coverage = languageBlock.coverage : $scope.item_coverage = '-';
+
 			}
+
+			//ORGANIZATION
+			thisJson.contributors[0].organization !== undefined ? $scope.item_organization = thisJson.contributors[0].organization : $scope.item_organization = '-';
+
+			//LANGUAGE
+			thisJson.expressions[0].language !== undefined ? $scope.item_language = thisJson.expressions[0].language : $scope.item_language = '-';
+
+			//AGE RANGE
+			thisJson.tokenBlock.ageRange !== undefined ? $scope.item_age_range = thisJson.tokenBlock.ageRange : $scope.item_age_range = '-';
+
+			//KEY AUDIENCE
+			$scope.item_roles = [];
+			if(thisJson.tokenBlock.endUserRoles !== undefined) {
+				for(i in thisJson.tokenBlock.endUserRoles) {
+					$scope.item_roles.push(thisJson.tokenBlock.endUserRoles[i]);
+				}
+			} else {
+				$scope.item_roles = '-';
+			}
+
+			//CONTEXTS
+			$scope.item_context = [];
+			if(thisJson.tokenBlock.contexts !== undefined) {
+				for(i in thisJson.tokenBlock.contexts) {
+					$scope.item_context.push(thisJson.tokenBlock.contexts[i]);
+				}
+			} else {
+				$scope.item_context = '-';
+			}
+
+			//LEARNING RESOURCE TYPE
+			$scope.item_resource_types = [];
+			if(thisJson.tokenBlock.learningResourceTypes !== undefined) {
+				for(i in thisJson.tokenBlock.learningResourceTypes) {
+					$scope.item_resource_types.push(thisJson.tokenBlock.learningResourceTypes[i]);
+				}
+			} else {
+				$scope.item_resource_types = '-';
+			}
+
+
+
+
+			if (thisJson.tokenBlock.taxonPaths['Organic.Edunet Ontology'] !== undefined) {
+				console.log(thisJson.tokenBlock.taxonPaths);
+				$scope.item_classification =[];
+
+				for(i in thisJson.tokenBlock.taxonPaths['Organic.Edunet Ontology']) {
+					urls = thisJson.tokenBlock.taxonPaths['Organic.Edunet Ontology'][i].split('::');
+					for(j in urls) {
+						$scope.item_classification.push(urls[j].split("#")[1]);
+					}
+				}
+			} else {
+				$scope.item_classification = '-';
+			}
+
 
 			if(thisJson.expressions[0].manifestations[0].items[0].url!=undefined) {
 				$scope.item_resource_url = thisJson.expressions[0].manifestations[0].items[0].url;
 
 			}
-			$scope.getItemTags();
-			$scope.getItemRatings();
+
 		})
 
 	};
