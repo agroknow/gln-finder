@@ -26,6 +26,15 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 		$scope.akif = data.baseUrl;
 		$scope.enablePaginationTop = data.enablePaginationTop;
 		$scope.enablePaginationBottom = data.enablePaginationBottom;
+
+		//IF "LOAD MORE" is enabled > PAGINATION auto-disabled
+		if(data.enableLoadMore == true) {
+			$scope.enablePaginationTop = false;
+			$scope.enablePaginationBottom = false;
+			$scope.enableLoadMore = data.enableLoadMore;
+		}
+
+
 		$scope.limitPagination = data.limitPagination;
 		$scope.pageSize = data.pageSize;
 		$scope.selectedLanguage = data.selectedLanguage;
@@ -47,7 +56,9 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 		//Enables top pagination : true/false
 		$scope.enablePaginationTop = true;
 		//Enables bottom pagination : true/false
-		$scope.enablePaginationBottom = false;
+		$scope.enablePaginationBottom = true;
+		//Enable Load More
+		$scope.enableLoadMore = false;
 		//Limit Number of Pages in Pagination
 		$scope.limitPagination = 10;
 		//Page Size defines the number of results per page
@@ -185,6 +196,37 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	});
 */
 
+	$scope.scrollToTop = function () {
+		var element = document.body;
+		var to = 0;
+		var duration = 1250;
+
+	    var start = element.scrollTop,
+	        change = to - start,
+	        currentTime = 0,
+	        increment = 20;
+
+	    var animateScroll = function(){
+	        currentTime += increment;
+	        var val = Math.easeInOutQuad(currentTime, start, change, duration);
+	        element.scrollTop = val;
+	        if(currentTime < duration) {
+	            setTimeout(animateScroll, increment);
+	        }
+	    };
+	    animateScroll();
+	}
+
+	//t = current time
+	//b = start value
+	//c = change in value
+	//d = duration
+	Math.easeInOutQuad = function (t, b, c, d) {
+		t /= d/2;
+		if (t < 1) return c/2*t*t + b;
+		t--;
+		return -c/2 * (t*(t-2) - 1) + b;
+	};
 
 
 

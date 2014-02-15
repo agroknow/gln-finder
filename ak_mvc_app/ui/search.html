@@ -103,6 +103,10 @@
 		            </ul>
 			</div>
 
+			<!-- LOAD MORE ITEMS -->
+			<div ng-controller="paginationController"><a ng-show="enableLoadMore" class="view_more" href="#" ng-click="loadMore(currentPage+1)"> Load More </a></div>
+			<div ><a ng-show="enableLoadMore" class="view_more" href="#" ng-click="scrollToTop()"> Take me to the Top ^ </a></div>
+
 				<!-- Bottom Pagination -->
 				<div ng-controller="paginationController" ng-show="enablePaginationBottom" class="pagination row">
 		         	<div class="center">

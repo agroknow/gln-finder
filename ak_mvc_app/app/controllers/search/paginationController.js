@@ -36,13 +36,10 @@ listing.controller("paginationController", function($rootScope, $scope, sharedPr
 	//Updates pagination, after search
 	$rootScope.updatePagination = function(){
 
-		  $scope.numOfPages = sharedProperties.getTotal()/$scope.pageSize;
-
-    	$scope.pages.length = 0;/*clear pagination*/
-
-			var rep;
-
-			$scope.limitPagination > $scope.numOfPages ? rep = Math.ceil($scope.numOfPages) : rep = $scope.limitPagination;
+	  	$scope.numOfPages = sharedProperties.getTotal()/$scope.pageSize;
+	  	$scope.pages.length = 0;/*clear pagination*/
+		var rep;
+		$scope.limitPagination > $scope.numOfPages ? rep = Math.ceil($scope.numOfPages) : rep = $scope.limitPagination;
 
     	for(var i = 1; i<rep+1; i++){
         	$scope.pages.push(Math.floor(i));
@@ -52,9 +49,16 @@ listing.controller("paginationController", function($rootScope, $scope, sharedPr
 
 	/*change page function*/
 	$scope.goToPage = function(pageNum){
-			$rootScope.currentPage = pageNum;
+		$rootScope.currentPage = pageNum;
 	    $scope.findElements(false);
 	};
+
+	//LOAD MORE ITEMS
+	$scope.loadMore = function(pageNum) {
+		console.log(pageNum);
+		$rootScope.currentPage = pageNum;
+	    $scope.findElements(false);
+	}
 
 });
 

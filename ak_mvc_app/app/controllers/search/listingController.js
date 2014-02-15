@@ -113,10 +113,17 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			}
 		}
 
-		$scope.search(query);
+		if($scope.enableLoadMore == false) {
+			$scope.search(query);
+		}
+		else{
+			$scope.searchMore(query);
+		}
+
 
 	}
 
+	//search() works with PAGINATION. SERVES CONTENT PER PAGE
 	$scope.search = function(query) {
 
 		$http.get(query).success(function(data) {
@@ -153,6 +160,41 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		});
 	}
 
+
+	//searchMore() works with LOAD MORE. ADDS CONTENT PER PAGE
+	$scope.searchMore = function(query) {
+
+		$http.get(query).success(function(data) {
+			console.log(data);
+
+			/*Add facets*/
+			if($scope.enableFacets) {
+				$scope.inactiveFacets.length = 0;/*clear results*/
+				$scope.inactiveFacets.push(data.facets);
+
+			}
+
+			//Print snippets
+			//$scope.results.length = 0;//clear results
+			angular.forEach(data.results, function(result, index){
+			  	//Listing Results
+			  	var json = $scope.getSnippet(result, $scope.snippetElements);
+			  	if(json!=null) {
+			  		$scope.results.push(json);
+			  	}
+			  });
+
+			$scope.loading = false;
+			sharedProperties.setTotal(data.total);
+			$scope.update();
+
+		})
+		.error(function(error) {
+			    $scope.loading = false;
+			    $scope.error = true;
+			    console.log("--F@ck!n' error on $http.get : " + query);
+		});
+	}
 	/*
 	* gets the json and create a new one based on the specs of the snippet_elements
 	* @param thisJson : json from result
