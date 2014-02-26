@@ -24,11 +24,13 @@ listing.controller("paginationController", function($rootScope, $scope, sharedPr
 
 	    	$scope.pages.length = 0;/*clear pagination*/
 
-				var rep = $scope.limitPagination;
+			var rep = $scope.limitPagination;
 
 	    	for(var i = 1; i<rep; i++){
 	        	$scope.pages.push(Math.floor(i));
 	    	}
+	    	console.log($scope.pages);
+
 		}
 	};
 
@@ -49,8 +51,10 @@ listing.controller("paginationController", function($rootScope, $scope, sharedPr
 
 	/*change page function*/
 	$scope.goToPage = function(pageNum){
-		$rootScope.currentPage = pageNum;
-	    $scope.findElements(false);
+		if(pageNum >= 1 && pageNum <= $scope.pages.length){
+			$rootScope.currentPage = pageNum;
+			$scope.findElements(false);
+		}
 	};
 
 	//LOAD MORE ITEMS

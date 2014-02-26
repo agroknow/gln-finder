@@ -1,5 +1,7 @@
 listing.controller("listingController", function($rootScope, $scope, $http, $location, sharedProperties){
 
+	/* variable to calculate the progress of http get request */
+	$scope.http_get_prog = 37;
 
 	/*
 	* creates the request for Search API and makes the call
@@ -113,13 +115,7 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			}
 		}
 
-		if($scope.enableLoadMore == false) {
 			$scope.search(query);
-		}
-		else{
-			$scope.searchMore(query);
-		}
-
 
 	}
 
@@ -127,7 +123,6 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 	$scope.search = function(query) {
 
 		$http.get(query).success(function(data) {
-			console.log(data);
 
 			/*Add facets*/
 			if($scope.enableFacets) {
@@ -136,18 +131,23 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 
 			}
 
+			/* 	variable to calculate http get progress. in combination with $scope.http_get_prog */
+			var data_results_length = data.results.length;
+			var result_index = 0;
+
 			//Print snippets
 			$scope.results.length = 0;//clear results
 			angular.forEach(data.results, function(result, index){
+				result_index++;
 			  	//Listing Results
 			  	var json = $scope.getSnippet(result, $scope.snippetElements);
 			  	if(json!=null) {
+			  		$scope.http_get_prog = (result_index / data_results_length)*100;
 			  		$scope.results.push(json);
 			  	}
+
 			  });
 
-
-			$scope.loading = false;
 			sharedProperties.setTotal(data.total);
 		    $rootScope.updatePagination();
 			$scope.update();
@@ -156,7 +156,10 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		.error(function(error) {
 			    $scope.loading = false;
 			    $scope.error = true;
-			    console.log("--F@ck!n' error on $http.get : " + query);
+			    console.log("Error on $http.get : " + query);
+		})
+		.then(function() {
+				$scope.loading = false;
 		});
 	}
 
@@ -165,7 +168,6 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 	$scope.searchMore = function(query) {
 
 		$http.get(query).success(function(data) {
-			console.log(data);
 
 			/*Add facets*/
 			if($scope.enableFacets) {
@@ -195,6 +197,9 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 			    console.log("--F@ck!n' error on $http.get : " + query);
 		});
 	}
+
+
+
 	/*
 	* gets the json and create a new one based on the specs of the snippet_elements
 	* @param thisJson : json from result

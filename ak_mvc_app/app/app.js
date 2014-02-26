@@ -3,8 +3,9 @@
 * Agro-Know Technologies - 2013
 */
 
+
 /*Define ng-app module*/
-var listing = angular.module('akListing',[]);
+var listing = angular.module('akListing',['ngRoute', 'ui.bootstrap']);
 /* var listing = angular.module('akListing',['ngRoute','mainController','listingController']); */
 
 /* $locationProvider Configuration */

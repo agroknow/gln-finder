@@ -41,6 +41,7 @@
 body{
 	width:100%;
 	margin:0 auto;
+	font: 1.1em Open Sans,Arial,Helvetica,sans-serif; /* lighter */
 	color:@text_color_1;
 
 	.row{
@@ -55,10 +56,41 @@ body{
 	margin:0px auto;
 	.rounded-corners(10px);
 	padding:1em 0;
-	max-width: 1000px;
 
+	/* screen */
+	@media all {
+		width:1010px;
+		background-color: none; //rgba(35, 43, 43, 0.9); //@background
+	}
+
+	/* tablet */
+	@media all and (min-width: 480px) and (max-width: 768px) {
+		width:100%;
+		background-color: none; // rgba(35, 43, 43, 0.9); //@background
+	}
+
+	/* mobile */
+	@media all and (max-width: 480px) {
+		width:100%;
+		background-color: none; // rgba(35, 43, 43, 0.5); //@background
+		font-size: medium;
+	}
 }
 
+.reset_search {
+	background-color: @light_raf;
+	.rounded-corners(4px);
+	text-decoration: none;
+	color:white;
+	float:left;
+	margin-top:5px;
+	font-size: 0.8em;
+	padding:2px;
+
+	&:hover {
+		background-color: @warning_orange;
+	}
+}
 
 .active {
 	color:@active_text_color_1;
@@ -101,6 +133,7 @@ body{
     /* Form text input */
     input {
 	    width: 73%;
+	    height: 20px;
 	    padding: 10px 5px;
 	    float: left;
 	    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
@@ -268,6 +301,17 @@ body{
 	padding-bottom: 5px;
 	margin-top: 10px;
 
+	/* tablet */
+	@media all and (min-width: 480px) and (max-width: 768px) {
+		 width: 100%;
+	}
+
+	/* mobile */
+	@media all and (max-width: 480px) {
+		width: 100%;
+		/* display: none; */
+	}
+
 	.child {
 
 		display: inline-block;
@@ -282,6 +326,7 @@ body{
 		}
 
 		.value{
+			width:155px;
 			float:left;
 		}
 
@@ -355,7 +400,6 @@ body{
 }
 
 /* tablet & mobile  4 available facets*/
-/*
 @media all and (max-width: 768px) {
 	#facets {
 
@@ -398,7 +442,6 @@ body{
 		}
 	}
 }
-*/
 
 
 /******************************************************/
@@ -413,10 +456,34 @@ body{
 	text-align: center;
 	border-top: solid 1px @light_raf;
 }
-
 #listing_container {
 
+	/* screen */
+	@media all {
+/* 		width:780px; */
+/* 		float:right; */
+	}
+
+	/* tablet */
+	@media all and (min-width: 480px) and (max-width: 768px) {
+/* 		 width: 100%; */
+		 float:none;
+	}
+
+	/* mobile */
+	@media all and (max-width: 480px) {
+/* 		width: 100%; */
+		float:none;
+	}
+
 	#listing {
+		float:right;
+
+		/* mobile */
+		@media all and (max-width: 480px) {
+			width: 95%;
+			float:none;
+		}
 
 		.results {
 			padding-left: 10px;

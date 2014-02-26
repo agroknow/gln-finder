@@ -1,9 +1,9 @@
 {
   "baseUrl": "http://54.228.180.124:8080/search-api/v1/akif?",
   "enableFacets": true,
-  "enablePaginationBottom": false,
-  "enablePaginationTop": false,
-  "enableLoadMore":true,
+  "enablePaginationBottom": true,
+  "enablePaginationTop": true,
+  "enableLoadMore":false,
   "facets": [
     "set",
     "language",
