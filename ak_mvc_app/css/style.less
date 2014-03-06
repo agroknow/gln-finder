@@ -90,7 +90,6 @@ body{
     background: #444;
     background: rgba(0,0,0,.2);
     border-radius: 10px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
 
 	/* mobile */
 	@media all and (max-width: 480px) {
@@ -110,7 +109,6 @@ body{
 	    &:focus {
 		    outline: 0;
 		    background: #fff;
-		    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
 		}
 
 		&::-webkit-input-placeholder {
@@ -238,24 +236,6 @@ body{
 /*					FACETS	(left-sidebar)			  */
 /******************************************************/
 
-/* icon to show_hide facets */
-.show_facets {
-	width:130px;
-	display: block;
-	margin: 0px auto;
-	padding: 3px;
-	text-align: center;
-	background: @warning_orange;
-	text-decoration: none;
-	color: white;
-	.rounded-corners(3px);
-
-	/* mobile */
-	@media all and (min-width: 768px) {
-		display:none;
-	}
-}
-
 .facet_title {
 	text-align: center;
 }
@@ -355,7 +335,7 @@ body{
 }
 
 /* tablet & mobile  4 available facets*/
-/*
+
 @media all and (max-width: 768px) {
 	#facets {
 
@@ -398,7 +378,7 @@ body{
 		}
 	}
 }
-*/
+
 
 
 /******************************************************/
