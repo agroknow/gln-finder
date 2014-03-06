@@ -10,12 +10,12 @@
 </head>
 
 <body>
-        <div id="akListing" ng-app="akListing" >
+        <div id="akListing" ng-app="akListing" ng-cloak>
             <h1>Angular Experiment - View Item</h1>
 
 			<!-- VIEW ITEM -->
 			<hr>
-            <div ng-controller="viewItemController" ng-init="getItem()" class="row">
+            <div ng-controller="viewItemController" ng-init="getItem()">
 			<form class="form-wrapper cf" action="search.html">
 		        <input name="q" type="text" placeholder="Search here..." required>
 		        <button type="submit">Search</button>
@@ -23,36 +23,37 @@
 
 
 
-			<div id="view_item" ng-controller="viewItemController" ng-init="getItem()" class="row">
-				<article id="main_content">
+			<div id="view_item" ng-controller="viewItemController" ng-init="getItem()" >
+				<article id="main_content" class="col-md-12 ">
 	                    <h3 id="itemTitle">{{item_title}}</h3>
 	                <ul>
-						 <li><span class="label">Description : </span> <br> {{item_description}}</li>
-						 <li><span class="label">Keywords : </span> <br>
+						 <li><span class="labels">Description : </span> <br> {{item_description}}</li>
+						 <li><span class="labels">Keywords : </span> <br>
 						 	<a ng-repeat="keys in item_keywords" target="_self" href="search.html?query={{keys}}" >{{keys}}, </a>
 						 </li>
-						 <li><span class="label">Classification : </span> <br>
+						 <li><span class="labels">Classification : </span> <br>
 							 <a ng-repeat="keys in item_classification" target="_self" href="search.html?query={{keys}}" >{{keys}}, </a>
 						 </li>
 					 </ul>
 
-					<div>
-                        <a href="{{item_resource_url}}" class="access_the_resource" target=_blank >Access the resource</a>
-	                </div>
+					<a href="{{item_resource_url}}" class="btn btn-sm btn-default" target=_blank >Access the resource</a>
+	                <button class="btn btn-sm btn-default"  ng-click="isCollapsed = !isCollapsed">More Info</button>
+
+					<hr>
+					<div collapse="!isCollapsed">
+						<h4 id="more_info">More Info</h4>
+						 <ul>
+							 <li><span class="labels">Organization: </span> {{item_organization}} </li>
+							 <li><span class="labels">Language: </span> {{item_language}} </li>
+							 <li><span class="labels">Location: </span> {{item_coverage}}</li>
+							 <li><span class="labels">Learning Resource Types: </span> <span ng-repeat="types in item_resource_types"> {{types}}, </span></li>
+							 <li><span class="labels">Key Audience: </span> <span ng-repeat="roles in item_roles"> {{roles}}, </span></li>
+							 <li><span class="labels">Context: </span> <span ng-repeat="context in item_context"> {{context}}, </span></li>
+							 <li><span class="labels">Age Range: </span> {{item_age_range}}</li>
+						 </ul>
+					</div>
 				</article>
 
-	             <article id="left_sidebar" >
-					 <h4 id="more_info">More Info</h4>
-					 <ul>
-						 <li><span class="label">Organization: </span> {{item_organization}} </li>
-						 <li><span class="label">Language: </span> {{item_language}} </li>
-						 <li><span class="label">Location: </span> {{item_coverage}}</li>
-						 <li><span class="label">Learning Resource Types: </span> <span ng-repeat="types in item_resource_types"> {{types}}, </span></li>
-						 <li><span class="label">Key Audience: </span> <span ng-repeat="roles in item_roles"> {{roles}}, </span></li>
-						 <li><span class="label">Context: </span> <span ng-repeat="context in item_context"> {{context}}, </span></li>
-						 <li><span class="label">Age Range: </span> {{item_age_range}}</li>
-					 </ul>
-				</article>
 
 		</div>
 
