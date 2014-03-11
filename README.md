@@ -20,26 +20,15 @@ http://angular-ui.github.io/bootstrap/
 
 ###Main Structure
 app/
-
 ⋅⋅*app.js and controllers
-
 assets/
-
 ⋅⋅*images etc
-
 config/
-
 ⋅⋅*configuration files
-
 css/
-
 ⋅⋅*less files
-
 lib/
-
 ⋅⋅*external js libraries we use (bootstrap, angular, less etc)
-
 ui/
-
 ⋅⋅*html files
 
