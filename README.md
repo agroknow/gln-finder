@@ -18,17 +18,3 @@ Its goal is to augment web-based applications with model?view?controller (MVC) c
 Small footprint (5kB gzipped!), no 3rd party JS dependencies (jQuery, bootstrap JS) required!
 http://angular-ui.github.io/bootstrap/
 
-###Main Structure
-app/
-⋅⋅*app.js and controllers
-assets/
-⋅⋅*images etc
-config/
-⋅⋅*configuration files
-css/
-⋅⋅*less files
-lib/
-⋅⋅*external js libraries we use (bootstrap, angular, less etc)
-ui/
-⋅⋅*html files
-
