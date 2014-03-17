@@ -110,6 +110,7 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 
 
 
+/*
 
 			if (thisJson.tokenBlock.taxonPaths['Organic.Edunet Ontology'] !== undefined) {
 				console.log(thisJson.tokenBlock.taxonPaths);
@@ -124,6 +125,7 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 			} else {
 				$scope.item_classification = '-';
 			}
+*/
 
 
 			if(thisJson.expressions[0].manifestations[0].items[0].url!=undefined) {
@@ -135,11 +137,17 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 
 	};
 
+	/**********************************************************************/
+	/*							  	SocNav								  */
+	/**********************************************************************/
+
 	/****************************************************************************************** GET ITEM RATINGS *********************/
 	$scope.getItemRatings = function() {
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/ratings?itemResourceUri='+$scope.item_resource_url+'&max=100';
 		var headers = {'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
 
+		console.log('********* getItemRatings *********');
+		console.log(path);
 		$http({
 			method : 'GET',
 			url : path,
@@ -170,6 +178,7 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 
 		var thisJson = '{"domain":"'+$scope.domain+'","ip_address":"'+$scope.ip+'","session_id":"b3258f85j","sharing_level":"Public","item":{"metadata_uri":"'+$scope.item_resource_url+'","resource_uri":"'+$scope.item_resource_url+'"},"user":{"remote_id":"'+$scope.user_id+'"},"preferences":[{"dimension":"'+dimension+'", "value":"'+value+'"}]}';
 
+		console.log('********* rateItem *********');
 		console.log(path);
 		console.log(thisJson);
 		console.log(headers);
@@ -212,6 +221,9 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings?itemResourceUri='+$scope.item_resource_url+'&max=10';
 		var headers = {'Content-Type':'application/json','Accept':'application/json;charset=utf-8','Authorization':'Basic YWRtaW46YWRtaW4=='};
 
+		console.log('********* getItemTags *********');
+		console.log(path);
+
 		$http({
 			method : 'GET',
 			url : path,
@@ -243,12 +255,15 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 		var path = 'http://62.217.125.104:8080/socnav-gln/api/taggings';
 		var headers = {'Content-Type':'application/json','Accept':'application/json','Authorization':'Basic YWRtaW46YWRtaW4=='};
 
-		console.log(path);
-		console.log(headers);
+
 
 		var new_tag = this.new_tag;
 		//clean the search field
 		$scope.new_tag = "";
+
+		console.log('********* submitTag *********');
+		console.log(path);
+		console.log(new_tag);
 
 		if (new_tag) {
 
@@ -282,6 +297,7 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 
 		var thisJson ='{"domain":"'+$scope.domain+'","ip_address":"'+$scope.ip+'","session_id":"b3258f85j","sharing_level":"Public","updated_at":'+datetime+',"item":{"metadata_uri":"'+$scope.item_resource_url+'","resource_uri":"'+$scope.item_resource_url+'"},"user":{"metadata_uri":null,"remote_id":'+$scope.user_id+'},"review":"This item is educational","lang":"en"}';
 
+		console.log('********* new accessing *********');
 		console.log(path);
 		console.log(thisJson);
 		console.log(headers);

@@ -16,71 +16,7 @@
 
 <body class="cbp-spmenu-push">
 
-		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-			<h3>Menu</h3>
-			<a href="#">Celery seakale</a>
-			<a href="#">Dulse daikon</a>
-			<a href="#">Zucchini garlic</a>
-			<a href="#">Catsear azuki bean</a>
-			<a href="#">Dandelion bunya</a>
-			<a href="#">Rutabaga</a>
-		</nav>
-		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-			<h3>Menu</h3>
-			<a href="#">Celery seakale</a>
-			<a href="#">Dulse daikon</a>
-			<a href="#">Zucchini garlic</a>
-			<a href="#">Catsear azuki bean</a>
-			<a href="#">Dandelion bunya</a>
-			<a href="#">Rutabaga</a>
-		</nav>
-		<nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-top" id="cbp-spmenu-s3">
-			<h3>Menu</h3>
-			<a href="#">Celery seakale</a>
-			<a href="#">Dulse daikon</a>
-			<a href="#">Zucchini garlic</a>
-			<a href="#">Catsear azuki bean</a>
-			<a href="#">Dandelion bunya</a>
-			<a href="#">Rutabaga</a>
-			<a href="#">Celery seakale</a>
-			<a href="#">Dulse daikon</a>
-			<a href="#">Zucchini garlic</a>
-			<a href="#">Catsear azuki bean</a>
-			<a href="#">Dandelion bunya</a>
-			<a href="#">Rutabaga</a>
-		</nav>
-		<nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s4">
-			<h3>Menu</h3>
-			<a href="#">Celery seakale</a>
-			<a href="#">Dulse daikon</a>
-			<a href="#">Zucchini garlic</a>
-			<a href="#">Catsear azuki bean</a>
-			<a href="#">Dandelion bunya</a>
-			<a href="#">Rutabaga</a>
-			<a href="#">Celery seakale</a>
-			<a href="#">Dulse daikon</a>
-			<a href="#">Zucchini garlic</a>
-			<a href="#">Catsear azuki bean</a>
-			<a href="#">Dandelion bunya</a>
-			<a href="#">Rutabaga</a>
-		</nav>
 
-			<div class="main">
-				<section>
-					<h2>Slide Menus</h2>
-					<!-- Class "cbp-spmenu-open" gets applied to menu -->
-					<button id="showLeft">Show/Hide Left Slide Menu</button>
-					<button id="showRight">Show/Hide Right Slide Menu</button>
-					<button id="showTop">Show/Hide Top Slide Menu</button>
-					<button id="showBottom">Show/Hide Bottom Slide Menu</button>
-				</section>
-				<section class="buttonset">
-					<h2>Push Menus</h2>
-					<!-- Class "cbp-spmenu-open" gets applied to menu and "cbp-spmenu-push-toleft" or "cbp-spmenu-push-toright" to the body -->
-					<button id="showLeftPush">Show/Hide Left Push Menu</button>
-					<button id="showRightPush">Show/Hide Right Push Menu</button>
-				</section>
-			</div>
 
 		<!-- Main div that contains the listing, the facets, the search field.
 			the pagination and the informative messages. -->
@@ -90,6 +26,33 @@
 		        <input ng-model="search_query" name="search_query" type="text" placeholder="Search here..." required>
 		        <button type="submit">Search</button>
 		    </form>
+
+		    <!-- BUTTON FOR LEFT SLIDER FOR FACETS -->
+				<div class="main hidden-sm hidden-md hidden-lg">
+					<section class="buttonset">
+						<button id="showLeftPush">Facets</button>
+					</section>
+				</div>
+
+
+			<!-- BUTTON FOR LEFT SLIDER FOR FACETS -->
+			<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+				<h3>Facets</h3>
+					<accordion >
+				    <accordion-group heading="{{mapping['facets'][facet] || facet}}" ng-repeat="facet in facets">
+				      <input ng-show="showChild" ng-model="facetFilter" placeholder="Filter {{facet}}" />
+						<!-- 'facet' is the actual facet name and term.term is the machine name for the term -->
+		            	<a ng-repeat="term in inactiveFacets[0][facet.toString()].terms | filter:facetFilter" class="child" href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)" >
+		            		<span class="value">{{ mapping[facet][term.term] || term.term }}</span>
+		            		<span class="count">{{ term.count }}</span>
+		            	</a>
+				    </accordion-group>
+				  </accordion>
+				<!--
+					<a href="#">Dandelion bunya</a>
+					<a href="#">Rutabaga</a>
+				-->
+			</nav>
 
 			<!-- facets (left sidebar)-->
 			<div class="hidden-xs col-sm-3 col-md-3">
@@ -113,23 +76,9 @@
 
 				  <div><a class="btn btn-xs btn-danger" href="javascript:;" ng-click="resetLocation()">Clear Search</a></div>
 
-	            	<!--
-						<div class="row" ng-repeat="facet in facets" >
-		            	<div class="parent"> <a href="#" ng-click="showChild = !showChild">{{mapping['facets'][facet] || facet}}</a> </div> <!-- 'facet' is the actual facet name -->
-		            	<!-- filter facets
-							<input ng-show="showChild" ng-model="facetFilter" placeholder="Filter {{facet}}" />
-							<!-- 'facet' is the actual facet name and term.term is the machine name for the term
-			            	<a ng-repeat="term in inactiveFacets[0][facet.toString()].terms | filter:facetFilter" class="child" href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)" ng-show="showChild" >
-			            		<span class="value">{{ mapping[facet][term.term] || term.term }}</span>
-			            		<span class="count">{{ term.count }}</span>
-			            	</a>
-		            </div>
-					-->
-
-
-
 	            </div>
 			</div>
+
 
 			<!-- listing -->
 			<div id="listing_container" class="col-xs-12 col-sm-9 col-md-9 ">
@@ -216,70 +165,16 @@
 <script src="../lib/sidebar_classie.js"></script>
 <script>
 	var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-		menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-		menuTop = document.getElementById( 'cbp-spmenu-s3' ),
-		menuBottom = document.getElementById( 'cbp-spmenu-s4' ),
-		showLeft = document.getElementById( 'showLeft' ),
-		showRight = document.getElementById( 'showRight' ),
-		showTop = document.getElementById( 'showTop' ),
-		showBottom = document.getElementById( 'showBottom' ),
 		showLeftPush = document.getElementById( 'showLeftPush' ),
-		showRightPush = document.getElementById( 'showRightPush' ),
 		body = document.body;
 
-	showLeft.onclick = function() {
-		classie.toggle( this, 'active' );
-		classie.toggle( menuLeft, 'cbp-spmenu-open' );
-		disableOther( 'showLeft' );
-	};
-	showRight.onclick = function() {
-		classie.toggle( this, 'active' );
-		classie.toggle( menuRight, 'cbp-spmenu-open' );
-		disableOther( 'showRight' );
-	};
-	showTop.onclick = function() {
-		classie.toggle( this, 'active' );
-		classie.toggle( menuTop, 'cbp-spmenu-open' );
-		disableOther( 'showTop' );
-	};
-	showBottom.onclick = function() {
-		classie.toggle( this, 'active' );
-		classie.toggle( menuBottom, 'cbp-spmenu-open' );
-		disableOther( 'showBottom' );
-	};
 	showLeftPush.onclick = function() {
 		classie.toggle( this, 'active' );
 		classie.toggle( body, 'cbp-spmenu-push-toright' );
 		classie.toggle( menuLeft, 'cbp-spmenu-open' );
 		disableOther( 'showLeftPush' );
 	};
-	showRightPush.onclick = function() {
-		classie.toggle( this, 'active' );
-		classie.toggle( body, 'cbp-spmenu-push-toleft' );
-		classie.toggle( menuRight, 'cbp-spmenu-open' );
-		disableOther( 'showRightPush' );
-	};
 
-	function disableOther( button ) {
-		if( button !== 'showLeft' ) {
-			classie.toggle( showLeft, 'disabled' );
-		}
-		if( button !== 'showRight' ) {
-			classie.toggle( showRight, 'disabled' );
-		}
-		if( button !== 'showTop' ) {
-			classie.toggle( showTop, 'disabled' );
-		}
-		if( button !== 'showBottom' ) {
-			classie.toggle( showBottom, 'disabled' );
-		}
-		if( button !== 'showLeftPush' ) {
-			classie.toggle( showLeftPush, 'disabled' );
-		}
-		if( button !== 'showRightPush' ) {
-			classie.toggle( showRightPush, 'disabled' );
-		}
-	}
 </script>
 
 <!-- angular -->
