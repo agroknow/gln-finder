@@ -298,9 +298,7 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 	/********* CHECK DOMAIN TERMINOLOGY **********************************************/
 	$scope.callDomainTerminology = function(original, translated, from, to, service) {
 		/*console.log('from:' + from + ' |to:' + to + ' |original: ' + original + ' |translated: ' + translated + ' |service: ' + service);*/
-
-		/* var celi_url_html = 'http://research.celi.it:8080/DomainTerminologyChecker/rest/domain_terminology_checker/html?source='+original+'&translation='+translated+'&service='+service+'&from='+from+'&to='+to+'&json_output=true&callback=mathiou'; */
-		var celi_url = 'http://research.celi.it:8080/DomainTerminologyChecker/rest/domain_terminology_checker?source='+original+'&translation='+translated+'&service='+service+'&from='+from+'&to='+to+'&json_output=true&callback=mathiou';
+		var celi_url = 'http://research.celi.it:8080/DomainTerminologyChecker/rest/domain_terminology_checker?source='+original+'&translation='+translated+'&service='+service+'&from='+from+'&to='+to+'&json_output=true&callback=JSON_CALLBACK';
 
 		$http({
 			method : 'GET',
