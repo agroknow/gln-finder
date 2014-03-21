@@ -127,7 +127,6 @@ listing.controller("viewItemController", function($scope, $http, $location) {
 			}
 */
 
-
 			if(thisJson.expressions[0].manifestations[0].items[0].url!=undefined) {
 				$scope.item_resource_url = thisJson.expressions[0].manifestations[0].items[0].url;
 

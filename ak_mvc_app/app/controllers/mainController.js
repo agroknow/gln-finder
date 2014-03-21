@@ -20,7 +20,6 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	//get properties from conf.json
 	$http.get($scope.conf_file)
 	.success(function(data) {
-	console.log('success me');
 	/*-----------------------------------FINDER SETTINGS FROM CONFIG FILE-----------------------------------*/
 		$scope.limit_facets = data.limit_facets;
 		$scope.akif = data.baseUrl;
@@ -50,7 +49,7 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	/*-----------------------------------DEFAULT FINDER SETTINGS-----------------------------------*/
 		//AKIF URL
 		console.log('error me');
-		$scope.akif = 'http://54.228.180.124:8080/search-api/v1/akif?';
+		$scope.akif = 'http://api.greenlearningnetwork.com:8080/search-api/v1/akif?';
 
 		//--PAGINATION
 		//Enables top pagination : true/false

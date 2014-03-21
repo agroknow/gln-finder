@@ -463,10 +463,15 @@ body{
 /*					TRANSLATION PAGE				  */
 /******************************************************/
 .origin_document_container {
+	margin-top: 30px;
 	width:100%;
 	display: inline-block;
 	padding: 10px;
 	border-top: solid 5px  rgba(1,1,1,0.1);
+}
+
+h4 {
+	text-align:center;
 }
 
 .microsoft_translate_container {
@@ -486,6 +491,27 @@ body{
 .thanks {
 	float:right;
 	margin-right: 10px;
+}
+
+
+.domainTermTooltip {
+    display: none;  /* NEW */
+    background: yellow;
+    border: 1px solid rgba(0,0,0, 0.1);
+    margin-left: 28px;
+    position: absolute;
+    z-index: 1000;
+}
+
+.domainTerm {
+	background-color: yellow;
+	margin:0px;
+	padding:0px;
+	display: inline-block;
+}
+.domainTerm:hover .domainTermTooltip { /* NEW */
+    display: block;
+    text-decoration: none;
 }
 
 /******************************************************/

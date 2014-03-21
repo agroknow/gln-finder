@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://54.228.180.124:8080/search-api/v1/akif?",
+  "baseUrl": "http://api.greenlearningnetwork.com:8080/search-api/v1/akif?",
   "enableFacets": true,
   "enablePaginationBottom": true,
   "enablePaginationTop": true,

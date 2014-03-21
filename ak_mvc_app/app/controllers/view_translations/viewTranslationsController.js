@@ -5,7 +5,7 @@
 */
 
 /*Define viewItemController controller in 'app' */
-listing.controller("viewTranslationsController", function($scope, $http, $location) {
+listing.controller("viewTranslationsController", function($scope, $http, $location, $sce) {
 
 	$scope.language_mappings = [];
 	$scope.language_mappings['en'] = 'English';
@@ -62,7 +62,7 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 	$scope.user_id = '';
 
 	/*AKIF URL*/
-	$scope.akif = 'http://54.228.180.124:8080/search-api/v1/akif/';
+	$scope.akif = 'http://api.greenlearningnetwork.com:8080/search-api/v1/akif/';
 	$scope.item_resource_url = '';
 
 
@@ -140,14 +140,12 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 		.success(function(data) {
 			//parse array and create an JS Object Array
 			//every item is a JSON
-			console.log(data.results[0]);
 			var thisJson = data.results[0];
 
 			var languages = [];
 			for(var k in thisJson.languageBlocks) languages.push(k);
 
 			$scope.item_id = thisJson.identifier;
-			console.log(languages);
 
 			//WE USE ONLY 'EN' FOR NOW
 			if (thisJson.languageBlocks.en !== undefined) {
@@ -192,15 +190,18 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 
 	/********* CALL TRANSLATIONS *************************************************************/
 	$scope.translate_item = function() {
-
 		//$scope.loading will become 'false' when loading_counter become 4. IF we add more functions we need to increase the times of repeat in $scope.translation() function.
-		$scope.loading = true;
-		$scope.loading_counter = 0;
+		if($scope.translate_to) {
+			$scope.loading = true;
+			$scope.loading_counter = 0;
 
-		$scope.translate($scope.translate_from, $scope.translate_to, $scope.title, 'title', 'microsoft');
-		$scope.translate($scope.translate_from, $scope.translate_to, $scope.title, 'title', 'xerox');
-		$scope.translate($scope.translate_from, $scope.translate_to, $scope.description, 'description', 'microsoft');
-		$scope.translate($scope.translate_from, $scope.translate_to, $scope.description, 'description', 'xerox');
+			$scope.translate($scope.translate_from, $scope.translate_to, $scope.title, 'title', 'microsoft');
+			$scope.translate($scope.translate_from, $scope.translate_to, $scope.title, 'title', 'xerox');
+			$scope.translate($scope.translate_from, $scope.translate_to, $scope.description, 'description', 'microsoft');
+			$scope.translate($scope.translate_from, $scope.translate_to, $scope.description, 'description', 'xerox');
+		} else {
+			alert('Please select a language to translate to.');
+		}
 
 	}
 
@@ -210,8 +211,7 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 		var item_identifier = $location.search().id.split('_')[0]; //?id=ID_SET
 		var headers = {'Content-Type':'application/json','Accept':'application/json;charset=utf-8'};
 
-		console.log('from:' + from + ' |to:' + to + ' |element: ' + element + ' |service: ' + service);
-		var translate_url = 'http://organic-analytic.agroknow.gr/api.php/analytics/translate?text='+text+'&from='+from+'&to='+to+'&service='+service;
+		var translate_url = 'http://organic-analytic.agroknow.gr/api/analytics/translate?text='+text+'&from='+from+'&to='+to+'&service='+service;
 
 		/* GET TRANSLATIONS */
 		$http({
@@ -223,8 +223,6 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 		.success(function(response) {
 			//parse array and create an JS Object Array
 			//every item is a JSON
-			//console.log(translate_url);
-			console.log(response);
 
 			//MICROSOFT
 			if ( service == 'microsoft') {
@@ -273,7 +271,9 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 
 
 		/* GET AVERAGE RATINGS PER TRANSLATION*/
-		var average_rate_url = 'http://organic-analytic.agroknow.gr/api.php/analytics/resources/'+item_identifier+'/translation/'+item_identifier+'_'+service+'_'+$scope.translate_from+'_'+$scope.translate_to+'/rating';
+		/*
+
+		var average_rate_url = 'http://organic-analytic.agroknow.gr/api/analytics/resources/'+item_identifier+'/translation/'+item_identifier+'_'+service+'_'+$scope.translate_from+'_'+$scope.translate_to+'/rating';
 
 		$http({
 			method : 'GET',
@@ -290,16 +290,50 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 				$scope.xerox_avg_rating = response.data.rating;
 				$scope.xerox_votes = response.data.votes;
 			}
+
+		});*/
+
+	}
+
+	/********* CHECK DOMAIN TERMINOLOGY **********************************************/
+	$scope.callDomainTerminology = function(original, translated, from, to, service) {
+		/*console.log('from:' + from + ' |to:' + to + ' |original: ' + original + ' |translated: ' + translated + ' |service: ' + service);*/
+
+		/* var celi_url_html = 'http://research.celi.it:8080/DomainTerminologyChecker/rest/domain_terminology_checker/html?source='+original+'&translation='+translated+'&service='+service+'&from='+from+'&to='+to+'&json_output=true&callback=mathiou'; */
+		var celi_url = 'http://research.celi.it:8080/DomainTerminologyChecker/rest/domain_terminology_checker?source='+original+'&translation='+translated+'&service='+service+'&from='+from+'&to='+to+'&json_output=true&callback=mathiou';
+
+		$http({
+			method : 'GET',
+			url : celi_url,
+			type: 'jsonp'
+		})
+		.success(function(response) {
+
 			console.log(response);
 
-		});
+			//ONLY ONE TERM
+			if(response.WrongDomainTermsPair['Translation']) {
+				var temp = '<div class="domainTerm"><a href="#" class=\"highlight\">'+response.WrongDomainTermsPair['Translation']['@matchedText']+'<\/a><span class=\"domainTermTooltip\">'+response.WrongDomainTermsPair['Translation']['@prefLabel']+'<\/span><\/div>';
 
+				$scope.domain_terminology_response = $sce.trustAsHtml($scope.microsoft_description.replace( response.WrongDomainTermsPair['Translation']['@matchedText'], temp));
+			} else { //MANY TERMS
+				for (var dtc in response.WrongDomainTermsPair) {
+					console.log(response.WrongDomainTermsPair[dtc]['Translation']['@matchedText']);
+					console.log(response.WrongDomainTermsPair[dtc]['Translation']['@prefLabel']);
+				}
+
+				var temp = '<div class="domainTerm"><a href="#" class=\"highlight\">'+response.WrongDomainTermsPair['Translation']['@matchedText']+'<\/a><span class=\"domainTermTooltip\">'+response.WrongDomainTermsPair['Translation']['@prefLabel']+'<\/span><\/div>';
+
+				$scope.domain_terminology_response = $sce.trustAsHtml($scope.microsoft_description.replace( response.WrongDomainTermsPair['Translation']['@matchedText'], temp));
+			}
+
+
+		});
 	}
 
 
 	/********* RATE ITEM *************************************************************/
 	$scope.rateItem = function(value, service) {
-		console.log('Rate '+service+' service with '+ value +'!');
 		var item_identifier = $location.search().id.split('_')[0]; //?id=ID_SET
 
 		if($scope.user_id == '') {
@@ -317,7 +351,7 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 
 			var headers = {'Content-Type':'application/json','Accept':'application/json;charset=utf-8'};
 
-			var rate_url = 'http://organic-analytic.agroknow.gr/api.php/analytics/resources/'+item_identifier+'/translation/'+item_identifier+'_'+service+'_'+$scope.translate_from+'_'+$scope.translate_to+'/rating?rating='+value+'&usertoken='+$scope.user_id+'&to='+$scope.translate_to+'&from='+$scope.translate_from+'&service='+service;
+			var rate_url = 'http://organic-analytic.agroknow.gr/api/analytics/resources/'+item_identifier+'/translation/'+item_identifier+'_'+service+'_'+$scope.translate_from+'_'+$scope.translate_to+'/rating?rating='+value+'&usertoken='+$scope.user_id+'&to='+$scope.translate_to+'&from='+$scope.translate_from+'&service='+service;
 
 			$http({
 					method : 'POST',
@@ -328,9 +362,6 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 				.success(function(response) {
 					//parse array and create an JS Object Array
 					//every item is a JSON
-					//console.log(translate_url);
-					console.log(response);
-
 				});
 			}
 		}
