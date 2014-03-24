@@ -194,7 +194,7 @@ listing.controller("listingController", function($rootScope, $scope, $http, $loc
 		.error(function(error) {
 			    $scope.loading = false;
 			    $scope.error = true;
-			    console.log("--F@ck!n' error on $http.get : " + query);
+			    console.log("Error on $http.get in searchMore(): " + query);
 		});
 	}
 

@@ -85,9 +85,6 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	// Will work in combination with pagination:false.
 	//$scope.enableInfiniteScroll = false;
 
-	//!! *SCROLL TO TOP* TO BE ADDED !!
-	// Button to return to top of the screen (Infinite Scroll can take us to far...)
-
 	//---- KEEP CALM AND IMPLEMENT FUNCTIONALITY FIRST! ----//
 
 

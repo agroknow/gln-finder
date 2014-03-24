@@ -3,7 +3,7 @@
   "enableFacets": true,
   "enablePaginationBottom": true,
   "enablePaginationTop": true,
-  "enableLoadMore":false,
+  "enableLoadMore":true,
   "facets": [
     "set",
     "language",

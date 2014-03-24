@@ -29,7 +29,6 @@
 			<div id="facets" class="col-xs-12 hidden-sm hidden-md hidden-lg" ng-show="enableFacets" ng-controller="facetsController">
             	<!-- active facets -->
             	<div class="facet_title">Available facets</div>
-				<!-- bootstrap -->
 	              <div ng-repeat="facet in facets" style="float:left; margin:5px;">
 			          <a class="dropdown-toggle btn btn-default">
 					    {{mapping['facets'][facet] || facet}}
@@ -43,11 +42,6 @@
 					  </ul>
 		          </div>
 			</div>
-
-
-
-
-
 
 			<!-- FACETS > mobile (left sidebar)-->
 			<div class="hidden-xs col-sm-3 col-md-3">
@@ -88,9 +82,7 @@
 	           <h3 class="result_inform" >Search for "<span class="active">{{query.split("=")[1]}}</span>" returned total: <span class="active">{{total}} results</span></h3>
 
 	            <!-- Top Pagination -->
-	            <div class="pagination" ng-controller="paginationController" ng-show="enablePaginationTop" ng-init="initPagination()" >
-
-
+	            <div class="pagination hidden-xs" ng-controller="paginationController" ng-show="enablePaginationTop" ng-init="initPagination()" >
 		            <div class="center">
 			            <a href="#" class="prev btn btn-default" ng-click="goToPage(currentPage-1)"> Previous </a>
 			            	<p ng-repeat="link in pages" >
@@ -134,19 +126,22 @@
 			</div>
 
 			<!-- LOAD MORE ITEMS -->
-			<div ng-controller="paginationController"><a ng-show="enableLoadMore" class="view_more" href="#" ng-click="loadMore(currentPage+1)"> Load More </a></div>
-			<div ><a ng-show="enableLoadMore" class="view_more" href="#" ng-click="scrollToTop()"> Take me to the Top ^ </a></div>
+			<div ng-controller="paginationController">
+				<a class="btn btn-success" href="#" ng-click="loadMore(currentPage+1)"> Load More </a>
+				<a class="btn btn-default" href="#" ng-click="scrollToTop()"> Take me to the Top ^ </a>
+			</div>
 
 				<!-- Bottom Pagination -->
-				<div ng-controller="paginationController" ng-show="enablePaginationBottom" class="pagination row">
-		         	<div class="center">
-			            <a href="#" class="prev" ng-click="goToPage(currentPage-1)"> Previous </a>
+	            <div class="pagination hidden-xs" ng-controller="paginationController" ng-show="enablePaginationBottom" ng-init="initPagination()" >
+		            <div class="center">
+			            <a href="#" class="prev btn btn-default" ng-click="goToPage(currentPage-1)"> Previous </a>
 			            	<p ng-repeat="link in pages" >
-				            	<a href="#" class="active_{{currentPage == link}}" ng-click="goToPage(link)" >{{link}}</a>
+				            	<a href="#" class="btn btn-default active_{{currentPage == link}}" ng-click="goToPage(link)" >{{link}}</a>
 				            </p>
-			            <a href="#" class="next" ng-click="goToPage(currentPage+1)"> Next </a>
+			            <a href="#" class="next btn btn-default" ng-click="goToPage(currentPage+1)"> Next </a>
 		            </div>
-				</div>
+	            </div>
+
 
 			</div>
 
