@@ -25,34 +25,31 @@
 		        <button type="submit">Search</button>
 		    </form>
 
-		    <!-- BUTTON FOR LEFT SLIDER FOR FACETS -->
-			<button ng-click="show_mobile_facets=!show_mobile_facets" class="btn btn-default hidden-sm hidden-md hidden-lg" >Facets</button>
-			<!-- facets on mobile -->
-			<div ng-show="show_mobile_facets" class="col-xs-12 hidden-sm hidden-md hidden-lg">
-				<!-- <a ng-click="enableFacets=!enableFacets">Facets</a> -->
-	            <div id="facets" ng-show="enableFacets" ng-controller="facetsController">
-
+		    <!-- FACETS MOBILE -->
+			<div id="facets" class="col-xs-12 hidden-sm hidden-md hidden-lg" ng-show="enableFacets" ng-controller="facetsController">
             	<!-- active facets -->
             	<div class="facet_title">Available facets</div>
 				<!-- bootstrap -->
-	             <accordion >
-				    <accordion-group heading="{{mapping['facets'][facet] || facet}}" ng-repeat="facet in facets" >
-						<!-- 'facet' is the actual facet name and term.term is the machine name for the term -->
-		            	<a ng-repeat="term in inactiveFacets[0][facet.toString()].terms | filter:facetFilter" class="child" href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)" >
+	              <div ng-repeat="facet in facets" style="float:left; margin:5px;">
+			          <a class="dropdown-toggle btn btn-default">
+					    {{mapping['facets'][facet] || facet}}
+					  </a>
+					  <ul class="dropdown-menu">
+					    <li ng-repeat="term in inactiveFacets[0][facet.toString()].terms | filter:facetFilter" style="float:left; margin:5px;">
+					      <a  class="child" href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)" >
 		            		<span class="value">{{ mapping[facet][term.term] || term.term }}</span>
-		            		<span class="count">{{ term.count }}</span>
-		            	</a>
-				    </accordion-group>
-				  </accordion>
-
-				  <div><a class="btn btn-xs btn-danger" href="javascript:;" ng-click="resetLocation()">Clear Search</a></div>
-
-	            </div>
+						  </a>
+					    </li>
+					  </ul>
+		          </div>
 			</div>
 
 
 
-			<!-- facets (left sidebar)-->
+
+
+
+			<!-- FACETS > mobile (left sidebar)-->
 			<div class="hidden-xs col-sm-3 col-md-3">
 				<!-- <a ng-click="enableFacets=!enableFacets">Facets</a> -->
 	            <div id="facets" ng-controller="facetsController">
