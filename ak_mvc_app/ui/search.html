@@ -9,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 	<link rel="stylesheet/less" type="text/css" href="../css/style.less" />
 
-	<link rel="stylesheet" type="text/css" href="../css/sidebar_default.css" />
 	<link rel="stylesheet" type="text/css" href="../css/sidebar_component.css" />
 
 </head>
@@ -29,9 +28,7 @@
 
 		    <!-- BUTTON FOR LEFT SLIDER FOR FACETS -->
 				<div class="main hidden-sm hidden-md hidden-lg">
-					<section class="buttonset">
-						<button id="showLeftPush">Facets</button>
-					</section>
+					<button id="showLeftPush" class="btn btn-default" >Facets</button>
 				</div>
 
 
@@ -161,7 +158,7 @@
 
 <!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
 <!-- sidebar -->
-<script src="js/modernizr.custom.js"></script>
+<script src="../lib/modernizr.custom.js"></script>
 <script src="../lib/sidebar_classie.js"></script>
 <script>
 	var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
@@ -172,7 +169,6 @@
 		classie.toggle( this, 'active' );
 		classie.toggle( body, 'cbp-spmenu-push-toright' );
 		classie.toggle( menuLeft, 'cbp-spmenu-open' );
-		disableOther( 'showLeftPush' );
 	};
 
 </script>

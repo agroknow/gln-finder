@@ -300,14 +300,14 @@ listing.controller("viewTranslationsController", function($scope, $http, $locati
 		/*console.log('from:' + from + ' |to:' + to + ' |original: ' + original + ' |translated: ' + translated + ' |service: ' + service);*/
 		var celi_url = 'http://research.celi.it:8080/DomainTerminologyChecker/rest/domain_terminology_checker?source='+original+'&translation='+translated+'&service='+service+'&from='+from+'&to='+to+'&json_output=true&callback=JSON_CALLBACK';
 
+		console.log(celi_url);
+
 		$http({
 			method : 'GET',
 			url : celi_url,
 			type: 'jsonp'
 		})
 		.success(function(response) {
-
-			console.log(response);
 
 			//ONLY ONE TERM
 			if(response.WrongDomainTermsPair['Translation']) {

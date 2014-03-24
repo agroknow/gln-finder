@@ -1,6 +1,5 @@
 /* General styles for all menus */
 .cbp-spmenu {
-	background: #47a3da;
 	position: fixed;
 }
 
@@ -15,7 +14,6 @@
 
 .cbp-spmenu a {
 	display: block;
-	color: #fff;
 	font-size: 1.1em;
 	font-weight: 300;
 }
@@ -35,7 +33,7 @@
 	width: 240px;
 	height: 100%;
 	top: 0;
-	z-index: 1000;
+	z-index: -1000;
 }
 
 .cbp-spmenu-vertical a {
