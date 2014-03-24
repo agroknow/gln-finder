@@ -5,7 +5,7 @@
 */
 
 /*Define mainController controller in 'app' */
-listing.controller("mainController", function($rootScope, $scope, $http, $location, sharedProperties){
+listing.controller("mainController", function($rootScope, $scope, $http, $location, $modal, $log, sharedProperties){
 
 	$scope.conf_file = '../config/conf.json';
 	var mappings_file = '../config/facets_mappings.json';
@@ -129,7 +129,6 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 		    });
 	};
 
-
 	//Function for query submission
 	$scope.submit = function() {
 		if (this.search_query) {
@@ -184,18 +183,8 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	    return str;
 	}
 
-	//on locationChangeSuccess findElements used for
-	//! FIX --- WHEN GO BACK WE NEED TO REMOVE SELECTED FACETS FROM PREVIOUS SEARCHES || CLEAN THE $location.search()
-	//replace $locationChangeSuccess with $locationChangeStart.
-/*
-	$scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-		console.log('$locationChangeStart success', '\n new:'+absNewUrl, '\n old:'+absOldUrl);
-
-		$scope.findElements(true);
-	});
-*/
-
-	$scope.scrollToTop = function () {
+	//SCROLL TO TOP
+		$scope.scrollToTop = function () {
 		var element = document.body;
 		var to = 0;
 		var duration = 1250;
@@ -216,18 +205,13 @@ listing.controller("mainController", function($rootScope, $scope, $http, $locati
 	    animateScroll();
 	}
 
-	//t = current time
-	//b = start value
-	//c = change in value
-	//d = duration
-	Math.easeInOutQuad = function (t, b, c, d) {
+		//t = current time, b = start value, c = change in value, d = duration
+		Math.easeInOutQuad = function (t, b, c, d) {
 		t /= d/2;
 		if (t < 1) return c/2*t*t + b;
 		t--;
 		return -c/2 * (t*(t-2) - 1) + b;
 	};
-
-
 
 
 });

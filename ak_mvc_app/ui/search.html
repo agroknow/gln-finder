@@ -9,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 	<link rel="stylesheet/less" type="text/css" href="../css/style.less" />
 
-	<link rel="stylesheet" type="text/css" href="../css/sidebar_component.css" />
 
 </head>
 
@@ -27,17 +26,17 @@
 		    </form>
 
 		    <!-- BUTTON FOR LEFT SLIDER FOR FACETS -->
-				<div class="main hidden-sm hidden-md hidden-lg">
-					<button id="showLeftPush" class="btn btn-default" >Facets</button>
-				</div>
+			<button ng-click="show_mobile_facets=!show_mobile_facets" class="btn btn-default hidden-sm hidden-md hidden-lg" >Facets</button>
+			<!-- facets on mobile -->
+			<div ng-show="show_mobile_facets" class="col-xs-12 hidden-sm hidden-md hidden-lg">
+				<!-- <a ng-click="enableFacets=!enableFacets">Facets</a> -->
+	            <div id="facets" ng-show="enableFacets" ng-controller="facetsController">
 
-
-			<!-- BUTTON FOR LEFT SLIDER FOR FACETS -->
-			<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-				<h3>Facets</h3>
-					<accordion >
-				    <accordion-group heading="{{mapping['facets'][facet] || facet}}" ng-repeat="facet in facets">
-				      <input ng-show="showChild" ng-model="facetFilter" placeholder="Filter {{facet}}" />
+            	<!-- active facets -->
+            	<div class="facet_title">Available facets</div>
+				<!-- bootstrap -->
+	             <accordion >
+				    <accordion-group heading="{{mapping['facets'][facet] || facet}}" ng-repeat="facet in facets" >
 						<!-- 'facet' is the actual facet name and term.term is the machine name for the term -->
 		            	<a ng-repeat="term in inactiveFacets[0][facet.toString()].terms | filter:facetFilter" class="child" href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)" >
 		            		<span class="value">{{ mapping[facet][term.term] || term.term }}</span>
@@ -45,24 +44,24 @@
 		            	</a>
 				    </accordion-group>
 				  </accordion>
-				<!--
-					<a href="#">Dandelion bunya</a>
-					<a href="#">Rutabaga</a>
-				-->
-			</nav>
+
+				  <div><a class="btn btn-xs btn-danger" href="javascript:;" ng-click="resetLocation()">Clear Search</a></div>
+
+	            </div>
+			</div>
+
+
 
 			<!-- facets (left sidebar)-->
 			<div class="hidden-xs col-sm-3 col-md-3">
 				<!-- <a ng-click="enableFacets=!enableFacets">Facets</a> -->
-	            <div id="facets" ng-show="enableFacets" ng-controller="facetsController">
+	            <div id="facets" ng-controller="facetsController">
 
             	<!-- active facets -->
             	<div class="facet_title">Available facets</div>
-
 				<!-- bootstrap -->
 	             <accordion >
 				    <accordion-group heading="{{mapping['facets'][facet] || facet}}" ng-repeat="facet in facets">
-				      <input ng-show="showChild" ng-model="facetFilter" placeholder="Filter {{facet}}" />
 						<!-- 'facet' is the actual facet name and term.term is the machine name for the term -->
 		            	<a ng-repeat="term in inactiveFacets[0][facet.toString()].terms | filter:facetFilter" class="child" href="javascript:;" ng-click="selectFacet(term.term, facet, term.count)" >
 		            		<span class="value">{{ mapping[facet][term.term] || term.term }}</span>
@@ -157,21 +156,6 @@
     </div>
 
 <!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
-<!-- sidebar -->
-<script src="../lib/modernizr.custom.js"></script>
-<script src="../lib/sidebar_classie.js"></script>
-<script>
-	var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-		showLeftPush = document.getElementById( 'showLeftPush' ),
-		body = document.body;
-
-	showLeftPush.onclick = function() {
-		classie.toggle( this, 'active' );
-		classie.toggle( body, 'cbp-spmenu-push-toright' );
-		classie.toggle( menuLeft, 'cbp-spmenu-open' );
-	};
-
-</script>
 
 <!-- angular -->
 <script type="text/javascript" src="../lib/angular.min.js"></script>
